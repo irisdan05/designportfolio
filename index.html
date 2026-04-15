@@ -41,6 +41,12 @@ nav.nav-hidden{transform:translateY(-120%);}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 .nav-links a.active{color:var(--purple-text);}
 .page{position:fixed;inset:0;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1);overflow-y:auto;overflow-x:hidden;padding-bottom:60px;}
+.snav-btn{display:block;width:100%;text-align:left;background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);cursor:none;padding:14px 0;line-height:1.4;transition:color .18s;}
+.snav-btn:hover,.snav-btn.active{color:var(--purple-text);}
+.thought-cloud{display:inline;}
+.autoplay-on-view{outline:2px solid #000;}
+.ba-tab{font-family:'Pacaembu',sans-serif;font-size:var(--t7);border:1.5px solid var(--purple-text);border-radius:6px;background:transparent;cursor:none;padding:5px 14px;color:var(--purple-text);transition:background .18s,color .18s;}
+.ba-tab.ba-on,.ba-tab:hover{background:var(--purple-text);color:#fff;}
 .page.active{opacity:1;pointer-events:all;transform:translateY(0);}
 .page.exit{opacity:0;pointer-events:none;transform:translateY(-10px);}
 .section-label{font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.35em;text-transform:uppercase;color:var(--purple-text);display:flex;align-items:center;gap:14px;margin-bottom:52px;}
@@ -260,7 +266,7 @@ nav.nav-hidden{transform:translateY(-120%);}
 .pg-badge-1{background:#c084fc;color:#fff;transform:rotate(12deg);box-shadow:2px 3px 10px rgba(0,0,0,.2);}
 .pg-badge-2{background:#fbbf24;color:#451a03;transform:rotate(-8deg);box-shadow:2px 3px 10px rgba(0,0,0,.2);}
 /* floating scatter cards */
-.pg-scatter-area{position:relative;width:100%;min-height:660px;border-radius:20px;margin-bottom:40px;background-image:radial-gradient(circle,#e8dff2 1.5px,transparent 1.5px);background-size:28px 28px;}
+.pg-scatter-area{position:relative;width:100%;min-height:580px;border-radius:20px;margin-bottom:40px;background-image:radial-gradient(circle,#e8dff2 1.5px,transparent 1.5px);background-size:28px 28px;}
 .pg-float-card{position:absolute;width:230px;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.14),0 2px 8px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.07);transform:rotate(var(--rot,0deg));cursor:grab;user-select:none;background:#fff;z-index:1;transition:box-shadow .2s,z-index 0s;}
 .pg-float-card:hover{box-shadow:0 20px 50px rgba(0,0,0,.18),0 4px 14px rgba(0,0,0,.1);z-index:20;}
 .pg-float-card.is-dragging{cursor:grabbing;z-index:100;transition:none;}
@@ -295,7 +301,7 @@ nav.nav-hidden{transform:translateY(-120%);}
 .audio-track-label{font-size:var(--t6);letter-spacing:.15em;text-transform:uppercase;color:var(--text-soft);white-space:nowrap;}
 .page-footer{background:transparent;padding:52px 52px 48px;margin-top:80px;border-top:none;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:0;}
 #page-home .page-footer{background-image:linear-gradient(to right,transparent 52px,rgba(155,123,192,.18) 52px,rgba(155,123,192,.18) calc(100% - 52px),transparent calc(100% - 52px));background-size:100% 1px;background-repeat:no-repeat;background-position:top;}
-#page-about .page-footer,#page-playground .page-footer,#page-case-pulse .page-footer,#page-case-setdm .page-footer{border-top:1px solid rgba(155,123,192,.18);}
+#page-about .page-footer,#page-playground .page-footer,#page-case-pulse .page-footer,#page-case-setdm .page-footer,#page-case-parpro .page-footer{border-top:1px solid rgba(155,123,192,.18);}
 .footer-eyebrow{display:none;}
 .footer-cta{font-family:'Lora',serif;font-size:clamp(var(--t4),3vw,var(--t3));font-weight:400;font-style:italic;color:var(--text);line-height:1.2;margin-bottom:24px;}
 .footer-email{display:none;}
@@ -431,6 +437,19 @@ nav.nav-hidden{transform:translateY(-120%);}
 
   <div class="home-cases">
     <div class="section-label reveal" style="grid-column:1/-1;margin-bottom:8px;">Selected Work</div>
+
+    <div class="sc-card reveal" data-page="case-parpro" style="cursor:none;" onclick="navigateTo('case-parpro')">
+      <div class="sc-paper">
+        <div class="sc-img" style="overflow:hidden;padding:0;">
+          <img src="images/parpro.png" alt="Parpro Consulting Ltd." style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="sc-caption">
+          <span class="sc-title">Parpro Consulting Ltd.</span>
+          <span class="sc-meta">Web &amp; Brand Design</span>
+        </div>
+      </div>
+    </div>
+
     <div class="sc-card reveal" data-page="case-pulse" style="cursor:none;" onclick="navigateTo('case-pulse')">
       <div class="sc-paper">
         <div class="sc-img" style="background:#ffffff;display:flex;align-items:center;justify-content:center;">
@@ -439,7 +458,7 @@ nav.nav-hidden{transform:translateY(-120%);}
           </div>
         </div>
         <div class="sc-caption">
-          <span class="sc-title">Lumeno AI Accessibility Audit</span>
+          <span class="sc-title">Lumeno AI</span>
           <span class="sc-meta">Internship</span>
         </div>
       </div>
@@ -447,40 +466,12 @@ nav.nav-hidden{transform:translateY(-120%);}
 
     <div class="sc-card reveal" data-page="case-setdm" style="cursor:none;" onclick="navigateTo('case-setdm')">
       <div class="sc-paper">
-        <div class="sc-img" style="background:#0d0d12;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          <div style="position:relative;width:72%;display:flex;flex-direction:column;gap:8px;">
-            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;">
-              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);flex-shrink:0;"></div>
-              <div style="flex:1;"><div style="height:5px;background:rgba(255,255,255,.35);border-radius:3px;width:60%;margin-bottom:4px;"></div><div style="height:4px;background:rgba(255,255,255,.12);border-radius:3px;width:40%;"></div></div>
-              <div style="font-size:8px;padding:2px 6px;border-radius:4px;background:rgba(99,180,120,.18);color:#63b478;font-family:'Pacaembu',sans-serif;letter-spacing:.08em;">Lead</div>
-            </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;opacity:.7;">
-              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0;"></div>
-              <div style="flex:1;"><div style="height:5px;background:rgba(255,255,255,.2);border-radius:3px;width:50%;margin-bottom:4px;"></div><div style="height:4px;background:rgba(255,255,255,.08);border-radius:3px;width:35%;"></div></div>
-              <div style="font-size:8px;padding:2px 6px;border-radius:4px;background:rgba(255,190,50,.12);color:#fbbd23;font-family:'Pacaembu',sans-serif;letter-spacing:.08em;">Warm</div>
-            </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;opacity:.45;">
-              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.1);flex-shrink:0;"></div>
-              <div style="flex:1;"><div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;width:45%;margin-bottom:4px;"></div><div style="height:4px;background:rgba(255,255,255,.06);border-radius:3px;width:30%;"></div></div>
-              <div style="font-size:8px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);font-family:'Pacaembu',sans-serif;letter-spacing:.08em;">Cold</div>
-            </div>
-          </div>
+        <div class="sc-img" style="overflow:hidden;padding:0;">
+          <img src="images/temp%20setdm.png" alt="SetDM AI" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="sc-caption">
           <span class="sc-title">SetDM AI</span>
           <span class="sc-meta">Founding</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="sc-card reveal" style="cursor:none;" onclick="window.open('https://www.figma.com/deck/u4sc2vH40AJJFhk4fwZzJ3/Parpro-Consulting-Ltd.-Case-Study?node-id=6-178&t=oYphn1fJKUhSGXXR-1','_blank')">
-      <div class="sc-paper">
-        <div class="sc-img" style="overflow:hidden;padding:0;">
-          <img src="images/parpro.png" alt="Parpro Consulting Ltd." style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div class="sc-caption">
-          <span class="sc-title">Parpro Consulting Ltd.</span>
-          <span class="sc-meta">Web Design</span>
         </div>
       </div>
     </div>
@@ -501,7 +492,7 @@ nav.nav-hidden{transform:translateY(-120%);}
   </div>
 
   <div class="page-footer">
-    <p class="footer-cta">Let's craft something.</p>
+    <p class="footer-cta">Don't be a stranger. Reach out!</p>
     <div class="footer-bottom">
       <div class="footer-links">
         <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -516,14 +507,14 @@ nav.nav-hidden{transform:translateY(-120%);}
 <!-- WORK -->
 <!-- ABOUT -->
 <div class="page" id="page-about">
-  <div style="padding:100px 180px 0;min-height:100vh;display:flex;flex-direction:column;">
+  <div style="padding:144px 180px 0;min-height:100vh;display:flex;flex-direction:column;">
     <div class="about-grid reveal">
       <div>
         <h1 class="about-label">I'm Iris, like the song by the Goo<br>Goo Dolls <svg viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline;width:1.1em;height:.85em;vertical-align:middle;position:relative;top:-.08em;"><ellipse cx="11" cy="33" rx="7.5" ry="5" transform="rotate(-12 11 33)" fill="#9b7bc0"/><ellipse cx="38" cy="29" rx="7.5" ry="5" transform="rotate(-12 38 29)" fill="#9b7bc0"/><path d="M17.5 30.5 C17.8 30 18 15 18.5 8" stroke="#9b7bc0" stroke-width="2.8" stroke-linecap="round"/><path d="M44.5 26.5 C44.8 26 45 12 45.5 5" stroke="#9b7bc0" stroke-width="2.8" stroke-linecap="round"/><path d="M18 8.5 C24 6 36 4 45 5.5" stroke="#9b7bc0" stroke-width="5" stroke-linecap="round"/><path d="M18 14 C24 12 36 10 45 11.5" stroke="#9b7bc0" stroke-width="5" stroke-linecap="round"/></svg></h1>
         <div class="about-bio-block">
           <p class="about-bio-text">I grew up heavily immersed in competitive music; it taught me professionalism, artistry, and that not being good at something is just part of learning. I transitioned into film, where craft met storytelling, and each scene I studied expanded my sense of empathy. That mindset now shapes my design practice: human-first, constantly iterative, and of course, visually purposeful. In my freetime, you can find me at pretty much any cafe in Vancouver.</p>
         </div>
-        <div class="about-bio-block" style="margin-top:28px;">
+        <div class="about-bio-block" style="margin-top:34px;">
           <p class="about-bio-text" style="margin-bottom:8px;"><strong>Fun Facts:</strong></p>
           <ul style="list-style:disc;padding-left:1.4em;margin:0;">
             <li class="about-bio-text" style="margin-bottom:4px;">I got lost in Ottawa and walked to Quebec</li>
@@ -531,7 +522,7 @@ nav.nav-hidden{transform:translateY(-120%);}
             <li class="about-bio-text" style="margin-bottom:4px;">Worked on design for the world's <a href="https://x.com/socraticainfo/status/2036601353590517956?s=20" target="_blank" style="color:inherit;text-decoration:underline;cursor:none;">greatest celebration of making</a></li>
           </ul>
         </div>
-        <div style="margin-top:28px;">
+        <div style="margin-top:34px;">
           <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);margin-bottom:14px;">Wanna talk more? Reach out to me!</p>
           <div style="display:flex;gap:12px;">
             <a href="mailto:irisdanna05@gmail.com" class="about-social-icon" title="Email" style="cursor:none;">
@@ -593,8 +584,8 @@ nav.nav-hidden{transform:translateY(-120%);}
         </div>
       </div>
     </div>
-    <div class="page-footer" style="margin-top:40px;padding-left:0;padding-right:0;margin-left:-128px;margin-right:-128px;">
-      <p class="footer-cta">Let's craft something.</p>
+    <div class="page-footer" style="margin-top:48px;padding-left:0;padding-right:0;margin-left:-128px;margin-right:-128px;">
+      <p class="footer-cta">Don't be a stranger. Reach out!</p>
       <div class="footer-bottom">
         <div class="footer-links">
           <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -609,61 +600,65 @@ nav.nav-hidden{transform:translateY(-120%);}
 
 <!-- PLAYGROUND -->
 <div class="page" id="page-playground">
-  <div style="padding:100px 52px 0;min-height:100vh;display:flex;flex-direction:column;">
+  <div style="padding:144px 52px 0;min-height:100vh;display:flex;flex-direction:column;">
 
     <h1 class="about-label reveal">What else am I up to<svg viewBox="0 0 38 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline;width:.72em;height:.95em;vertical-align:middle;position:relative;top:-.04em;margin-left:.05em;transform:rotate(-6deg);transform-origin:center bottom;"><path d="M10 10 C10 4, 18 2, 24 6 C30 10, 31 17, 27 22 C23 27, 19 28, 19 34" stroke="#9b7bc0" stroke-width="3.68" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19" cy="43" r="2.8" fill="#9b7bc0"/></svg><svg viewBox="0 0 38 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline;width:.72em;height:.95em;vertical-align:middle;position:relative;top:-.04em;margin-left:.02em;transform:rotate(6deg);transform-origin:center bottom;"><path d="M8 9 C9 3, 17 1, 23 5 C29 9, 30 16, 26 21 C22 26, 18 27, 18 33" stroke="#9b7bc0" stroke-width="3.68" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="18" cy="43" r="2.8" fill="#9b7bc0"/></svg></h1>
 
-    <div class="pg-scatter-area" id="pgScatter" style="margin-bottom:52px;">
-      <div class="pg-float-card" data-pg-img="images/atelier.jpeg" data-pg-title="Atelier" data-pg-tag="Hosting and leading media" data-pg-blurb="I co-host and lead media at Atelier, a non-profit in Vancouver that gives spaces for people to cowork on their passion projects. Ranging from robotics, painting, to baking, we're a proud node of Socratica." style="top:18px;left:10px;--rot:-5deg;">
+    <div class="pg-scatter-area" id="pgScatter" style="margin-bottom:62px;">
+      <!-- Row 1: Atelier, UBC Launch Pad, Socratica Symposium, Bangkok -->
+      <div class="pg-float-card" data-pg-img="images/atelier.jpeg" data-pg-title="Atelier" data-pg-tag="Hosting and leading media" data-pg-blurb="I co-host and lead media at Atelier, a non-profit in Vancouver that gives spaces for people to cowork on their passion projects. Ranging from robotics, painting, to baking, we're a proud node of Socratica." style="top:25px;left:15px;--rot:-5deg;">
         <div class="pg-float-img"><img src="images/atelier.jpeg" alt="Atelier"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Atelier</span><span class="pg-float-tag">Hosting and leading media</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/launchpad.png" data-pg-title="UBC Launch Pad" data-pg-tag="Marketing Lead" data-pg-blurb="I was the Marketing Lead @ UBC's software engineering team for 1.7 years; I spearheaded marketing campaigns for a tech mixer that sold out in 3 hours, a hackathon event collaboration with the Google Dev Student Club, and managed all social medias." style="top:55px;left:290px;--rot:4deg;">
+      <div class="pg-float-card" data-pg-img="images/launchpad.png" data-pg-title="UBC Launch Pad" data-pg-tag="Marketing Lead" data-pg-blurb="I was the Marketing Lead @ UBC's software engineering team for 1.7 years; I spearheaded marketing campaigns for a tech mixer that sold out in 3 hours, a hackathon event collaboration with the Google Dev Student Club, and managed all social medias." style="top:20px;left:260px;--rot:3.5deg;">
         <div class="pg-float-img"><img src="images/launchpad.png" alt="UBC Launch Pad"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">UBC Launch Pad</span><span class="pg-float-tag">Marketing Lead</span></div>
       </div>
       <div class="pg-float-card" data-pg-img="images/symposium.jpeg" data-pg-title="Socratica Symposium
-      ⁂" data-pg-tag="Design and hosting" data-pg-blurb="I worked on the small (but strong) design team behind the world's greatest celebration of making, Socratica Symposium. We brought together demo'ers of everything, from pancake-flipping robots to live music to graphic design, drawing around 3,000 attendees from across the world to Kitchener-Waterloo, Ontario, to celebrate high-effort passion projects :) On the design team, I worked on branding, packaging, and social media graphics." style="top:10px;left:570px;--rot:-3deg;">
+      ⁂" data-pg-tag="Design and hosting" data-pg-blurb="I worked on the small (but strong) design team behind the world's greatest celebration of making, Socratica Symposium. We brought together demo'ers of everything, from pancake-flipping robots to live music to graphic design, drawing around 3,000 attendees from across the world to Kitchener-Waterloo, Ontario, to celebrate high-effort passion projects :) On the design team, I worked on branding, packaging, and social media graphics." style="top:30px;left:505px;--rot:-2deg;">
         <div class="pg-float-img"><img src="images/symposium.jpeg" alt="Symposium"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Socratica Symposium⁂</span><span class="pg-float-tag">Design and hosting</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/bkk.jpeg" data-pg-title="Bangkok" data-pg-tag="Asia travels" data-pg-blurb="When I was on an exchange term at Singapore's engineering and design university, I visited so many different countries that my friends liked to say I was teleporting. Anyway, this photo is of Bangkok, one of my favourite places I've traveled to." style="top:60px;left:855px;--rot:5deg;">
+      <div class="pg-float-card" data-pg-img="images/bkk.jpeg" data-pg-title="Bangkok" data-pg-tag="Asia travels" data-pg-blurb="When I was on an exchange term at Singapore's engineering and design university, I visited so many different countries that my friends liked to say I was teleporting. Anyway, this photo is of Bangkok, one of my favourite places I've traveled to." style="top:15px;left:750px;--rot:3.5deg;">
         <div class="pg-float-img"><img src="images/bkk.jpeg" alt="Bangkok"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Bangkok</span><span class="pg-float-tag">Asia travels</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/uxhub.png" data-pg-title="UBC UX Hub" data-pg-tag="Media Director" data-pg-blurb="I serve on the media team for UBC's first ever UX design club, where I make videos, newsletters, and manage social media." style="top:8px;left:1140px;--rot:-2.5deg;">
+      <!-- Row 1 col 5 + Row 2 -->
+      <div class="pg-float-card" data-pg-img="images/uxhub.png" data-pg-title="UBC UX Hub" data-pg-tag="Media Director" data-pg-blurb="I serve on the media team for UBC's first ever UX design club, where I make videos, newsletters, and manage social media." style="top:20px;left:995px;--rot:2deg;">
         <div class="pg-float-img"><img src="images/uxhub.png" alt="UBC UX Hub"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">UBC UX Hub</span><span class="pg-float-tag">Media Director</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/longboating.png" data-pg-title="Dragonboating" data-pg-tag="Sidequest" data-pg-blurb="I tried dragonboating with my friends! (We came in dead last)" style="top:330px;left:10px;--rot:-4deg;">
+      <div class="pg-float-card" data-pg-img="images/longboating.png" data-pg-title="Dragonboating" data-pg-tag="Sidequest" data-pg-blurb="I tried dragonboating with my friends! (We came in dead last)" style="top:300px;left:15px;--rot:-3deg;">
         <div class="pg-float-img"><img src="images/longboating.png" alt="Longboating"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Dragonboating</span><span class="pg-float-tag">Sidequest</span></div>
       </div>
-      <div class="pg-float-card" data-pg-url="https://devpost.com/software/re-fridge" style="top:285px;left:290px;--rot:3deg;">
+      <div class="pg-float-card" data-pg-url="https://devpost.com/software/re-fridge" style="top:305px;left:260px;--rot:2.5deg;">
         <div class="pg-float-img" style="background:linear-gradient(135deg,#d4edda,#a8d5b5);display:flex;align-items:center;justify-content:center;">
           <div style="font-size:2.8rem;line-height:1;">🍊</div>
           <div class="pg-float-hint">click to open</div>
         </div>
         <div class="pg-float-info"><span class="pg-float-title">Re-Fridge</span><span class="pg-float-tag">Hackathon · 3rd Place @ UBC UXathon</span></div>
       </div>
-      <div class="pg-float-card" data-pg-url="https://devpost.com/software/magistory-interactive-storybook-builder-for-children" style="top:340px;left:570px;--rot:-4.5deg;">
+      <div class="pg-float-card" data-pg-url="https://devpost.com/software/magistory-interactive-storybook-builder-for-children" style="top:295px;left:505px;--rot:-3deg;">
         <div class="pg-float-img" style="background:linear-gradient(135deg,#fde8c8,#f7c48e);display:flex;align-items:center;justify-content:center;">
           <div style="font-size:2.8rem;line-height:1;">📖</div>
           <div class="pg-float-hint">click to open</div>
         </div>
         <div class="pg-float-info"><span class="pg-float-title">MagiStory</span><span class="pg-float-tag">Interactive storybooks for language preservation</span></div>
       </div>
-      <div class="pg-float-card" data-pg-no-open="1" data-pg-img="" data-pg-title="Packaging Design" data-pg-tag="Coming Soon" data-pg-blurb="A packaging design project exploring visual identity and print production." style="top:278px;left:855px;--rot:2deg;">
+
+      <div class="pg-float-card" data-pg-no-open="1" data-pg-img="" data-pg-title="Packaging Design" data-pg-tag="Coming Soon" data-pg-blurb="A packaging design project exploring visual identity and print production." style="top:308px;left:750px;--rot:-3deg;">
         <div class="pg-float-img" style="background:linear-gradient(135deg,#e8e0f0,#c9b8e8);display:flex;align-items:center;justify-content:center;"><div style="font-size:2.8rem;line-height:1;">✂️</div><div class="pg-float-hint">coming soon</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Packaging Design</span><span class="pg-float-tag">Coming Soon</span></div>
       </div>
-      <div class="pg-float-card" data-pg-no-open="1" data-pg-img="images/film.jpeg" data-pg-title="Feature Film" data-pg-tag="Coming Soon" data-pg-blurb="A feature film project that brought together storytelling, cinematography, and post-production." style="top:335px;left:1140px;--rot:3.5deg;">
+
+      <div class="pg-float-card" data-pg-no-open="1" data-pg-img="images/film.jpeg" data-pg-title="Feature Film" data-pg-tag="Coming Soon" data-pg-blurb="A feature film project that brought together storytelling, cinematography, and post-production." style="top:300px;left:995px;--rot:2.5deg;">
         <div class="pg-float-img"><img src="images/film.jpeg" alt="Feature Film"><div class="pg-float-hint">coming soon</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Feature Film</span><span class="pg-float-tag">Coming Soon</span></div>
       </div>
     </div>
     <div class="page-footer" style="margin-top:auto;padding-left:0;padding-right:0;">
-      <p class="footer-cta">Let's craft something.</p>
+      <p class="footer-cta">Don't be a stranger. Reach out!</p>
       <div class="footer-bottom">
         <div class="footer-links">
           <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -678,183 +673,131 @@ nav.nav-hidden{transform:translateY(-120%);}
 
 <!-- CASE STUDY: PULSE (Lumeno AI) -->
 <div class="page" id="page-case-pulse">
-  <div style="padding:80px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
-    <button data-page="home" class="cs-back reveal" style="background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);cursor:none;display:inline-flex;align-items:center;gap:8px;padding:0;margin-bottom:64px;width:fit-content;">← back to home</button>
+  <div style="padding:144px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
 
-    <div class="reveal" style="text-align:center;margin-bottom:64px;">
-      <div style="margin-bottom:20px;">
+    <div class="reveal" style="text-align:center;margin-bottom:77px;">
+      <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Internship · EdTech</span>
       </div>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;">Lumeno AI: Accessibility Audit</h2>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t5);line-height:1.7;color:var(--text-soft);max-width:540px;margin:0 auto 32px;">A full accessibility audit and shipped feature set for an AI-powered study platform serving university students.</p>
+      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Lumeno AI: Accessibility Audit</h2>
+      <div style="margin-bottom:38px;">
+        <img src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
+      </div>
     </div>
 
-    <div class="reveal cs-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:64px;">
+    <div class="reveal cs-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:77px;">
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Role</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Product Design Intern</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Platform</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">iPad and Web</div></div>
-      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Aug – Oct 2025</div></div>
+      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">3-month internship; 3-day project</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Team</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">CEO, 3 Engineers, 1 Designer (Me)</div></div>
     </div>
 
     <!-- 01 Overview -->
-    <div id="cs-s01" class="reveal" style="margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">01) Overview</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">An AI tutor that was hard to learn from</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">Lumeno AI is an all-in-one study platform for university students, covering AI chat, flashcards, exam mode, summaries, and a digital notebook. The product was growing, but the core chat experience had a problem showing up consistently in beta feedback: the way AI responses were displayed made them genuinely difficult to read, particularly for students with ADHD or dyslexia.</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Two weeks into my internship, I was tasked with running a full accessibility audit of the app and designing the features to address what came out of it.</p>
-    </div>
-
-    <!-- 02 Role -->
-    <div id="cs-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">02) My Role</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Product Design Intern</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">I joined a team of around ten people across design, engineering, marketing, and product. The accessibility workstream was mine end to end: audit methodology, findings prioritisation, and the feature designs that shipped.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Accessibility audit</span>
-        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">WCAG evaluation</span>
-        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Heuristic analysis</span>
-        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Feature design</span>
-        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Research synthesis</span>
-      </div>
+    <div id="cs-s01" class="reveal" style="margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">AI studying platform for university students</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Lumeno is a study platform for university students with AI chat, flashcards, exam mode, summaries, and a digital notebook. However, beta users would consistently flag that the chat was hard to read, especially for people with ADHD or dyslexia.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">A few weeks into my internship, I was tasked with running an accessibility audit to tackle this issue.</p>
+      <div style="border-top:1px solid var(--border);margin-top:60px;"></div>
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-top:38px;margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
     </div>
 
     <!-- 03 Audit -->
-    <div id="cs-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">03) The Audit</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Finding what the product was getting wrong</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:32px;">The audit ran across three methods: a WCAG 2.1 compliance review, a heuristic evaluation of the app's key flows, and synthesis of beta user feedback the team had already collected. That last source was particularly grounding. Students were already flagging the same problem repeatedly, so having real user signal alongside the guidelines review made prioritisation straightforward.</p>
+    <div id="cs-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Finding what the product was getting wrong</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">I ran a WCAG 2.1 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
 
-
-
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">What the audit found</p>
-      <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:32px;">
+      <!-- Affinity map -->
+      <img src="images/lumenoaffinity.png" alt="Affinity mapping — Lumeno accessibility audit" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
+      <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
         <!-- Header row -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;background:var(--bg2);padding:10px 20px;border-bottom:1px solid var(--border);">
-          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Issue</div>
-          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">WCAG Criterion</div>
-          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Level</div>
-          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Status</div>
+          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);">Issue</div>
+          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);">WCAG Criterion</div>
+          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);">Level</div>
+          <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);">Status</div>
         </div>
         <!-- Row 1 -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;padding:14px 20px;border-bottom:1px solid var(--border);align-items:start;">
           <div>
             <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:4px;">Unreadable text density in chat</div>
-            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">AI responses rendered as dense walls of text with no paragraph breaks. Beta users with ADHD flagged this as a barrier to using the feature at all.</div>
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">The AI's responses rendered as dense walls of text with no paragraph breaks. Beta users mentioned that this was a large barrier for ADHD.</div>
           </div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.8 Visual Presentation</div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(155,123,192,.1);color:var(--purple-text);">AAA</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:#dc2626;">Fail</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(155,123,192,.1);color:var(--ink);">AAA</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
         </div>
         <!-- Row 2 -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;padding:14px 20px;border-bottom:1px solid var(--border);align-items:start;">
           <div>
             <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:4px;">No text customisation controls</div>
-            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Font size and letter spacing were fixed. Students had no way to adapt the reading experience to their needs.</div>
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Font size and letter spacing were fixed. Students had no way to change the reading experience to make it fit their needs.</div>
           </div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.4 Resize Text</div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.1);color:#dc2626;">AA</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:#dc2626;">Fail</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.1);color:var(--ink);">AA</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
         </div>
         <!-- Row 3 -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;padding:14px 20px;align-items:start;">
           <div>
             <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:4px;">No audio option for content</div>
-            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">No text-to-speech across any feature. For students with dyslexia or visual impairments, there was no alternative to reading dense screen text.</div>
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">No text-to-speech across any of the features.</div>
           </div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.1.1 Non-text Content</div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.1);color:#dc2626;">AA</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:#dc2626;">Fail</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.1);color:var(--ink);">AA</span></div>
+          <div style="padding-top:2px;"><span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:2px 8px;border-radius:4px;background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
         </div>
       </div>
 
-      <!-- Image placeholder -->
-      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-faint);">Screenshots: chat before changes</div>
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;">Wall of text, no spacing, fixed font. The before state.</div>
-      </div>
+
+
     </div>
 
     <!-- 04 What we shipped -->
-    <div id="cs-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:40px;">04) What We Shipped</div>
+    <div id="cs-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Solution</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">The audit made clear that students had no control over how information was presented to them. The solution was to give that control back directly through in-app features.</p>
 
-      <!-- 2-col header -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px;">
-        <h3 style="font-family:'Lora',serif;font-size:clamp(var(--t3),3.5vw,var(--t2));font-weight:400;color:var(--ink);line-height:1.15;margin:0;">Giving students control over how they read</h3>
-        <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin:0;padding-top:6px;">The findings pointed to a consistent gap: students had no control over how information was presented to them. The design response was to build that control in, across the dimensions that mattered most.</p>
+      <!-- Feature 1: Enlarge text size -->
+      <div style="margin-bottom:58px;">
+        <p style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting text size</p>
+        <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">Users can now increase or decrease font size within the app, addressing WCAG 1.4.4.</p>
+        <video src="images/enlargetext.mp4" autoplay loop muted playsinline aria-label="Demo of adjustable text size feature in Lumeno AI chat" style="width:100%;border-radius:12px;display:block;"></video>
       </div>
 
-      <!-- Bento card grid: row 1 (3 cards) -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;">
-
-        <!-- Card 1: Text size -->
-        <div style="border-radius:18px;padding:3px;background:linear-gradient(135deg,#9b7bc0,#e06090,#e8705a);">
-          <div style="background:#fff;border-radius:16px;overflow:hidden;height:100%;display:flex;flex-direction:column;">
-            <div style="background:var(--bg2);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;flex:1;">
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;text-align:center;">Add screenshot: text size control UI</div>
-            </div>
-            <div style="padding:20px 22px 24px;">
-              <div style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:8px;">Text size controls</div>
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Users can increase or decrease font size within the app, addressing the clearest compliance gap the audit surfaced.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Letter spacing -->
-        <div style="border-radius:18px;padding:3px;background:linear-gradient(135deg,#9b7bc0,#e06090,#e8705a);">
-          <div style="background:#fff;border-radius:16px;overflow:hidden;height:100%;display:flex;flex-direction:column;">
-            <div style="background:var(--bg2);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;flex:1;">
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;text-align:center;">Add screenshot: letter spacing control UI</div>
-            </div>
-            <div style="padding:20px 22px 24px;">
-              <div style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:8px;">Letter spacing controls</div>
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Adjustable kerning added alongside font size. For users with dyslexia, letter spacing can be the difference between readable and unreadable.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Simplified mode -->
-        <div style="border-radius:18px;padding:3px;background:linear-gradient(135deg,#9b7bc0,#e06090,#e8705a);">
-          <div style="background:#fff;border-radius:16px;overflow:hidden;height:100%;display:flex;flex-direction:column;">
-            <div style="background:var(--bg2);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;flex:1;">
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;text-align:center;">Add screenshot: simplified response mode</div>
-            </div>
-            <div style="padding:20px 22px 24px;">
-              <div style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:8px;">Simplified response mode</div>
-              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">A setting allowing users to request shorter, more concise AI responses for students with ADHD who found default response length overwhelming.</div>
-            </div>
-          </div>
-        </div>
-
+      <!-- Feature 2: Letter spacing -->
+      <div style="margin-bottom:0;">
+        <p style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting letter spacing</p>
+        <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">We also added adjustable letter spacing; for users with dyslexia, wider letter spacing can be a significant aid when reading.</p>
+        <video src="images/enlargespace.mp4" autoplay loop muted playsinline aria-label="Demo of adjustable letter spacing feature in Lumeno AI chat" style="width:100%;border-radius:12px;display:block;"></video>
       </div>
 
-      <!-- Row 2: 1 wide card -->
-      <div style="border-radius:18px;padding:3px;background:linear-gradient(135deg,#9b7bc0,#e06090,#e8705a);">
-        <div style="background:#fff;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;">
-          <div style="background:var(--bg2);min-height:220px;display:flex;align-items:center;justify-content:center;padding:24px;">
-            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;text-align:center;">Add screenshot: audio/speech UI</div>
+      <!-- Add-on features -->
+      <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
+        <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Additional Features</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div style="background:var(--bg2);border-radius:14px;padding:24px 26px;">
+            <p style="font-family:'Lora',serif;font-size:var(--t6);font-weight:400;color:var(--ink);margin-bottom:10px;">Speech to text</p>
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">Students can say their questions aloud instead of typing, making the chatbot easier to use for students with motor difficulties.</p>
           </div>
-          <div style="padding:32px;">
-            <div style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;">Audio and speech option</div>
-            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.7;">A text-to-speech feature was designed and shipped, giving students the option to have content read aloud. Particularly relevant for users with dyslexia and auditory learners.</div>
+          <div style="background:var(--bg2);border-radius:14px;padding:24px 26px;">
+            <p style="font-family:'Lora',serif;font-size:var(--t6);font-weight:400;color:var(--ink);margin-bottom:10px;">Text to speech</p>
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">AI responses can be read aloud, giving students with visual impairments or processing difficulties a more accessible experience.</p>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- 05 Reflections -->
-    <div id="cs-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">05) Reflections</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Accessibility is a product quality problem</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">The most useful reframe from this project was treating accessibility as a product quality issue rather than a compliance checklist. The WCAG violations mattered, but the stronger case for fixing them was that real students were struggling with the core feature of an app designed to help them study.</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">Designing around ADHD and dyslexia also sharpened how I think about information density more generally. The text clustering problem in Lumeno's chat affected everyone, just more acutely for users with attention difficulties.</p>
+    <div id="cs-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:0;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Accessibility should be kept front and centre</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">As I was given the accessibility audit task after most of the main product was already built out, it made me realise how often accessibility goes overlooked in products. My main takeaway is that accessibility should be looked at in the early stages of building a product, and not as an add-on.</p>
     </div>
 
-
-    <div style="margin-top:auto;padding-top:80px;margin-left:-75px;margin-right:-75px;">
+    <div style="margin-top:auto;padding-top:0;margin-left:-75px;margin-right:-75px;">
       <div class="page-footer" style="padding-left:0;padding-right:0;">
-        <p class="footer-cta">Let's craft something.</p>
+        <p class="footer-cta">Don't be a stranger. Reach out!</p>
         <div class="footer-bottom">
           <div class="footer-links">
             <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -870,18 +813,17 @@ nav.nav-hidden{transform:translateY(-120%);}
 
 <!-- CASE STUDY: SETDM AI -->
 <div class="page" id="page-case-setdm">
-  <div style="padding:80px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
-    <button data-page="home" class="cs-back reveal" style="background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);cursor:none;display:inline-flex;align-items:center;gap:8px;padding:0;margin-bottom:64px;width:fit-content;">← back to home</button>
+  <div style="padding:144px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
 
-    <div class="reveal" style="text-align:center;margin-bottom:64px;">
-      <div style="margin-bottom:20px;">
+    <div class="reveal" style="text-align:center;margin-bottom:77px;">
+      <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Founding · B2B SaaS</span>
       </div>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;">SetDM AI</h2>
+      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">SetDM AI</h2>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t5);line-height:1.7;color:var(--text-soft);max-width:560px;margin:0 auto 32px;">Designing a funnel-based inbox and AI co-pilot for fitness coaches and DM setters managing high-volume Instagram conversations.</p>
     </div>
 
-    <div class="reveal cs-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:64px;">
+    <div class="reveal cs-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:77px;">
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Role</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Founding Product Designer</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Platform</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Web app &amp; Meta Integrations</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">1 Month</div></div>
@@ -889,18 +831,16 @@ nav.nav-hidden{transform:translateY(-120%);}
     </div>
 
     <!-- 01 Overview -->
-    <div id="sdm-s01" class="reveal" style="margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">01) Overview</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Instagram DMs were never built for scale</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
+    <div id="sdm-s01" class="reveal" style="margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Instagram DMs were never built for scale</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">SetDM AI is a funnel-based workspace built with AI, made specifically for DM setters to make sales faster and without burning out.</p>
     </div>
 
     <!-- 02 My Role -->
-    <div id="sdm-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">02) My Role</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Founding Product Designer</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
+    <div id="sdm-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Founding Product Designer</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:29px;">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Information architecture</span>
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text-soft);">Research</span>
@@ -910,35 +850,29 @@ nav.nav-hidden{transform:translateY(-120%);}
     </div>
 
     <!-- 03 Research & Discovery -->
-    <div id="sdm-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">03) Research &amp; Discovery</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Getting inside the DM sender's day</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:32px;">The research was done using structured interviews, a competitive analysis, and the founder's existing domain knowledge that came with DM setting experience too. Having the founder's industry background as a starting point meant interviews could focus immediately on edge cases and specific pain points rather than building basic context from scratch.</p>
-
-
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Competitive landscape</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">All four competitors shared the same blind spot: the setter was never the primary axis, and none combined pipeline structure with AI inside the inbox itself.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:40px;">
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+    <div id="sdm-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Getting inside the DM sender's day</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">The research was done using structured interviews, a competitive analysis, and the founder's existing domain knowledge that came with DM setting experience too. Having the founder's industry background as a starting point meant interviews could focus immediately on edge cases and specific pain points rather than building basic context from scratch.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">All four competitors shared the same blind spot: the setter was never the primary axis, and none combined pipeline structure with AI inside the inbox itself.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:48px;">
+        <div style="background:var(--bg2);border-radius:12px;padding:16px 20px;">
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:6px;">ManyChat</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Automation-heavy, limited targeting tools. Not built for high-volume setter management or lead qualification.</div>
         </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+        <div style="background:var(--bg2);border-radius:12px;padding:16px 20px;">
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:6px;">Native Instagram</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Flat inbox with no lead tagging, no funnel view, and no AI support. The baseline problem.</div>
         </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+        <div style="background:var(--bg2);border-radius:12px;padding:16px 20px;">
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:6px;">Revio</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Focused on payments and subscriptions. No DM workflow or AI support for setters.</div>
         </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+        <div style="background:var(--bg2);border-radius:12px;padding:16px 20px;">
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:6px;">IntelliCoach</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Coaching-oriented but built around session management, not DM-based sales pipelines.</div>
         </div>
       </div>
-
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">What setters said</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:40px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:48px;">
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;">
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-style:italic;color:var(--text);margin-bottom:10px;line-height:1.6;">"Add quote from DM setter here"</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);">DM Setter, fitness niche</div>
@@ -952,8 +886,6 @@ nav.nav-hidden{transform:translateY(-120%);}
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);">DM Setter, fitness niche</div>
         </div>
       </div>
-
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">What research found</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-bottom:0;">
 
         <!-- Cluster 1: Pipeline visibility -->
@@ -1015,65 +947,324 @@ nav.nav-hidden{transform:translateY(-120%);}
     </div>
 
     <!-- 04 Design Process -->
-    <div id="sdm-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">04) Design Process</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Designing a system, not just an inbox</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">The central design challenge was structural: getting coaches and setters a real-time read on their entire pipeline required every layer of the product to support it. Staging, funnel visibility, and message queuing all had to feed into one another rather than sit as separate features.</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">Since the one-month deadline meant phases overlapped heavily, sketching and shipping happened in the same sprint throughout. Reviews were shared regularly with potential users and the founder for feedback on practicality before anything went to engineering. This feedback process allowed us to ship fast and still get the results we wanted.</p>
+    <div id="sdm-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Designing a system, not just an inbox</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">The central design challenge was structural: getting coaches and setters a real-time read on their entire pipeline required every layer of the product to support it. Staging, funnel visibility, and message queuing all had to feed into one another rather than sit as separate features.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Since the one-month deadline meant phases overlapped heavily, sketching and shipping happened in the same sprint throughout. Reviews were shared regularly with potential users and the founder for feedback on practicality before anything went to engineering. This feedback process allowed us to ship fast and still get the results we wanted.</p>
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:38px;">
 
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;">User journey mapping</p>
-      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:24px;">
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-faint);">Add user journey map here</div>
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;">End-to-end setter journey across the DM sales flow</div>
+        <!-- Header -->
+        <div style="background:var(--bg2);padding:24px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:20px;">
+          <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="images/genericdude.jpg" alt="Jordan" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <div>
+            <div style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:4px;">Tom, 26</div>
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--purple-text);">Freelance DM Setter · Fitness niche</div>
+          </div>
+          <div style="margin-left:auto;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);text-align:right;line-height:1.8;">
+            <div>Manages 3–5 coaches simultaneously</div>
+            <div>~300 DM threads per day</div>
+            <div>Works remotely, self-employed</div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);">
+          <!-- Goals -->
+          <div style="padding:20px 24px;border-right:1px solid var(--border);">
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">Goals</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--purple-text);font-size:.7rem;margin-top:2px;flex-shrink:0;">◆</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Book as many sales calls as possible without burning out</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--purple-text);font-size:.7rem;margin-top:2px;flex-shrink:0;">◆</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Know exactly which leads to focus on at any given moment</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--purple-text);font-size:.7rem;margin-top:2px;flex-shrink:0;">◆</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Build a sustainable workflow that scales across multiple coaches</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frustrations -->
+          <div style="padding:20px 24px;border-right:1px solid var(--border);">
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">Frustrations</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:#dc2626;font-size:.7rem;margin-top:2px;flex-shrink:0;">✕</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Instagram's inbox gives no visibility into where leads stand</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:#dc2626;font-size:.7rem;margin-top:2px;flex-shrink:0;">✕</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Hostile and inappropriate DMs with no way to protect themselves</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:#dc2626;font-size:.7rem;margin-top:2px;flex-shrink:0;">✕</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Manually chasing follow-ups and losing track of warm threads</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Context -->
+          <div style="padding:20px 24px;">
+            <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">Context</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--text-faint);font-size:.7rem;margin-top:2px;flex-shrink:0;">·</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Commission-based; income depends directly on call volume</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--text-faint);font-size:.7rem;margin-top:2px;flex-shrink:0;">·</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Operates across multiple accounts with overlapping scripts</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="color:var(--text-faint);font-size:.7rem;margin-top:2px;flex-shrink:0;">·</span>
+                <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">No formal tools; previously tracked everything in spreadsheets</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div style="padding:20px 28px;display:flex;align-items:center;gap:16px;">
+          <div style="width:3px;height:100%;min-height:40px;background:linear-gradient(to bottom,var(--purple),var(--violet));border-radius:2px;flex-shrink:0;"></div>
+          <p style="font-family:'Lora',serif;font-size:var(--t6);font-style:italic;color:var(--ink);line-height:1.7;margin:0;">"I'm managing hundreds of threads a day. I can't afford to miss a warm lead or waste time on someone who's never going to convert. Right now there's no system to tell the difference."</p>
+        </div>
+
       </div>
+      <!-- Journey map: stage headers -->
+      <div style="margin-bottom:38px;">
+        <!-- Stage flow -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-bottom:0;position:relative;">
+          <!-- connector line behind -->
+          <div style="position:absolute;top:50%;left:10%;right:10%;height:1px;background:linear-gradient(90deg,rgba(155,123,192,.15),rgba(155,123,192,.35),rgba(155,123,192,.15));transform:translateY(-50%);z-index:0;"></div>
+          <div style="text-align:center;padding:0 6px;position:relative;z-index:1;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:#fff;font-weight:500;">01</div>
+              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;color:var(--ink);font-weight:500;">Lead arrives</div>
+            </div>
+          </div>
+          <div style="text-align:center;padding:0 6px;position:relative;z-index:1;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:#fff;font-weight:500;">02</div>
+              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;color:var(--ink);font-weight:500;">Triage</div>
+            </div>
+          </div>
+          <div style="text-align:center;padding:0 6px;position:relative;z-index:1;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:#fff;font-weight:500;">03</div>
+              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;color:var(--ink);font-weight:500;">Qualify</div>
+            </div>
+          </div>
+          <div style="text-align:center;padding:0 6px;position:relative;z-index:1;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:#fff;font-weight:500;">04</div>
+              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;color:var(--ink);font-weight:500;">Nurture</div>
+            </div>
+          </div>
+          <div style="text-align:center;padding:0 6px;position:relative;z-index:1;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--navy));display:flex;align-items:center;justify-content:center;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:#fff;font-weight:500;">05</div>
+              <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;color:var(--ink);font-weight:500;">Call booked</div>
+            </div>
+          </div>
+        </div>
 
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;">Information architecture</p>
-      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:24px;">
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-faint);">Add information architecture here</div>
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;">Site map and navigation structure</div>
+        <!-- Behaviour row -->
+        <div style="margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+          <div style="display:grid;grid-template-columns:100px repeat(5,1fr);border-bottom:1px solid var(--border);">
+            <div style="background:var(--bg2);padding:14px 14px;display:flex;align-items:center;border-right:1px solid var(--border);">
+              <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Behaviour</span>
+            </div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Notices new DM, opens conversation</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Scans inbox to assess where to focus</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Sends qualification replies, waits on lead</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Checks queue, monitors responses</div>
+            <div style="padding:14px 16px;color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Flags lead for coach, steps back from thread</div>
+          </div>
+
+          <!-- Thoughts row -->
+          <div style="display:grid;grid-template-columns:100px repeat(5,1fr);border-bottom:1px solid var(--border);background:rgba(155,123,192,.03);">
+            <div style="background:var(--bg2);padding:14px 14px;display:flex;align-items:center;border-right:1px solid var(--border);">
+              <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Thoughts</span>
+            </div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Lora',serif;font-size:var(--t7);line-height:1.65;font-style:italic;">"Is this worth my time?"</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Lora',serif;font-size:var(--t7);line-height:1.65;font-style:italic;">"Where are the warm leads right now?"</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Lora',serif;font-size:var(--t7);line-height:1.65;font-style:italic;">"Will they reply? Is this converting?"</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Lora',serif;font-size:var(--t7);line-height:1.65;font-style:italic;">"I just need to keep things moving."</div>
+            <div style="padding:14px 16px;color:var(--purple-text);font-family:'Lora',serif;font-size:var(--t7);line-height:1.65;font-style:italic;">"This one is ready. Coach can take it."</div>
+          </div>
+
+          <!-- AI touchpoint row -->
+          <div style="display:grid;grid-template-columns:100px repeat(5,1fr);border-bottom:1px solid var(--border);background:rgba(155,123,192,.06);">
+            <div style="background:rgba(155,123,192,.12);padding:14px 14px;display:flex;align-items:center;border-right:1px solid var(--border);">
+              <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--purple-text);">AI touch&shy;point</span>
+            </div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">AI tags lead, assigns funnel stage instantly</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Harmful DMs routed to Flags tab silently</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Suggests replies from script, setter approves</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--purple-text);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Follow-up sequence queued with send times</div>
+            <div style="padding:14px 16px;color:var(--purple-text);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;">Dashboard updates, stage moves to Sale</div>
+          </div>
+
+          <!-- Emotion row -->
+          <div style="display:grid;grid-template-columns:100px repeat(5,1fr);border-bottom:1px solid var(--border);">
+            <div style="background:var(--bg2);padding:14px 14px;display:flex;align-items:center;border-right:1px solid var(--border);">
+              <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Emotion</span>
+            </div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);display:flex;align-items:center;"><span style="display:inline-flex;align-items:center;gap:7px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);border-radius:20px;padding:3px 10px 3px 7px;"><span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;display:inline-block;"></span>Curious</span></div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);display:flex;align-items:center;"><span style="display:inline-flex;align-items:center;gap:7px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);border-radius:20px;padding:3px 10px 3px 7px;"><span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;display:inline-block;"></span>In control</span></div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);display:flex;align-items:center;"><span style="display:inline-flex;align-items:center;gap:7px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);background:rgba(186,117,23,.1);border:1px solid rgba(186,117,23,.25);border-radius:20px;padding:3px 10px 3px 7px;"><span style="width:8px;height:8px;border-radius:50%;background:#BA7517;flex-shrink:0;display:inline-block;"></span>Uncertain</span></div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);display:flex;align-items:center;"><span style="display:inline-flex;align-items:center;gap:7px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);border-radius:20px;padding:3px 10px 3px 7px;"><span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;display:inline-block;"></span>Steady</span></div>
+            <div style="padding:14px 16px;display:flex;align-items:center;"><span style="display:inline-flex;align-items:center;gap:7px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);background:rgba(99,153,34,.1);border:1px solid rgba(99,153,34,.25);border-radius:20px;padding:3px 10px 3px 7px;"><span style="width:8px;height:8px;border-radius:50%;background:#639922;flex-shrink:0;display:inline-block;"></span>Accomplished</span></div>
+          </div>
+
+          <!-- Friction resolved row -->
+          <div style="display:grid;grid-template-columns:100px repeat(5,1fr);">
+            <div style="background:var(--bg2);padding:14px 14px;display:flex;align-items:center;border-right:1px solid var(--border);">
+              <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);">Friction resolved</span>
+            </div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;display:flex;gap:8px;align-items:flex-start;"><span style="color:#1D9E75;flex-shrink:0;margin-top:1px;">✓</span>No guesswork on lead quality upfront</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;display:flex;gap:8px;align-items:flex-start;"><span style="color:#1D9E75;flex-shrink:0;margin-top:1px;">✓</span>Hostile content never reaches the setter</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;display:flex;gap:8px;align-items:flex-start;"><span style="color:#1D9E75;flex-shrink:0;margin-top:1px;">✓</span>Waiting is structured, not anxious scrolling</div>
+            <div style="padding:14px 16px;border-right:1px solid var(--border);color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;display:flex;gap:8px;align-items:flex-start;"><span style="color:#1D9E75;flex-shrink:0;margin-top:1px;">✓</span>No chasing or manual follow-up</div>
+            <div style="padding:14px 16px;color:var(--text-soft);font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.65;display:flex;gap:8px;align-items:flex-start;"><span style="color:#1D9E75;flex-shrink:0;margin-top:1px;">✓</span>Handoff to coach is clean and clear</div>
+          </div>
+        </div>
       </div>
+      <div style="margin-bottom:38px;">
+        <!-- Root node -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:10px 28px;border-radius:8px;">SetDM AI</div>
+          <div style="width:1px;height:24px;background:var(--border);"></div>
 
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;">Low-fi wireframes</p>
-      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:32px;">
+          <!-- Level 1: 5 main sections -->
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);width:100%;gap:0;position:relative;">
+            <!-- horizontal connector -->
+            <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:var(--border);"></div>
+
+            <!-- 1 Dashboard -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:1px;height:24px;background:var(--border);"></div>
+              <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;color:var(--ink);text-align:center;letter-spacing:.04em;width:90%;">Dashboard</div>
+              <div style="width:1px;height:16px;background:rgba(155,123,192,.2);"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:90%;">
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Funnel overview</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Stage counts</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Queued follow-ups</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Alert summary</div>
+              </div>
+            </div>
+
+            <!-- 2 Inbox -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:1px;height:24px;background:var(--border);"></div>
+              <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;color:var(--ink);text-align:center;letter-spacing:.04em;width:90%;">Inbox</div>
+              <div style="width:1px;height:16px;background:rgba(155,123,192,.2);"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:90%;">
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">All conversations</div>
+                <div style="background:rgba(155,123,192,.08);border:1px solid rgba(155,123,192,.2);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--purple-text);line-height:1.5;">Funnel view <span style="opacity:.6;">↓</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px;padding-left:10px;border-left:2px solid rgba(155,123,192,.2);">
+                  <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);line-height:1.5;">New lead</div>
+                  <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);line-height:1.5;">Warm</div>
+                  <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);line-height:1.5;">Qualify</div>
+                  <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);line-height:1.5;">Nurture</div>
+                  <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);line-height:1.5;">Sale</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 AI Co-pilot -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:1px;height:24px;background:var(--border);"></div>
+              <div style="background:rgba(155,123,192,.12);border:1px solid rgba(155,123,192,.3);border-radius:8px;padding:9px 14px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;color:var(--purple-text);text-align:center;letter-spacing:.04em;width:90%;">AI Co-pilot</div>
+              <div style="width:1px;height:16px;background:rgba(155,123,192,.2);"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:90%;">
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Reply suggestions</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Autopilot toggle</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Script library</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Send queue</div>
+              </div>
+            </div>
+
+            <!-- 4 Flags -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:1px;height:24px;background:var(--border);"></div>
+              <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;color:var(--ink);text-align:center;letter-spacing:.04em;width:90%;">Flags</div>
+              <div style="width:1px;height:16px;background:rgba(155,123,192,.2);"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:90%;">
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Harmful content</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Review queue</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Dismiss / escalate</div>
+              </div>
+            </div>
+
+            <!-- 5 Settings -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:1px;height:24px;background:var(--border);"></div>
+              <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);font-weight:500;color:var(--ink);text-align:center;letter-spacing:.04em;width:90%;">Settings</div>
+              <div style="width:1px;height:16px;background:rgba(155,123,192,.2);"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:90%;">
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Coach profile</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Script setup</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Notifications</div>
+                <div style="background:#fff;border:1px solid var(--border-soft);border-radius:6px;padding:7px 12px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Instagram connect</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:38px;">
         <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-faint);">Add low-fi wireframes here</div>
         <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;">Sketches or early Figma frames</div>
       </div>
-
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">The funnel stage</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:32px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:38px;">
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;"><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Conversations count per funnel stage</div></div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;"><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Which conversations to message?</div></div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;"><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Conversations flagged as potentially harmful</div></div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;"><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.5;">Chats with a queued follow-up stage</div></div>
       </div>
 
-      <div style="background:var(--bg2);border:1.5px dashed var(--border);border-radius:12px;padding:40px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-faint);">Add first UI: dashboard, inbox, funnel view, AI suggestion panel</div>
-        <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);font-style:italic;">Screenshot of Figma artboards</div>
+      <!-- Hi-fi screens -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="position:relative;">
+          <img src="images/setdm%20messaging.png" alt="SetDM AI Messaging" style="width:100%;border-radius:10px;display:block;border:2px solid var(--purple);">
+          <div style="position:absolute;bottom:12px;left:12px;background:rgba(10,8,16,.72);backdrop-filter:blur(6px);border-radius:6px;padding:4px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);">Messaging</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="position:relative;">
+            <img src="images/setdm%20dashboard.png" alt="SetDM AI Dashboard" style="width:100%;border-radius:10px;display:block;border:2px solid var(--purple);">
+            <div style="position:absolute;bottom:12px;left:12px;background:rgba(10,8,16,.72);backdrop-filter:blur(6px);border-radius:6px;padding:4px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);">Dashboard</div>
+          </div>
+          <div style="position:relative;">
+            <img src="images/setdm%20settings.png" alt="SetDM AI Settings" style="width:100%;border-radius:10px;display:block;border:2px solid var(--purple);">
+            <div style="position:absolute;bottom:12px;left:12px;background:rgba(10,8,16,.72);backdrop-filter:blur(6px);border-radius:6px;padding:4px 10px;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);">Settings</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 05 Key Decisions -->
-    <div id="sdm-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">05) Key Decisions</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Choices that defined the product</h3>
+    <div id="sdm-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Choices that defined the product</h3>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Funnel-first information architecture</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:32px;">In the early process, the question of who assigns conversation tags was a real design problem. Manual tagging by the coach created inconsistencies and friction. Having the AI handle categorisation automatically meant the setter's job becomes managing relationships rather than maintaining a system.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">In the early process, the question of who assigns conversation tags was a real design problem. Manual tagging by the coach created inconsistencies and friction. Having the AI handle categorisation automatically meant the setter's job becomes managing relationships rather than maintaining a system.</p>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Adaptive AI replies</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:32px;">When autopilot is on, the AI works through a queued script, handling responses, following up on schedule, and progressing the lead through the funnel. When it is off, the coach is in full manual control. But to protect from potentially harmful responses, the AI surfaces flagged replies regardless of state. A coach can see exactly what the AI is planning to send and when, so the system never operates as a black box. That transparency was a deliberate trust decision as much as a design decision.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">When autopilot is on, the AI works through a queued script, handling responses, following up on schedule, and progressing the lead through the funnel. When it is off, the coach is in full manual control. But to protect from potentially harmful responses, the AI surfaces flagged replies regardless of state. A coach can see exactly what the AI is planning to send and when, so the system never operates as a black box. That transparency was a deliberate trust decision as much as a design decision.</p>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Keyword-based content flagging</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Research made it clear that competitors had completely ignored setters being regularly exposed to hostile and inappropriate DMs with no way to protect themselves. We designed a dedicated flagging system to address this directly. AI scanning looks for potentially harmful content and routes anything suspicious to a separate Flags tab, notifying the setter without forcing them to read the full message. The setter can then access it with a layer of distance from content that was affecting their wellbeing, without losing the ability to review and act on it.</p>
     </div>
 
     <!-- 06 Outcomes -->
-    <div id="sdm-s06" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">06) Outcomes</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Early wins, promising scope for largest</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:32px;">SetDM AI is currently in invite-only early access. Onboarding is selective by design; the team works closely with those using it while the product is still being refined. Within those constraints, the results have been meaningful.</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:32px;padding-top:8px;">
+    <div id="sdm-s06" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Early wins, promising scope for largest</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">SetDM AI is currently in invite-only early access. Onboarding is selective by design; the team works closely with those using it while the product is still being refined. Within those constraints, the results have been meaningful.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:38px;padding-top:8px;">
         <div>
           <div style="font-family:'Lora',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:400;color:var(--ink);line-height:1;margin-bottom:10px;">3x</div>
           <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">More sales calls booked for coaches within the first month</div>
@@ -1095,17 +1286,16 @@ nav.nav-hidden{transform:translateY(-120%);}
     </div>
 
     <!-- 07 Reflections -->
-    <div id="sdm-s07" class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:64px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;">07) Reflections</div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.35;">Small wins, many unresolved insights</h3>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">The finding that stayed with me most from this project was not about conversion rates or pipeline logic. It was the emotional nature of the job. People were managing hundreds of conversations a day through asking open questions and actually listening to the answers.</p>
-      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:16px;">It reframed what the product was responsible for. The efficiency problems were real and solvable, but underneath them sat an empathy problem: the product was creating conditions where coaches and setters had to interact with hostile content. The flagging system felt different from how you'd normally think about moderation. It was a small surface area in the overall product, but it addresses a pain point that nobody else had bothered to design for.</p>
+    <div id="sdm-s07" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Small wins, many unresolved insights</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">The finding that stayed with me most from this project was not about conversion rates or pipeline logic. It was the emotional nature of the job. People were managing hundreds of conversations a day through asking open questions and actually listening to the answers.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">It reframed what the product was responsible for. The efficiency problems were real and solvable, but underneath them sat an empathy problem: the product was creating conditions where coaches and setters had to interact with hostile content. The flagging system felt different from how you'd normally think about moderation. It was a small surface area in the overall product, but it addresses a pain point that nobody else had bothered to design for.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Designing within a month, under real domain pressure, reinforced something about moving quickly: insight depends on who you are talking to. All the competitive analysis in the world would not have generated the friction map that came from sitting with real setters for an hour. It pushed me further toward tighter design sprint cycles, more open questions, and actually listening to the answers.</p>
     </div>
 
-    <div style="margin-top:auto;padding-top:80px;margin-left:-75px;margin-right:-75px;">
+    <div style="margin-top:auto;padding-top:96px;margin-left:-75px;margin-right:-75px;">
       <div class="page-footer" style="padding-left:0;padding-right:0;">
-        <p class="footer-cta">Let's craft something.</p>
+        <p class="footer-cta">Don't be a stranger. Reach out!</p>
         <div class="footer-bottom">
           <div class="footer-links">
             <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -1120,40 +1310,370 @@ nav.nav-hidden{transform:translateY(-120%);}
 </div>
 
 
+<!-- CASE STUDY: PARPRO -->
+<div class="page" id="page-case-parpro">
+  <div style="padding:144px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:77px;">
+      <div style="margin-bottom:24px;">
+        <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Brand and Web · Competition</span>
+      </div>
+      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Parpro Consulting Ltd.</h2>
+      <img src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
+    </div>
+
+    <div class="reveal cs-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:77px;">
+      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">My Role</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Project Lead, UI/UX Designer</div></div>
+      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Team</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Max Lu, Aubrey Ventura, Audrey Sum, Me</div></div>
+      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Client</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Parpro Consulting Ltd.</div></div>
+      <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">2.5 Days</div></div>
+    </div>
+
+    <!-- 01 Overview -->
+    <div class="reveal" style="margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Parpro Consulting Ltd. is a Canadian bookkeeping agency serving small to medium-sized businesses. Their existing website struggled to establish trust or stand out; the over-usage of generic stock photography, static layouts, inconsistent branding, and unclear information made the site feel illegitimate and wasn't converting as well as it needed to.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Over 2.5 days, we did a full website and brand identity redesign for the FLUI Design Competition.</p>
+    </div>
+
+    <!-- 02 Problem -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
+    </div>
+
+    <!-- 04 Empathise Phase -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Getting to the root of the problem</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">We started by interviewing the CEO to understand the brand's needs. We began by gauging the brand identity, asking questions like, "if your company was a person, what car would they drive?", and then moved onto questions regarding his goals and current results.</p>
+
+      <!-- Client interview findings -->
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">From the interview, we found that the brand tone they were aiming for was clean, affordable, and "a bit boring" (as said by the CEO) and the main goal was to drive consultation bookings. The target audience was small to medium-sized Canadian businesses with high-value transactions, looking for a service that felt simple, professional, and affordable.</p>
+
+      <!-- What users said -->
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">After the interview, we conducted three HCI tests by giving users Parpro's website. Here's what they said:</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:38px;">
+        <div style="display:flex;align-items:flex-end;gap:8px;">
+          <div style="background:#218AFF;border-radius:18px;border-bottom-left-radius:4px;padding:12px 16px;max-width:72%;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:#fff;line-height:1.55;margin:0;">I don't see the difference between this and other consulting companies. It is not special to me.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:8px;">
+          <div style="background:#218AFF;border-radius:18px;border-bottom-left-radius:4px;padding:12px 16px;max-width:72%;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:#fff;line-height:1.55;margin:0;">This looks like a scam or a fake company.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main pain points -->
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">The main pain points our users had</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:38px;">
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">🤔 Where do I go?</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users did not know where to tap to find specific information. Navigation offered no clear signals about where to look.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">💸 What about pricing?</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">No pricing information existed anywhere on the site, leaving users unable to self-qualify before reaching out.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">😰 How do I prepare?</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users had no idea what to say for the consultation or what information to prepare, creating friction before first contact, or even deterring users from contacting at all.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">🕵️ Is this legitimate?</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The way the site was laid out made it appear like an untrustworthy establishment.</p>
+        </div>
+      </div>
+
+      <!-- Competitive analysis -->
+      <div style="border-top:1px solid var(--border);margin-bottom:38px;"></div>
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">Competitive analysis</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:29px;">We swept both large consulting firms and Canadian bookkeeping providers to understand what the better-performing sites had in common: they made it easy to understand what they offered and why to trust them. Parpro's existing site did neither.</p>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center;margin-bottom:38px;">
+        <img src="images/mckinsey.png" alt="McKinsey & Company" style="width:10%;display:block;object-fit:contain;">
+        <img src="images/bcg.png" alt="BCG" style="width:10%;display:block;object-fit:contain;">
+        <img src="images/bain.png" alt="Bain & Company" style="width:10%;display:block;object-fit:contain;">
+      </div>
+
+      <!-- Personas and empathy maps -->
+      <div style="border-top:1px solid var(--border);margin-bottom:38px;"></div>
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">User personas</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">Meet Morgan S. Tanley and Bankuv Amir-Ika (no correlation with Morgan Stanley and the Bank of America, I promise), the most likely users of this service.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:38px;">
+        <!-- Morgan collapsible -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:none;cursor:none;font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
+            <span>Morgan S. Tanley</span>
+            <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
+          </button>
+          <div style="display:none;">
+            <img src="images/parpromorgan.png" alt="Persona — Morgan" style="width:100%;display:block;">
+            <img src="images/morganempathy.png" alt="Morgan's empathy map" style="width:100%;display:block;">
+          </div>
+        </div>
+        <!-- Bankuv collapsible -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:none;cursor:none;font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
+            <span>Bankuv Amir-Ika</span>
+            <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
+          </button>
+          <div style="display:none;">
+            <img src="images/parprobankuv.png" alt="Persona — Bankuv" style="width:100%;display:block;">
+            <img src="images/bankuvempathy.png" alt="Bankuv's empathy map" style="width:100%;display:block;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 05 Define Phase -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Starting the redesign</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">With research complete, we identified three specific things to prioritise for the redesign.</p>
+
+      <!-- Idea breakdown -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:38px;">
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Build trust</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Surface real client testimonials, remove misleading site elements, and clarify the contact form.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Create distinction</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Redesign the logo and visual identity, add purposeful animation, and replace stock imagery with elevated photography.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Clarify information</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Restructure navigation and content hierarchy, label tools and partners clearly, and replace article carousel with vertical scroll.</p>
+        </div>
+      </div>
+
+      <!-- User flows -->
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">During the client interview, the founder noted that the two main ways people arrive on the site are through searching directly for a bookkeeping consultation, and through discovering one of Parpro's finance articles. We designed a separate user flow for each path.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <img src="images/readarticles.png" alt="User flow — read articles to booking" style="width:100%;display:block;">
+        <img src="images/bookconsult.png" alt="User flow — book a consultation" style="width:100%;display:block;">
+      </div>
+    </div>
+
+    <!-- 06 Ideate -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Logo, design system, and animation brainstorming</h3>
+
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Logo redesign</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">We explored several logo directions, looking for something more modern that still carried the clean, professional character of the brand. The final choice was selected for its friendliness and openness while still capturing the founder's original vision.</p>
+      <div style="margin-bottom:38px;">
+        <img src="images/parprologo.png" alt="Old logo vs new logo — Parpro" style="width:100%;border-radius:12px;display:block;">
+      </div>
+
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Design system</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:38px;">
+        <img src="images/parprotype.png" alt="Parpro typography" style="width:100%;border-radius:12px;display:block;">
+        <img src="images/parprotype2.png" alt="Parpro typography 2" style="width:100%;border-radius:12px;display:block;">
+      </div>
+
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Design components</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">The component library covered the logo, navigation bar, information sections, services boxes, CTA buttons, and social media icons, so we could maintain consistency across the design.</p>
+      <img src="images/parprosystem.png" alt="Parpro design components" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
+
+
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Low fidelity wireframes</p>
+      <img src="images/lofiparpro.png" alt="Low fidelity wireframes — Parpro" style="width:100%;display:block;">
+    </div>
+
+    <!-- 07 Design -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">The redesign across every page</h3>
+
+      <!-- Before/after rows -->
+      <div style="display:flex;flex-direction:column;gap:0;margin-bottom:38px;">
+
+        <!-- Home page -->
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">Home page</p>
+          <div style="display:flex;gap:12px;margin-bottom:19px;">
+            <button onclick="baPick(this,'home','after')" data-ba="home" data-panel="after" class="ba-tab ba-on">After</button>
+            <button onclick="baPick(this,'home','before')" data-ba="home" data-panel="before" class="ba-tab">Before</button>
+          </div>
+          <div data-ba-panel="home-after">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Services, testimonials, and the &#8220;Why Us&#8221; section are redesigned with clear visual hierarchy and consistent branding.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <video src="images/homenew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 1.5px 1px 0);"></video>
+            </div>
+          </div>
+          <div data-ba-panel="home-before" style="display:none;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">An immediate popup distracted and overwhelmed users on arrival. The testimonials and &#8220;Why Us&#8221; sections lacked both content and aesthetic appeal.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <img src="images/homeold.png" alt="Home page — before" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+
+        <!-- About us -->
+        <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">About Us</p>
+          <div style="display:flex;gap:12px;margin-bottom:19px;">
+            <button onclick="baPick(this,'about','after')" data-ba="about" data-panel="after" class="ba-tab ba-on">After</button>
+            <button onclick="baPick(this,'about','before')" data-ba="about" data-panel="before" class="ba-tab">Before</button>
+          </div>
+          <div data-ba-panel="about-after">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">The page opens with an animation of &#8220;Our Ask&#8221; and &#8220;Our Guarantee&#8221;. On scroll, the company story and values are clearly legible. The page ends with a call to action to book a consultation.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <video src="images/aboutnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 1.5px 1px 0);"></video>
+            </div>
+          </div>
+          <div data-ba-panel="about-before" style="display:none;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Static visuals and stock images made the page feel generic. Company values were not listed and descriptions were too generalised to convey any personality.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <img src="images/aboutold.png" alt="About us page — before" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">Services</p>
+          <div style="display:flex;gap:12px;margin-bottom:19px;">
+            <button onclick="baPick(this,'services','after')" data-ba="services" data-panel="after" class="ba-tab ba-on">After</button>
+            <button onclick="baPick(this,'services','before')" data-ba="services" data-panel="before" class="ba-tab">Before</button>
+          </div>
+          <div data-ba-panel="services-after">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Information laid out in bite-sized squares. Logos are clearly labelled as tools the company uses.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <video src="images/servicesnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
+            </div>
+          </div>
+          <div data-ba-panel="services-before" style="display:none;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Company logos were listed in a horizontal line with no indication of whether they were sponsors, partners, or tools.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <img src="images/servicesold.png" alt="Services page — before" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">Resources</p>
+          <div style="display:flex;gap:12px;margin-bottom:19px;">
+            <button onclick="baPick(this,'resources','after')" data-ba="resources" data-panel="after" class="ba-tab ba-on">After</button>
+            <button onclick="baPick(this,'resources','before')" data-ba="resources" data-panel="before" class="ba-tab">Before</button>
+          </div>
+          <div data-ba-panel="resources-after">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Carousel removed in favour of vertical scroll, which increases retention rates and usability. Articles are consistent in typography and end with a call to action to subscribe to the newsletter. An audio icon was added so users who are hard of hearing can have articles read aloud.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <video src="images/resourcesnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
+            </div>
+          </div>
+          <div data-ba-panel="resources-before" style="display:none;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">Articles were displayed in a carousel, which is poor for engagement retention. Each article was also inconsistent with the others in typography, with hierarchy issues throughout.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <img src="images/resourcesold.png" alt="Resources page — before" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact us -->
+        <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">Contact Us</p>
+          <div style="display:flex;gap:12px;margin-bottom:19px;">
+            <button onclick="baPick(this,'contact','after')" data-ba="contact" data-panel="after" class="ba-tab ba-on">After</button>
+            <button onclick="baPick(this,'contact','before')" data-ba="contact" data-panel="before" class="ba-tab">Before</button>
+          </div>
+          <div data-ba-panel="contact-after">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">The form includes clear directions. The misleading map was removed entirely, making the brand look more legitimate and user-friendly.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <video src="images/contactnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
+            </div>
+          </div>
+          <div data-ba-panel="contact-before" style="display:none;">
+            <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:14px;">The form assumed users knew how to fill it in. A map at the bottom displayed a random coordinate not registered to a real building, causing confusion and distrust.</p>
+            <div style="overflow:hidden;margin-bottom:0;">
+              <img src="images/contactold.png" alt="Contact us page — before" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 08 Results -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">What the redesign achieved</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Higher user retention</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">By reducing redundant text, stock images, and unneeded features, and adding non-distracting animations, users stay engaged on the site for longer.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">More accessible experience</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The redesigned site is more intuitive for people who may not be tech-literate, making the experience easier and more inclusive across multiple groups of users.</p>
+        </div>
+        <div>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Friendlier and trustworthy brand</p>
+          <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Parpro now has a hint of personality while maintaining a professional, neat brand identity. More cohesion in the branding gives potential clients more reasons to trust the company.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 Reflections -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
+      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Designing for an audience you are not</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">I have never used a bookkeeping service before so this project really emphasised the empathy part in stressed design. Learning how to put in not only the potential user's shoes, but also the founder's shoes, meant taking extra time to figure out how to align the business goals with what would best resonate with a potential customer.</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Branding</p>
+      <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">This was my first time being told by a client that they want their brand and website to be "a bit boring", which really taught me how to assess already existing brands so I could design towards what they wanted their image to be like. The time we spent prepping questions for the founder before our preliminary meeting and the meeting itself was a crucial part in learning about his vision, and the process of asking <em>good questions</em> something that I will carry forward into future branding and design projects.</p>
+    </div>
+
+    <div style="margin-top:auto;padding-top:96px;margin-left:-75px;margin-right:-75px;">
+      <div class="page-footer" style="padding-left:0;padding-right:0;">
+        <p class="footer-cta">Don't be a stranger. Reach out!</p>
+        <div class="footer-bottom">
+          <div class="footer-links">
+            <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
+            <a href="https://linkedin.com/in/irisdan" target="_blank"><span class="arr">→</span> LinkedIn</a>
+            <a href="https://twitter.com/irisdanna_" target="_blank"><span class="arr">→</span> Twitter</a>
+          </div>
+          <div class="footer-left">© 2026 Iris D. Liu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CASE STUDY: SPECTRUM -->
 <div class="page" id="page-case-spectrum">
   <div style="padding:110px 52px 80px;min-height:100vh;display:flex;flex-direction:column;max-width:900px;">
-    <button data-page="home" class="cs-back reveal" style="background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);cursor:none;display:inline-flex;align-items:center;gap:8px;padding:0;margin-bottom:64px;width:fit-content;">← back to home</button>
 
     <div class="reveal" style="margin-bottom:12px;">
       <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Design System · SaaS · 2024</span>
     </div>
-    <h2 class="reveal" style="font-family:'Lora',serif;font-size:clamp(var(--t3),5vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.08;letter-spacing:-.02em;margin-bottom:40px;">Spectrum Design System</h2>
+    <h2 class="reveal" style="font-family:'Lora',serif;font-size:clamp(var(--t3),5vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.08;letter-spacing:-.02em;margin-bottom:48px;">Spectrum Design System</h2>
 
-    <div class="reveal cs-meta-row" style="display:flex;gap:48px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:64px;">
+    <div class="reveal cs-meta-row" style="display:flex;gap:48px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:77px;">
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Role</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Design Systems</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">2024</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Scale</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">248 components</div></div>
     </div>
 
-    <div class="reveal" style="margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Overview</div>
+    <div class="reveal" style="margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Overview</div>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t5);line-height:1.8;color:var(--text-soft);max-width:600px;">This case study is currently being written up. Check back soon. The full story including research, process, and outcomes is on its way.</p>
     </div>
 
-    <div class="reveal" style="border-top:1px solid var(--border);padding-top:40px;margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Problem</div>
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Problem</div>
       <p style="font-family:'Lora',serif;font-size:var(--t4);font-style:italic;color:var(--text-soft);line-height:1.6;max-width:560px;">Coming soon ↘</p>
     </div>
 
-    <div class="reveal" style="border-top:1px solid var(--border);padding-top:40px;margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Solution</div>
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Solution</div>
       <p style="font-family:'Lora',serif;font-size:var(--t4);font-style:italic;color:var(--text-soft);line-height:1.6;max-width:560px;">Coming soon ↘</p>
     </div>
 
-    <div style="margin-top:auto;padding-top:80px;">
+    <div style="margin-top:auto;padding-top:96px;">
       <div class="page-footer" style="padding-left:0;padding-right:0;">
-        <p class="footer-cta">Let's craft something.</p>
+        <p class="footer-cta">Don't be a stranger. Reach out!</p>
         <div class="footer-bottom">
           <div class="footer-links">
             <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -1170,37 +1690,36 @@ nav.nav-hidden{transform:translateY(-120%);}
 <!-- CASE STUDY: BLOOM -->
 <div class="page" id="page-case-bloom">
   <div style="padding:110px 52px 80px;min-height:100vh;display:flex;flex-direction:column;max-width:900px;">
-    <button data-page="home" class="cs-back reveal" style="background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);cursor:none;display:inline-flex;align-items:center;gap:8px;padding:0;margin-bottom:64px;width:fit-content;">← back to home</button>
 
     <div class="reveal" style="margin-bottom:12px;">
       <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">0→1 · Health · 2023</span>
     </div>
-    <h2 class="reveal" style="font-family:'Lora',serif;font-size:clamp(var(--t3),5vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.08;letter-spacing:-.02em;margin-bottom:40px;">Bloom Wellness App</h2>
+    <h2 class="reveal" style="font-family:'Lora',serif;font-size:clamp(var(--t3),5vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.08;letter-spacing:-.02em;margin-bottom:48px;">Bloom Wellness App</h2>
 
-    <div class="reveal cs-meta-row" style="display:flex;gap:48px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:64px;">
+    <div class="reveal cs-meta-row" style="display:flex;gap:48px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:77px;">
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Role</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">Product Designer</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Timeline</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">2023</div></div>
       <div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.18em;text-transform:uppercase;color:var(--purple-text);margin-bottom:6px;">Type</div><div style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text);">0 → 1 launch</div></div>
     </div>
 
-    <div class="reveal" style="margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Overview</div>
+    <div class="reveal" style="margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Overview</div>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t5);line-height:1.8;color:var(--text-soft);max-width:600px;">This case study is currently being written up. Check back soon. The full story including research, process, and outcomes is on its way.</p>
     </div>
 
-    <div class="reveal" style="border-top:1px solid var(--border);padding-top:40px;margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Problem</div>
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Problem</div>
       <p style="font-family:'Lora',serif;font-size:var(--t4);font-style:italic;color:var(--text-soft);line-height:1.6;max-width:560px;">Coming soon ↘</p>
     </div>
 
-    <div class="reveal" style="border-top:1px solid var(--border);padding-top:40px;margin-bottom:48px;">
-      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;">Solution</div>
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:48px;margin-bottom:58px;">
+      <div style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:19px;">Solution</div>
       <p style="font-family:'Lora',serif;font-size:var(--t4);font-style:italic;color:var(--text-soft);line-height:1.6;max-width:560px;">Coming soon ↘</p>
     </div>
 
-    <div style="margin-top:auto;padding-top:80px;">
+    <div style="margin-top:auto;padding-top:96px;">
       <div class="page-footer" style="padding-left:0;padding-right:0;">
-        <p class="footer-cta">Let's craft something.</p>
+        <p class="footer-cta">Don't be a stranger. Reach out!</p>
         <div class="footer-bottom">
           <div class="footer-links">
             <a href="mailto:irisdanna05@gmail.com"><span class="arr">→</span> Email</a>
@@ -1301,7 +1820,7 @@ document.querySelectorAll('a,button,.sc-card,.pg-card,.tl-track').forEach(el=>{
 const vm=document.getElementById('vendingMachine');
 if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%3;cursor.style.filter=cursorFilters[cursorColorIdx];});}
 
-const trackLabels={home:'Side A — Work',about:'Side B — About',playground:'Side B — Playground','case-pulse':'Side A — Pulse','case-setdm':'Side A — SetDM','case-spectrum':'Side A — Spectrum','case-bloom':'Side A — Bloom'};
+const trackLabels={home:'Side A — Work',about:'Side B — About',playground:'Side B — Playground','case-pulse':'Side A — Pulse','case-setdm':'Side A — SetDM','case-parpro':'Side A — Parpro','case-spectrum':'Side A — Spectrum','case-bloom':'Side A — Bloom'};
 function navigateTo(id){
   const cur=document.querySelector('.page.active');
   const nxt=document.getElementById('page-'+id);
@@ -1545,6 +2064,55 @@ function fitScatterDots(){
   scatter.style.minHeight=(maxBottom+dotRow*2)+'px';
 }
 window.addEventListener('load',fitScatterDots);
+
+// Lumeno sidebar active chapter highlight
+(function(){
+  const sectionNavMap = [
+    {section:'cs-s01', nav:'snav-01'},
+    {section:'cs-s03', nav:'snav-03'},
+    {section:'cs-s04', nav:'snav-04'},
+    {section:'cs-s05', nav:'snav-05'},
+  ];
+  function setActive(id){
+    sectionNavMap.forEach(({nav})=>{
+      const btn=document.getElementById(nav);
+      if(btn) btn.style.color = nav===id ? 'var(--purple-text)' : 'var(--text-faint)';
+    });
+  }
+  const page = document.getElementById('page-case-pulse');
+  if(!page) return;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const match = sectionNavMap.find(m=>m.section===entry.target.id);
+        if(match) setActive(match.nav);
+      }
+    });
+  },{root:page, rootMargin:'-20% 0px -60% 0px', threshold:0});
+  sectionNavMap.forEach(({section})=>{
+    const el=document.getElementById(section);
+    if(el) observer.observe(el);
+  });
+})();
+</script>
+<script>
+function baPick(btn,page,panel){
+  ['after','before'].forEach(function(p){
+    var el=document.querySelector('[data-ba-panel="'+page+'-'+p+'"]');
+    if(el) el.style.display=p===panel?'block':'none';
+  });
+  document.querySelectorAll('[data-ba="'+page+'"]').forEach(function(b){
+    b.classList.toggle('ba-on',b.getAttribute('data-panel')===panel);
+  });
+}
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.play();}else{e.target.pause();}
+    });
+  },{threshold:0.25});
+  document.querySelectorAll('video.autoplay-on-view').forEach(function(v){obs.observe(v);});
+})();
 </script>
 </body>
 </html>
