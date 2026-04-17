@@ -335,7 +335,7 @@ nav.nav-hidden{transform:translateY(-120%);}
   .page:not(.active){display:none;}
 
   /* ─── nav ─── */
-  nav{padding:16px 20px;justify-content:center;background:var(--bg);}
+  nav{padding:16px 20px;justify-content:center;}
   .nav-logo{display:none;}
   .nav-links{gap:20px;}
   .nav-links a{font-size:var(--t7);}
@@ -1558,7 +1558,7 @@ const trackLabels={home:'Side A — Work',about:'Side B — About',playground:'S
 // Nav must be defined before navigateTo so hash restore works on refresh
 const nav=document.querySelector('nav');
 let _lastST=0;
-function _setNavBg(id){if(window.innerWidth>768)return;nav.style.background='var(--bg)';}
+function _setNavBg(id){if(window.innerWidth>768)return;document.documentElement.style.background=id==='home'?'linear-gradient(180deg,#f0e8fa 0%,#ede5f7 40%,#e8dff5 100%)':'var(--bg)';nav.style.background='none';}
 _setNavBg('home');
 
 function navigateTo(id){
