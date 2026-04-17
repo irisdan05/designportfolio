@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f0e8fa">
 <title>Iris Danna Liu | Product Designer</title>
 <link rel="icon" href="images/yellowflower.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,7 @@ body{background:var(--bg);color:var(--text);font-family:'Pacaembu',sans-serif;fo
 .cursor{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);image-rendering:pixelated;transition:none;user-select:none;}
 .cursor-ring{display:none;}
 @media(pointer:coarse){.cursor,.cursor-ring{display:none !important;}}
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:26px 52px;background:none;transition:transform .45s cubic-bezier(.4,0,.2,1);box-sizing:border-box;width:100vw;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:26px 52px;padding-top:max(26px,env(safe-area-inset-top));background:none;transition:transform .45s cubic-bezier(.4,0,.2,1);box-sizing:border-box;width:100vw;}
 nav.nav-hidden{transform:translateY(-120%);}
 .nav-logo{font-family:'Lora',serif;font-size:var(--t4);font-style:italic;font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:.01em;}
 .nav-links{display:flex;gap:36px;list-style:none;}
@@ -334,7 +335,7 @@ nav.nav-hidden{transform:translateY(-120%);}
   .page:not(.active){display:none;}
 
   /* ─── nav ─── */
-  nav{padding:16px 20px;justify-content:center;}
+  nav{padding:16px 20px;justify-content:center;background:#f0e8fa;}
   .nav-logo{display:none;}
   .nav-links{gap:20px;}
   .nav-links a{font-size:var(--t7);}
