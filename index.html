@@ -1560,7 +1560,7 @@ function navigateTo(id){
   const cur=document.querySelector('.page.active');
   const nxt=document.getElementById('page-'+id);
   if(!nxt||nxt===cur)return;
-  history.replaceState(null,'','#'+id);
+  history.pushState(null,'','#'+id);
   document.querySelectorAll('.nav-links a[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===id));
   if(cur){cur.classList.add('exit');cur.classList.remove('active');setTimeout(()=>cur.classList.remove('exit'),600);}
   nav.classList.remove('nav-hidden');
@@ -1570,6 +1570,7 @@ function navigateTo(id){
   document.getElementById('trackLabel').textContent=trackLabels[id]||'';
 }
 document.addEventListener('click',e=>{const l=e.target.closest('[data-page]');if(l){e.preventDefault();navigateTo(l.dataset.page);}});
+window.addEventListener('popstate',function(){const h=location.hash.replace('#','');if(h&&document.getElementById('page-'+h))navigateTo(h);else navigateTo('home');});
 (function(){const h=location.hash.replace('#','');if(h&&document.getElementById('page-'+h))navigateTo(h);})();
 function _navScroll(st){
   if(st<=60){nav.classList.remove('nav-hidden');_lastST=st;return;}
@@ -1586,6 +1587,11 @@ document.querySelectorAll('.page').forEach(function(pg){
 window.addEventListener('scroll',function(){
   _navScroll(window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0);
 },{passive:true});
+document.addEventListener('scroll',function(){
+  var pg=document.querySelector('.page.active');
+  var st=pg?pg.scrollTop:0;
+  _navScroll(st||window.pageYOffset||0);
+},{passive:true,capture:true});
 
 function initReveals(c){
   const els=Array.from(c.querySelectorAll('.reveal:not(.visible)'));
