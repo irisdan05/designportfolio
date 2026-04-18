@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#EBE4F6">
+<meta name="theme-color" content="#f0e8fa">
 <title>Iris Danna Liu | Product Designer</title>
 <link rel="icon" href="images/yellowflower.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -324,7 +324,7 @@ nav.nav-hidden{transform:translateY(-120%);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pulse{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:.9;transform:scale(1.3);}}
 @keyframes scrollBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-@media(max-width:768px){#page-home{background:#EBE4F6!important;}.page:not(#page-home){background:#FBF5FF!important;}}
+@media(max-width:768px){#page-home,#page-about{background:#EBE4F6!important;}.page:not(#page-home):not(#page-about){background:#FBF5FF!important;}}
 
 @media(max-width:480px){
   .cursor,.cursor-ring{display:none;}
@@ -1559,7 +1559,7 @@ const trackLabels={home:'Side A — Work',about:'Side B — About',playground:'S
 // Nav must be defined before navigateTo so hash restore works on refresh
 const nav=document.querySelector('nav');
 let _lastST=0;
-function _setHtmlBg(id){if(window.innerWidth>768)return;const c=id==='home'?'#EBE4F6':'#FBF5FF';document.documentElement.style.background=c;document.body.style.background=c;const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',c);}
+function _setHtmlBg(id){if(window.innerWidth>768)return;document.documentElement.style.background=(id==='home'||id==='about')?'#EBE4F6':'#FBF5FF';}
 _setHtmlBg('home');
 
 function navigateTo(id){
