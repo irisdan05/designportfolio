@@ -363,9 +363,10 @@ nav.nav-hidden{transform:translateY(-120%);}
   .page-footer{margin-left:0 !important;margin-right:0 !important;}
   div:has(>.page-footer){margin-left:0 !important;margin-right:0 !important;}
   .about-grid{grid-template-columns:1fr;gap:28px;}
-  .about-image-wrap{position:static;padding-bottom:0;order:-1;}
+  .about-image-wrap{position:static;padding-bottom:0;order:-1;overflow:hidden;}
   .about-photo-frame{width:100%;}
   .about-photo-frame img{aspect-ratio:4/3;object-position:10% calc(25% - 15px);}
+  #vendingMachine{display:none;}
   .about-label{font-size:clamp(1.4rem,5.5vw,1.875rem);margin-bottom:24px;}
 
   /* ─── playground page ─── */
@@ -403,6 +404,9 @@ nav.nav-hidden{transform:translateY(-120%);}
   /* ─── case studies ─── */
   #page-lumeno>div,#page-case-spectrum>div,#page-case-bloom>div,#page-setdm>div{padding:80px 20px 40px !important;}
   .cs-meta-grid{grid-template-columns:1fr !important;gap:8px !important;}
+  .cs-hero-top{margin-bottom:28px !important;}
+  .cs-mockup-wrap{margin-bottom:16px !important;}
+  .hero-bottom{padding-top:10px;padding-bottom:10px;}
 
   /* ─── audio bar ─── */
   .audio-bar{padding:0 16px;gap:10px;}
@@ -802,12 +806,12 @@ nav.nav-hidden{transform:translateY(-120%);}
   <a href="#" data-page="home" class="cs-back"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><line x1="13" y1="5" x2="1" y2="5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><polyline points="5,1 1,5 5,9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Back</a>
   <div style="padding:144px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
 
-    <div class="reveal" style="text-align:center;margin-bottom:58px;">
+    <div class="reveal cs-hero-top" style="text-align:center;margin-bottom:58px;">
       <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Internship · EdTech</span>
       </div>
       <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Lumeno AI: Accessibility Audit</h2>
-      <div style="margin-bottom:38px;">
+      <div class="cs-mockup-wrap" style="margin-bottom:38px;">
         <img src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
       </div>
     </div>
@@ -1012,12 +1016,12 @@ nav.nav-hidden{transform:translateY(-120%);}
   <a href="#" data-page="home" class="cs-back"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><line x1="13" y1="5" x2="1" y2="5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><polyline points="5,1 1,5 5,9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Back</a>
   <div style="padding:144px 127px 80px;min-height:100vh;display:flex;flex-direction:column;">
 
-    <div class="reveal" style="text-align:center;margin-bottom:58px;">
+    <div class="reveal cs-hero-top" style="text-align:center;margin-bottom:58px;">
       <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:var(--purple-text);">Brand and Web · Competition</span>
       </div>
       <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Parpro Consulting Ltd.</h2>
-      <img src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
+      <img class="cs-mockup-wrap" src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
     </div>
 
     <div class="reveal cs-meta-row parpro-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:58px;">
