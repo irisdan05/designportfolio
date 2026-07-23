@@ -387,6 +387,9 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
   .about-photo-frame{width:100%;}
   .about-photo-frame img{aspect-ratio:4/3;object-position:10% calc(25% - 15px);}
   #vendingMachine{display:none;}
+  #switchKeychain{display:none;}
+  #switchKeychainMobile{display:flex !important;}
+  #trinketsCaption{display:none !important;}
   .about-label{font-size:clamp(1.4rem,5.5vw,1.875rem);margin-bottom:24px;}
 
   /* ─── playground page ─── */
@@ -554,6 +557,10 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 /* ─── tablet additions ─── */
 @media(min-width:769px) and (max-width:1100px){
   #vendingMachine{display:none !important;}
+  #switchKeychain{display:none !important;}
+  #switchKeychainMobile{display:flex !important;}
+  #switchKeychainMobileImg{width:392px !important;}
+  #trinketsCaption{display:none !important;}
   .cs-back{left:48px;}
   .cs-back-sm{left:48px;}
 }
@@ -759,8 +766,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
         <div class="about-photo-frame">
           <img src="images/irisimg.jpeg" alt="Iris">
         </div>
+        <p id="trinketsCaption" style="font-family:'Caveat',cursive;font-size:1rem;font-weight:700;color:var(--purple-text);text-align:center;margin-top:14px;">Click on these trinkets!</p>
         <div id="vendingMachine" style="position:absolute;bottom:0;left:-120px;cursor:none;image-rendering:pixelated;display:flex;flex-direction:column;align-items:center;gap:6px;">
-          <p style="font-family:'Caveat',cursive;font-size:0.85rem;font-weight:700;color:var(--purple-text);white-space:nowrap;">click me!</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="104" height="180" viewBox="0 0 16 28" style="image-rendering:pixelated;display:block;">
             <!-- body -->
             <rect x="1" y="0" width="14" height="28" fill="#d4d4dc"/>
@@ -800,7 +807,14 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
             <rect x="0" y="26" width="16" height="2" fill="#88888f"/>
           </svg>
         </div>
+        <div id="switchKeychain" style="position:absolute;bottom:5px;right:-40px;cursor:none;transform:rotate(-15deg);transform-origin:bottom left;z-index:10;">
+          <img id="switchKeychainImg" src="images/Unclicked.png" alt="" draggable="false" style="width:297px;height:auto;display:block;">
+        </div>
       </div>
+    </div>
+    <div id="switchKeychainMobile" style="display:none;flex-direction:column;align-items:center;cursor:none;margin:0 0 32px;">
+      <img id="switchKeychainMobileImg" src="images/Unclicked.png" alt="" draggable="false" style="width:280px;height:auto;display:block;">
+      <p style="font-family:'Caveat',cursive;font-size:1.1rem;font-weight:700;color:var(--purple-text);margin-top:8px;">click me!</p>
     </div>
     <div class="page-footer" style="margin-top:48px;padding-left:0;padding-right:0;margin-left:-128px;margin-right:-128px;">
       <p class="footer-cta">Don't be a stranger. Reach out!</p>
@@ -1539,6 +1553,18 @@ document.addEventListener('mouseout',e=>{
 });
 const vm=document.getElementById('vendingMachine');
 if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%3;cursor.style.filter=cursorFilters[cursorColorIdx];});}
+function bindTrinketClick(wrapId,imgId){
+  const wrap=document.getElementById(wrapId),img=document.getElementById(imgId);
+  if(!wrap||!img)return;
+  let timer=null;
+  wrap.addEventListener('click',()=>{
+    img.src='images/Clicked.png';
+    clearTimeout(timer);
+    timer=setTimeout(()=>{img.src='images/Unclicked.png';},300);
+  });
+}
+bindTrinketClick('switchKeychain','switchKeychainImg');
+bindTrinketClick('switchKeychainMobile','switchKeychainMobileImg');
 
 const trackLabels={home:'Side A — Work',about:'Side B — About',playground:'Side B — Playground','lumeno':'Side A — Pulse','setdm':'Side A — SetDM','parpro':'Side A — Parpro'};
 // Nav must be defined before navigateTo so hash restore works on refresh
