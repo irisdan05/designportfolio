@@ -807,7 +807,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
             <rect x="0" y="26" width="16" height="2" fill="#88888f"/>
           </svg>
         </div>
-        <div id="switchKeychain" style="position:absolute;bottom:5px;right:-40px;cursor:none;transform:rotate(-15deg);transform-origin:bottom left;z-index:10;">
+        <div id="switchKeychain" style="position:absolute;bottom:-2px;right:-94px;cursor:none;transform:rotate(-15deg);transform-origin:bottom left;z-index:10;">
           <img id="switchKeychainImg" src="images/Unclicked.png" alt="" draggable="false" style="width:297px;height:auto;display:block;">
         </div>
       </div>
@@ -1553,11 +1553,14 @@ document.addEventListener('mouseout',e=>{
 });
 const vm=document.getElementById('vendingMachine');
 if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%3;cursor.style.filter=cursorFilters[cursorColorIdx];});}
+const trinketClickSound=new Audio('images/finalclicksound.mp3');
 function bindTrinketClick(wrapId,imgId){
   const wrap=document.getElementById(wrapId),img=document.getElementById(imgId);
   if(!wrap||!img)return;
   let timer=null;
   wrap.addEventListener('click',()=>{
+    trinketClickSound.currentTime=0;
+    trinketClickSound.play().catch(()=>{});
     img.src='images/Clicked.png';
     clearTimeout(timer);
     timer=setTimeout(()=>{img.src='images/Unclicked.png';},300);
