@@ -56,7 +56,6 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .snav-btn{display:block;width:100%;text-align:left;background:none;border:none;font-family:'Pacaembu',sans-serif;font-size:var(--t7);color:var(--text-faint);cursor:none;padding:14px 0;line-height:1.4;transition:color .18s;}
 .snav-btn:hover,.snav-btn.active{color:var(--purple-text);}
 .thought-cloud{display:inline;}
-.autoplay-on-view{outline:2px solid #000;}
 .ba-tab{font-family:'Pacaembu',sans-serif;font-size:var(--t7);border:1.5px solid var(--purple-text);border-radius:6px;background:transparent;cursor:none;padding:5px 14px;color:var(--purple-text);transition:background .18s,color .18s;}
 .ba-tab.ba-on,.ba-tab:hover{background:var(--purple-text);color:#fff;}
 .page.active{opacity:1;pointer-events:all;transform:translateY(0);}
@@ -293,7 +292,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .pg-float-card.is-dragging{z-index:100;transition:none;}
 .pg-float-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;}
 .pg-float-img img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
-.pg-float-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);opacity:0;transition:opacity .2s;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.pg-float-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);opacity:0;transition:opacity .2s;font-family:'Pacaembu',sans-serif;font-size:var(--t7);letter-spacing:normal;text-transform:capitalize;color:rgba(255,255,255,.85);}
 .pg-float-card:hover .pg-float-hint{opacity:1;}
 .pg-float-info{padding:10px 14px 13px;background:#fff;display:flex;flex-direction:column;gap:3px;}
 .pg-float-title{font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);}
@@ -669,7 +668,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <div class="sc-paper">
         <div class="sc-img" style="background:#ffffff;display:flex;align-items:center;justify-content:center;">
           <div style="width:80%;overflow:hidden;">
-            <img src="images/lumenogif.gif" alt="Lumeno AI" style="width:100%;display:block;margin-top:-32px;margin-bottom:-32px;transform:translateX(-1.7px);">
+            <img loading="lazy" src="images/lumenogif.gif" alt="Lumeno AI" style="width:100%;display:block;margin-top:-32px;margin-bottom:-32px;transform:translateX(-1.7px);">
           </div>
         </div>
         <div class="sc-caption">
@@ -694,7 +693,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
     <div class="sc-card reveal" data-page="setdm" style="cursor:none;">
       <div class="sc-paper">
         <div class="sc-img" style="overflow:hidden;padding:0;">
-          <img src="images/temp%20setdm.png" alt="SetDM AI" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img loading="lazy" src="images/temp%20setdm.png" alt="SetDM AI" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="sc-caption">
           <span class="sc-title">SetDM AI</span>
@@ -767,7 +766,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       </div>
       <div class="about-image-wrap" style="position:relative;">
         <div class="about-photo-frame">
-          <img src="images/irisimg.jpeg" alt="Iris">
+          <img loading="lazy" src="images/irisimg.jpeg" alt="Iris">
         </div>
         <p id="trinketsCaption" style="font-family:'Caveat',cursive;font-size:1rem;font-weight:700;color:var(--purple-text);text-align:center;margin-top:14px;">Click on these trinkets!</p>
         <div id="vendingMachine" style="position:absolute;bottom:0;left:-120px;cursor:none;image-rendering:pixelated;display:flex;flex-direction:column;align-items:center;gap:6px;">
@@ -811,12 +810,12 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           </svg>
         </div>
         <div id="switchKeychain" style="position:absolute;bottom:-2px;right:-94px;cursor:none;transform:rotate(-15deg);transform-origin:bottom left;z-index:10;">
-          <img id="switchKeychainImg" src="images/Unclicked.png" alt="" draggable="false" style="width:297px;height:auto;display:block;">
+          <img loading="lazy" id="switchKeychainImg" src="images/Unclicked.png" alt="" draggable="false" style="width:297px;height:auto;display:block;">
         </div>
       </div>
     </div>
     <div id="switchKeychainMobile" style="display:none;flex-direction:column;align-items:center;cursor:none;margin:0 0 32px;">
-      <img id="switchKeychainMobileImg" src="images/Unclicked.png" alt="" draggable="false" style="width:280px;height:auto;display:block;">
+      <img loading="lazy" id="switchKeychainMobileImg" src="images/Unclicked.png" alt="" draggable="false" style="width:280px;height:auto;display:block;">
       <p style="font-family:'Caveat',cursive;font-size:1.1rem;font-weight:700;color:var(--purple-text);margin-top:8px;">click me!</p>
     </div>
     <div class="page-footer" style="margin-top:48px;padding-left:0;padding-right:0;margin-left:-128px;margin-right:-128px;">
@@ -844,29 +843,29 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
     <div class="pg-scatter-area" id="pgScatter" style="margin-bottom:62px;">
       <!-- Row 1: Atelier, UBC Launch Pad, Socratica Symposium, Bangkok -->
       <div class="pg-float-card" data-pg-img="images/atelier.jpeg" data-pg-title="Atelier" data-pg-tag="Hosting and Leading Media" data-pg-blurb="I co-host and lead media at Atelier, a non-profit in Vancouver that gives spaces for people to cowork on their passion projects. Ranging from robotics, painting, to baking, we're a proud node of Socratica." style="top:25px;left:15px;--rot:-5deg;">
-        <div class="pg-float-img"><img src="images/atelier.jpeg" alt="Atelier"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/atelier.jpeg" alt="Atelier"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Atelier</span><span class="pg-float-tag">Hosting and Leading Media</span></div>
       </div>
       <div class="pg-float-card" data-pg-img="images/launchpad.png" data-pg-title="UBC Launch Pad" data-pg-tag="Marketing Lead" data-pg-blurb="I was the Marketing Lead @ UBC's software engineering team for 1.7 years; I spearheaded marketing campaigns for a tech mixer that sold out in 3 hours, a hackathon event collaboration with the Google Dev Student Club, and managed all social medias." style="top:20px;left:260px;--rot:3.5deg;">
-        <div class="pg-float-img"><img src="images/launchpad.png" alt="UBC Launch Pad"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/launchpad.png" alt="UBC Launch Pad"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">UBC Launch Pad</span><span class="pg-float-tag">Marketing Lead</span></div>
       </div>
       <div class="pg-float-card" data-pg-img="images/symposium.jpeg" data-pg-title="Socratica Symposium
       ⁂" data-pg-tag="Design and Hosting" data-pg-blurb="I worked on the small (but strong) design team behind the world's greatest celebration of making, Socratica Symposium. We brought together demo'ers of everything, from pancake-flipping robots to live music to graphic design, drawing around 3,000 attendees from across the world to Kitchener-Waterloo, Ontario, to celebrate high-effort passion projects :) On the design team, I worked on branding, packaging, and social media graphics." style="top:30px;left:505px;--rot:-2deg;">
-        <div class="pg-float-img"><img src="images/symposium.jpeg" alt="Symposium"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/symposium.jpeg" alt="Symposium"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Socratica Symposium⁂</span><span class="pg-float-tag">Design and Hosting</span></div>
       </div>
       <div class="pg-float-card" data-pg-img="images/bkk.jpeg" data-pg-title="Bangkok" data-pg-tag="Asia Travels" data-pg-blurb="When I was on an exchange term at Singapore's engineering and design university, I visited so many different countries that my friends liked to say I was teleporting. Anyway, this photo is of Bangkok, one of my favourite places I've traveled to." style="top:15px;left:750px;--rot:3.5deg;">
-        <div class="pg-float-img"><img src="images/bkk.jpeg" alt="Bangkok"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/bkk.jpeg" alt="Bangkok"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Bangkok</span><span class="pg-float-tag">Asia Travels</span></div>
       </div>
       <!-- Row 1 col 5 + Row 2 -->
       <div class="pg-float-card" data-pg-img="images/uxhub.png" data-pg-title="UBC UX Hub" data-pg-tag="Media Director" data-pg-blurb="I serve on the media team for UBC's first ever UX design club, where I make videos, newsletters, and manage social media." style="top:20px;left:995px;--rot:2deg;">
-        <div class="pg-float-img"><img src="images/uxhub.png" alt="UBC UX Hub"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/uxhub.png" alt="UBC UX Hub"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">UBC UX Hub</span><span class="pg-float-tag">Media Director</span></div>
       </div>
       <div class="pg-float-card" data-pg-img="images/longboating.png" data-pg-title="Longboating" data-pg-tag="Sidequest" data-pg-blurb="I tried longboating with my friends! (We came in dead last)" style="top:300px;left:15px;--rot:-3deg;">
-        <div class="pg-float-img"><img src="images/longboating.png" alt="Longboating"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-img"><img loading="lazy" src="images/longboating.png" alt="Longboating"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Longboating</span><span class="pg-float-tag">Sidequest</span></div>
       </div>
       <div class="pg-float-card" data-pg-url="https://devpost.com/software/re-fridge" style="top:305px;left:260px;--rot:2.5deg;">
@@ -920,7 +919,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       </div>
       <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Lumeno AI: Accessibility Audit</h2>
       <div class="cs-mockup-wrap" style="margin-bottom:38px;">
-        <img src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
+        <img loading="lazy" src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
       </div>
     </div>
 
@@ -947,11 +946,11 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">I ran a WCAG 2.2 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
 
       <!-- Affinity map -->
-      <img class="lumeno-affinity-desktop" src="images/lumenoaffinity.png" alt="Affinity mapping — Lumeno accessibility audit" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
+      <img loading="lazy" class="lumeno-affinity-desktop" src="images/lumenoaffinity.png" alt="Affinity mapping — Lumeno accessibility audit" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
       <div class="lumeno-affinity-mobile" style="display:none;flex-direction:column;gap:16px;margin-bottom:38px;">
-        <img src="images/customisation.png" alt="Customisation" style="width:100%;display:block;">
-        <img src="images/cogload.png" alt="Cognitive load" style="width:100%;display:block;">
-        <img src="images/audio.png" alt="Audio" style="width:100%;display:block;">
+        <img loading="lazy" src="images/customisation.png" alt="Customisation" style="width:100%;display:block;">
+        <img loading="lazy" src="images/cogload.png" alt="Cognitive load" style="width:100%;display:block;">
+        <img loading="lazy" src="images/audio.png" alt="Audio" style="width:100%;display:block;">
       </div>
       <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
         <!-- Header row -->
@@ -1116,7 +1115,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);letter-spacing:0;color:var(--purple-text);">Brand and Web · Competition</span>
       </div>
       <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Parpro Consulting Ltd.</h2>
-      <img class="cs-mockup-wrap" src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
+      <img loading="lazy" class="cs-mockup-wrap" src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
     </div>
 
     <div class="reveal cs-meta-row parpro-meta-row" style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:58px;">
@@ -1188,9 +1187,9 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">Competitive analysis</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:29px;">We swept both large consulting firms and Canadian bookkeeping providers to understand what the better-performing sites had in common: they made it easy to understand what they offered and why to trust them. Parpro's existing site did neither.</p>
       <div class="parpro-comp-logos" style="display:flex;gap:40px;align-items:center;justify-content:center;margin-bottom:38px;">
-        <img src="images/mckinsey.png" alt="McKinsey & Company" style="width:10%;display:block;object-fit:contain;">
-        <img src="images/bcg.png" alt="BCG" style="width:10%;display:block;object-fit:contain;">
-        <img src="images/bain.png" alt="Bain & Company" style="width:10%;display:block;object-fit:contain;">
+        <img loading="lazy" src="images/mckinsey.png" alt="McKinsey & Company" style="width:10%;display:block;object-fit:contain;">
+        <img loading="lazy" src="images/bcg.png" alt="BCG" style="width:10%;display:block;object-fit:contain;">
+        <img loading="lazy" src="images/bain.png" alt="Bain & Company" style="width:10%;display:block;object-fit:contain;">
       </div>
 
       <!-- Personas and empathy maps -->
@@ -1205,8 +1204,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
             <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
           </button>
           <div style="display:none;">
-            <img src="images/parpromorgan.png" alt="Persona — Morgan" style="width:100%;display:block;clip-path:inset(2px);">
-            <img src="images/morganempathy.png" alt="Morgan's empathy map" style="width:100%;display:block;clip-path:inset(10px 2px 2px 2px);">
+            <img loading="lazy" src="images/parpromorgan.png" alt="Persona — Morgan" style="width:100%;display:block;clip-path:inset(2px);">
+            <img loading="lazy" src="images/morganempathy.png" alt="Morgan's empathy map" style="width:100%;display:block;clip-path:inset(10px 2px 2px 2px);">
           </div>
         </div>
         <!-- Bankuv collapsible -->
@@ -1216,8 +1215,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
             <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
           </button>
           <div style="display:none;">
-            <img src="images/parprobankuv.png" alt="Persona — Bankuv" style="width:100%;display:block;clip-path:inset(2px);">
-            <img src="images/bankuvempathy.png" alt="Bankuv's empathy map" style="width:100%;display:block;clip-path:inset(10px 2px 2px 2px);">
+            <img loading="lazy" src="images/parprobankuv.png" alt="Persona — Bankuv" style="width:100%;display:block;clip-path:inset(2px);">
+            <img loading="lazy" src="images/bankuvempathy.png" alt="Bankuv's empathy map" style="width:100%;display:block;clip-path:inset(10px 2px 2px 2px);">
           </div>
         </div>
       </div>
@@ -1248,8 +1247,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <!-- User flows -->
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">During the client interview, the founder noted that the two main ways people arrive on the site are through searching directly for a bookkeeping consultation, and through discovering one of Parpro's finance articles. We designed a separate user flow for each path.</p>
       <div style="display:flex;flex-direction:column;gap:12px;">
-        <img src="images/readarticles.png" alt="User flow — read articles to booking" style="width:100%;display:block;">
-        <img src="images/bookconsult.png" alt="User flow — book a consultation" style="width:100%;display:block;">
+        <img loading="lazy" src="images/readarticles.png" alt="User flow — read articles to booking" style="width:100%;display:block;">
+        <img loading="lazy" src="images/bookconsult.png" alt="User flow — book a consultation" style="width:100%;display:block;">
       </div>
     </div>
 
@@ -1260,22 +1259,22 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Logo redesign</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">We explored several logo directions, looking for something more modern that still carried the clean, professional character of the brand. The final choice was selected for its friendliness and openness while still capturing the founder's original vision.</p>
       <div style="margin-bottom:38px;">
-        <img src="images/parprologo.png" alt="Old logo vs new logo — Parpro" style="width:100%;border-radius:12px;display:block;">
+        <img loading="lazy" src="images/parprologo.png" alt="Old logo vs new logo — Parpro" style="width:100%;border-radius:12px;display:block;">
       </div>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Design system</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:38px;">
-        <img src="images/parprotype.png" alt="Parpro typography" style="width:100%;border-radius:12px;display:block;">
-        <img src="images/parprotype2.png" alt="Parpro typography 2" style="width:100%;border-radius:12px;display:block;">
+        <img loading="lazy" src="images/parprotype.png" alt="Parpro typography" style="width:100%;border-radius:12px;display:block;">
+        <img loading="lazy" src="images/parprotype2.png" alt="Parpro typography 2" style="width:100%;border-radius:12px;display:block;">
       </div>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Design components</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">The component library covered the logo, navigation bar, information sections, services boxes, CTA buttons, and social media icons, so we could maintain consistency across the design.</p>
-      <img src="images/parprosystem.png" alt="Parpro design components" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
+      <img loading="lazy" src="images/parprosystem.png" alt="Parpro design components" style="width:100%;border-radius:12px;display:block;margin-bottom:38px;">
 
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Low fidelity wireframes</p>
-      <img src="images/lofiparpro.png" alt="Low fidelity wireframes — Parpro" style="width:100%;display:block;">
+      <img loading="lazy" src="images/lofiparpro.png" alt="Low fidelity wireframes — Parpro" style="width:100%;display:block;">
     </div>
 
     <!-- 07 Design -->
@@ -1301,7 +1300,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           <div data-ba-panel="home-before" style="display:none;">
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:17px;">An immediate popup distracted and overwhelmed users on arrival. The testimonials and &#8220;Why Us&#8221; sections lacked both content and aesthetic appeal.</p>
             <div style="overflow:hidden;margin-bottom:0;">
-              <img src="images/homeold.png" alt="Home page — before" style="width:100%;display:block;">
+              <img loading="lazy" src="images/homeold.png" alt="Home page — before" style="width:100%;display:block;">
             </div>
           </div>
         </div>
@@ -1322,7 +1321,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           <div data-ba-panel="about-before" style="display:none;">
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:17px;">Static visuals and stock images made the page feel generic. Company values were not listed and descriptions were too generalised to convey any personality.</p>
             <div style="overflow:hidden;margin-bottom:0;">
-              <img src="images/aboutold.png" alt="About us page — before" style="width:100%;display:block;">
+              <img loading="lazy" src="images/aboutold.png" alt="About us page — before" style="width:100%;display:block;">
             </div>
           </div>
         </div>
@@ -1343,7 +1342,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           <div data-ba-panel="services-before" style="display:none;">
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:17px;">Company logos were listed in a horizontal line with no indication of whether they were sponsors, partners, or tools.</p>
             <div style="overflow:hidden;margin-bottom:0;">
-              <img src="images/servicesold.png" alt="Services page — before" style="width:100%;display:block;">
+              <img loading="lazy" src="images/servicesold.png" alt="Services page — before" style="width:100%;display:block;">
             </div>
           </div>
         </div>
@@ -1364,7 +1363,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           <div data-ba-panel="resources-before" style="display:none;">
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:17px;">Articles were displayed in a carousel, which is poor for engagement retention. Each article was also inconsistent with the others in typography, with hierarchy issues throughout.</p>
             <div style="overflow:hidden;margin-bottom:0;">
-              <img src="images/resourcesold.png" alt="Resources page — before" style="width:100%;display:block;">
+              <img loading="lazy" src="images/resourcesold.png" alt="Resources page — before" style="width:100%;display:block;">
             </div>
           </div>
         </div>
@@ -1385,7 +1384,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
           <div data-ba-panel="contact-before" style="display:none;">
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:17px;">The form assumed users knew how to fill it in. A map at the bottom displayed a random coordinate not registered to a real building, causing confusion and distrust.</p>
             <div style="overflow:hidden;margin-bottom:0;">
-              <img src="images/contactold.png" alt="Contact us page — before" style="width:100%;display:block;">
+              <img loading="lazy" src="images/contactold.png" alt="Contact us page — before" style="width:100%;display:block;">
             </div>
           </div>
         </div>
@@ -1763,7 +1762,7 @@ vinylWrap.addEventListener('mouseleave',()=>{
 <div class="pg-lightbox" id="pgLightbox">
   <div class="pg-lightbox-inner">
     <button class="pg-lightbox-close" id="pgLbClose">✕</button>
-    <img class="pg-lightbox-img" id="pgLbImg" src="" alt="">
+    <img loading="lazy" class="pg-lightbox-img" id="pgLbImg" src="" alt="">
     <div class="pg-lightbox-meta">
       <span class="pg-lightbox-tag" id="pgLbTag"></span>
       <h3 class="pg-lightbox-title" id="pgLbTitle"></h3>
