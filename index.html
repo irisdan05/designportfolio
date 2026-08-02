@@ -1537,20 +1537,9 @@ const cursorJuiceBent=`<svg xmlns="http://www.w3.org/2000/svg" width="56" height
   <rect x="6" y="20" width="2" height="3" fill="#ff9d00"/>
   <rect x="5" y="22" width="4" height="1" fill="#ff9d00"/>
 </svg>`;
-// Green variant is drawn with its own exact fills (rather than a filter) so the
-// white/silver parts of the box don't pick up the dark cast a brightness() filter causes.
-const _greenSwap={'#ff9d00':'#00bf00','#e07600':'#009900','#ff7300':'#00a300','#ffb347':'#66ff66','#cc6600':'#007a00'};
-function _toGreen(svg){return svg.replace(/#ff9d00|#e07600|#ff7300|#ffb347|#cc6600/g,m=>_greenSwap[m]);}
-const cursorJuiceGreen=_toGreen(cursorJuice);
-const cursorJuiceGreenBent=_toGreen(cursorJuiceBent);
-const cursorFilters=['none','hue-rotate(200deg) saturate(1.5)','hue-rotate(330deg) saturate(1.4)','none','hue-rotate(300deg) saturate(1.3)'];
-const GREEN_IDX=3;
+const cursorFilters=['none','hue-rotate(200deg) saturate(1.5)','hue-rotate(330deg) saturate(1.4)','hue-rotate(63deg) saturate(1.64) brightness(.78)','hue-rotate(300deg) saturate(1.3)'];
 let cursorColorIdx=0;
-function _cursorSvg(bent){
-  if(cursorColorIdx===GREEN_IDX)return bent?cursorJuiceGreenBent:cursorJuiceGreen;
-  return bent?cursorJuiceBent:cursorJuice;
-}
-cursor.innerHTML=_cursorSvg(false);
+cursor.innerHTML=cursorJuice;
 cursor.style.filter=cursorFilters[0];
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
@@ -1559,13 +1548,13 @@ let _curHov=false;
 const _hovSel='a,button,.sc-card,.pg-card,.tl-track';
 document.addEventListener('mouseover',e=>{
   const h=!!e.target.closest(_hovSel);
-  if(h!==_curHov){_curHov=h;cursor.innerHTML=_cursorSvg(h);}
+  if(h!==_curHov){_curHov=h;cursor.innerHTML=h?cursorJuiceBent:cursorJuice;}
 });
 document.addEventListener('mouseout',e=>{
-  if(_curHov&&(!e.relatedTarget||!e.relatedTarget.closest(_hovSel))){_curHov=false;cursor.innerHTML=_cursorSvg(false);}
+  if(_curHov&&(!e.relatedTarget||!e.relatedTarget.closest(_hovSel))){_curHov=false;cursor.innerHTML=cursorJuice;}
 });
 const vm=document.getElementById('vendingMachine');
-if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%5;cursor.style.filter=cursorFilters[cursorColorIdx];cursor.innerHTML=_cursorSvg(_curHov);});}
+if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%5;cursor.style.filter=cursorFilters[cursorColorIdx];});}
 const trinketClickSound=new Audio('images/finalclicksound.mp3');
 function bindTrinketClick(wrapId,imgId){
   const wrap=document.getElementById(wrapId),img=document.getElementById(imgId);
