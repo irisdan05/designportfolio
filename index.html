@@ -1537,7 +1537,7 @@ const cursorJuiceBent=`<svg xmlns="http://www.w3.org/2000/svg" width="56" height
   <rect x="6" y="20" width="2" height="3" fill="#ff9d00"/>
   <rect x="5" y="22" width="4" height="1" fill="#ff9d00"/>
 </svg>`;
-const cursorFilters=['none','hue-rotate(330deg) saturate(1.4)','hue-rotate(200deg) saturate(1.5)'];
+const cursorFilters=['none','hue-rotate(200deg) saturate(1.5)','hue-rotate(330deg) saturate(1.4)','hue-rotate(63deg) saturate(1.64) brightness(.78)','hue-rotate(300deg) saturate(1.3)'];
 let cursorColorIdx=0;
 cursor.innerHTML=cursorJuice;
 cursor.style.filter=cursorFilters[0];
@@ -1554,7 +1554,7 @@ document.addEventListener('mouseout',e=>{
   if(_curHov&&(!e.relatedTarget||!e.relatedTarget.closest(_hovSel))){_curHov=false;cursor.innerHTML=cursorJuice;}
 });
 const vm=document.getElementById('vendingMachine');
-if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%3;cursor.style.filter=cursorFilters[cursorColorIdx];});}
+if(vm){vm.addEventListener('click',()=>{cursorColorIdx=(cursorColorIdx+1)%5;cursor.style.filter=cursorFilters[cursorColorIdx];});}
 const trinketClickSound=new Audio('images/finalclicksound.mp3');
 function bindTrinketClick(wrapId,imgId){
   const wrap=document.getElementById(wrapId),img=document.getElementById(imgId);
