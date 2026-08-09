@@ -37,7 +37,7 @@ img,svg,a,button,input,select,textarea,[draggable],.pg-float-card,.pg-float-card
 body{background:var(--bg);color:var(--text);font-family:'Pacaembu',sans-serif;font-weight:200;overflow:hidden;cursor:none;height:100vh;}
 .cursor{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);image-rendering:pixelated;transition:none;user-select:none;}
 .cursor-ring{display:none;}
-@media(pointer:coarse){.cursor,.cursor-ring{display:none !important;}}
+@media(pointer:coarse){.cursor,.cursor-ring{display:none !important;}#vendingMachine{display:none !important;}}
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:26px 52px;padding-top:max(26px,env(safe-area-inset-top));background:none;transition:transform .45s cubic-bezier(.4,0,.2,1);box-sizing:border-box;width:100vw;}
 nav.nav-hidden{transform:translateY(-120%);}
 .nav-logo{font-family:'Lora',serif;font-size:var(--t4);font-style:italic;font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:.01em;}
