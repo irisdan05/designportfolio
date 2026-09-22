@@ -21,9 +21,17 @@
 <link rel="preload" as="image" href="images/sky.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=pacaembu@200,300,400&display=swap" rel="stylesheet">
 <style>
+@font-face{
+  font-family:'Nightingale';
+  src:url('fonts/DTNightingale-Light.otf') format('opentype'),
+      url('fonts/DTNightingale-Light.ttf') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
 :root {
   --rose:#e8b4cb;--pink:#f7dde9;--mauve:#c9a0c4;--violet:#b48ec8;
   --purple:#9b7bc0;--indigo:#8068b0;--navy:#6655a0;--sky:#b8d8f0;
@@ -50,7 +58,7 @@ body{background:var(--bg);color:var(--text);font-family:'Pacaembu',sans-serif;fo
 @media(pointer:coarse){.cursor,.cursor-ring{display:none !important;}#vendingMachine{display:none !important;}}
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:26px 52px;padding-top:max(26px,env(safe-area-inset-top));background:none;transition:transform .45s cubic-bezier(.4,0,.2,1);box-sizing:border-box;width:100vw;}
 nav.nav-hidden{transform:translateY(-120%);}
-.nav-logo{font-family:'Lora',serif;font-size:var(--t4);font-style:italic;font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:.01em;}
+.nav-logo{font-family:'Nightingale',serif;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:-1px;}
 .nav-links{display:flex;gap:36px;list-style:none;}
 .nav-links a{font-family:'Pacaembu',sans-serif;font-size:var(--t6);letter-spacing:0;color:var(--text-soft);text-decoration:none;transition:color .3s;cursor:none;position:relative;display:inline-block;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1px;background:var(--purple);transition:transform .3s,opacity .3s;transform:translateY(6px);opacity:0;}
@@ -111,7 +119,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .hero-bottom{display:flex;flex-direction:column;gap:6px;}
 .hero-title{font-family:'Pacaembu',sans-serif;font-size:var(--t1);font-weight:500;line-height:1.06;letter-spacing:-.025em;max-width:860px;opacity:0;animation:fadeUp 1s .15s forwards;color:var(--text);}
 .hero-title em{font-style:italic;font-weight:500;color:var(--purple);}
-.hero-intro{font-family:'Lora',serif;font-size:var(--t1);font-weight:400;line-height:1.18;letter-spacing:-.01em;color:var(--text);}
+.hero-intro{font-family:'Nightingale',serif;font-size:calc(var(--t1) * 1.1);font-weight:400;line-height:1.18;letter-spacing:-1px;color:var(--text);}
 .hi-seg{opacity:0;animation:fadeUp 1.168s forwards;}
 .hi-1{animation-delay:.08s;}
 .hi-2{animation-delay:.64s;}
@@ -120,8 +128,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .hi-4{animation-delay:2.32s;}
 .hi-4b{animation-delay:2.88s;}
 .hi-5{animation-delay:3.44s;}
-.hero-intro em{font-style:italic;font-weight:400;color:var(--purple-text);}
-.pd-underline{position:relative;white-space:nowrap;}
+.hero-intro em{font-style:normal;font-weight:400;color:var(--purple-text);}
+.pd-underline{position:relative;white-space:nowrap;font-style:normal;}
 .pd-underline::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'%3E%3Cpath d='M3,10 C75,5 210,5.5 297,10.5' stroke='%23ffcb99' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.68'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:100% 100%;pointer-events:none;}
 .hero-statement{font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:400;line-height:1.7;letter-spacing:.01em;color:var(--text-soft);opacity:0;animation:fadeUp 1s .6s forwards;}
 .hero-statement em{font-style:italic;color:var(--purple-text);font-weight:400;}
@@ -253,7 +261,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .about-vinyl-deco-grooves{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0px,transparent 6px,rgba(155,123,192,.1) 7px,transparent 8px);}
 .about-vinyl-deco-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#ede8f5;}
 .about-vinyl-deco-hole{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:var(--bg);}
-.about-label{font-family:'Lora',serif;font-size:var(--t3);font-weight:400;color:var(--text);margin-bottom:var(--t5);letter-spacing:-.01em;line-height:1.35;}
+.about-label{font-family:'Nightingale',serif;font-size:calc(var(--t3) * 1.1);font-weight:400;color:var(--text);margin-bottom:var(--t5);letter-spacing:-1px;line-height:1.35;}
 .about-quote-large{display:none;}
 .about-quote-large span{display:none;}
 .about-sticker{font-family:'Caveat',cursive;font-style:normal;font-size:var(--t3);font-weight:600;background:rgba(255,242,180,.9);-webkit-background-clip:unset;-webkit-text-fill-color:unset;background-clip:unset;color:#3a2440;padding:4px 10px;display:inline-block;transform:rotate(3deg);box-shadow:2px 3px 6px rgba(0,0,0,.15);border:1px solid rgba(255,220,100,.4);vertical-align:middle;margin-left:6px;}
@@ -334,7 +342,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 #page-about .page-footer,#page-playground .page-footer,#page-lumeno .page-footer,#page-setdm .page-footer,#page-parpro .page-footer{border-top:1px solid rgba(155,123,192,.18);}
 .page-footer{margin-top:0!important;}
 .footer-eyebrow{display:none;}
-.footer-cta{font-family:'Lora',serif;font-size:clamp(var(--t4),3vw,var(--t3));font-weight:400;font-style:italic;color:var(--text);line-height:1.2;margin-bottom:24px;}
+.footer-cta{font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(clamp(var(--t4),3vw,var(--t3)) * 1.1);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:24px;}
 .footer-email{display:none;}
 .footer-divider{display:none;}
 .footer-bottom{display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:20px;width:100%;margin-top:8px;}
@@ -923,7 +931,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);letter-spacing:0;color:var(--purple-text);">Internship · EdTech</span>
       </div>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Lumeno AI: Accessibility Audit</h2>
+      <h2 style="font-family:'Nightingale',serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-1px;margin-bottom:29px;">Lumeno AI: Accessibility Audit</h2>
       <div class="cs-mockup-wrap" style="margin-bottom:38px;">
         <img loading="lazy" src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
       </div>
@@ -938,17 +946,17 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 01 Overview -->
     <div id="cs-s01" class="reveal" style="margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">AI studying platform for university students</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">AI studying platform for university students</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Lumeno is a study platform for university students with AI chat, flashcards, exam mode, summaries, and a digital notebook. However, beta users would consistently flag that the chat was hard to read, especially for people with ADHD or dyslexia.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">A few weeks into my internship, I was tasked with running an accessibility audit to tackle this issue.</p>
       <div style="border-top:1px solid var(--border);margin-top:60px;"></div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-top:38px;margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-top:38px;margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
     </div>
 
     <!-- 03 Audit -->
     <div id="cs-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Finding what the product was getting wrong</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Finding what the product was getting wrong</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">I ran a WCAG 2.2 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
 
       <!-- Affinity map -->
@@ -994,33 +1002,33 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 04 What we shipped -->
     <div id="cs-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Solution</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Solution</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">The audit made clear that students had no control over how information was presented to them. The solution was to give that control back directly through in-app features.</p>
 
       <!-- Feature 1: Enlarge text size -->
       <div style="margin-bottom:58px;">
-        <p style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting text size</p>
+        <p style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting text size</p>
         <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">Users can now increase or decrease font size within the app, addressing WCAG 1.4.4.</p>
         <video src="images/enlargetext.mp4" loop muted playsinline class="autoplay-on-view" aria-label="Demo of adjustable text size feature in Lumeno AI chat" style="width:100%;border-radius:12px;display:block;"></video>
       </div>
 
       <!-- Feature 2: Letter spacing -->
       <div style="margin-bottom:0;">
-        <p style="font-family:'Lora',serif;font-size:var(--t5);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting letter spacing</p>
+        <p style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:10px;">Adjusting letter spacing</p>
         <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">We also added adjustable letter spacing; for users with dyslexia, wider letter spacing can be a significant aid when reading.</p>
         <video src="images/enlargespace.mp4" loop muted playsinline class="autoplay-on-view" aria-label="Demo of adjustable letter spacing feature in Lumeno AI chat" style="width:100%;border-radius:12px;display:block;"></video>
       </div>
 
       <!-- Add-on features -->
       <div style="border-top:1px solid var(--border);padding-top:58px;margin-top:58px;">
-        <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Additional Features</h3>
+        <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Additional Features</h3>
         <div class="lumeno-addl-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
           <div style="background:var(--bg2);border-radius:14px;padding:24px 26px;">
-            <p style="font-family:'Lora',serif;font-size:var(--t6);font-weight:400;color:var(--ink);margin-bottom:10px;">Speech to text</p>
+            <p style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:10px;">Speech to text</p>
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">Students can say their questions aloud instead of typing, making the chatbot easier to use for students with motor difficulties.</p>
           </div>
           <div style="background:var(--bg2);border-radius:14px;padding:24px 26px;">
-            <p style="font-family:'Lora',serif;font-size:var(--t6);font-weight:400;color:var(--ink);margin-bottom:10px;">Text to speech</p>
+            <p style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:10px;">Text to speech</p>
             <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">AI responses can be read aloud, giving students with visual impairments or processing difficulties a more accessible experience.</p>
           </div>
         </div>
@@ -1029,7 +1037,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 05 Reflections -->
     <div id="cs-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:0;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Accessibility should be kept front and centre</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">As I was given the accessibility audit task after most of the main product was already built out, it made me realise how often accessibility goes overlooked in products. My main takeaway is that accessibility should be looked at in the early stages of building a product, and not as an add-on.</p>
     </div>
@@ -1060,7 +1068,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);letter-spacing:0;color:var(--purple-text);">Founding · B2B SaaS</span>
       </div>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">SetDM AI</h2>
+      <h2 style="font-family:'Nightingale',serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-1px;margin-bottom:29px;">SetDM AI</h2>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t5);line-height:1.7;color:var(--text-soft);max-width:560px;margin:0 auto 32px;">Designing a funnel-based inbox and AI co-pilot for fitness coaches and DM setters managing high-volume Instagram conversations.</p>
     </div>
 
@@ -1073,14 +1081,14 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 01 Overview -->
     <div id="sdm-s01" class="reveal" style="margin-bottom:77px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Instagram DMs were never built for scale</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Instagram DMs were never built for scale</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">SetDM AI is a funnel-based workspace built with AI, made specifically for DM setters to make sales faster and without burning out.</p>
     </div>
 
     <!-- 02 My Role -->
     <div id="sdm-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:77px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Founding Product Designer</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Founding Product Designer</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:29px;">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;"></div>
     </div>
@@ -1088,7 +1096,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
     <div class="reveal" style="margin-bottom:0;">
       <div style="border:3px solid var(--purple-text);border-radius:14px;padding:38px 40px;">
         <p style="font-size:2rem;margin-bottom:16px;line-height:1;">🚧</p>
-        <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:16px;line-height:1.35;">This case study is still in progress.</h3>
+        <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:16px;line-height:1.35;">This case study is still in progress.</h3>
         <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Go check out my <a href="#playground" data-page="playground" style="color:var(--purple-text);text-decoration:underline;cursor:none;">playground</a> in the meantime!</p>
       </div>
     </div>
@@ -1120,7 +1128,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       <div style="margin-bottom:24px;">
         <span style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);letter-spacing:0;color:var(--purple-text);">Brand and Web · Competition</span>
       </div>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(var(--t2),6vw,var(--t1));font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:29px;">Parpro Consulting Ltd.</h2>
+      <h2 style="font-family:'Nightingale',serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-1px;margin-bottom:29px;">Parpro Consulting Ltd.</h2>
       <img loading="lazy" class="cs-mockup-wrap" src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:12px;display:block;margin-bottom:38px;margin-left:auto;margin-right:auto;">
     </div>
 
@@ -1133,20 +1141,20 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 01 Overview -->
     <div class="reveal" style="margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">Parpro Consulting Ltd. is a Canadian bookkeeping agency serving small to medium-sized businesses. Their existing website struggled to establish trust or stand out; the over-usage of generic stock photography, static layouts, inconsistent branding, and unclear information made the site feel illegitimate and wasn't converting as well as it needed to.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Over 2.5 days, we did a full website and brand identity redesign for the FLUI Design Competition.</p>
     </div>
 
     <!-- 02 Problem -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">🔍 Problem</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
     </div>
 
     <!-- 04 Empathise Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Getting to the root of the problem</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Getting to the root of the problem</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">We started by interviewing the CEO to understand the brand's needs. We began by gauging the brand identity, asking questions like, "if your company was a person, what car would they drive?", and then moved onto questions regarding his goals and current results.</p>
 
       <!-- Client interview findings -->
@@ -1168,7 +1176,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
       </div>
 
       <!-- Main pain points -->
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">The main pain points our users had</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">The main pain points our users had</h3>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:38px;">
         <div>
           <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">🤔 Where do I go?</p>
@@ -1190,7 +1198,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
       <!-- Competitive analysis -->
       <div style="border-top:1px solid var(--border);margin-bottom:38px;"></div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">Competitive analysis</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">Competitive analysis</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:29px;">We swept both large consulting firms and Canadian bookkeeping providers to understand what the better-performing sites had in common: they made it easy to understand what they offered and why to trust them. Parpro's existing site did neither.</p>
       <div class="parpro-comp-logos" style="display:flex;gap:40px;align-items:center;justify-content:center;margin-bottom:38px;">
         <img loading="lazy" src="images/mckinsey.png" alt="McKinsey & Company" style="width:10%;display:block;object-fit:contain;">
@@ -1200,7 +1208,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
       <!-- Personas and empathy maps -->
       <div style="border-top:1px solid var(--border);margin-bottom:38px;"></div>
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">User personas</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.35;">User personas</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:24px;">We then created personas to help with empathising. Meet Morgan S. Tanley and Bankuv Amir-Ika (no correlation with Morgan Stanley and the Bank of America, I promise), the most likely users of this service.</p>
       <div class="parpro-personas-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0;">
         <!-- Morgan collapsible -->
@@ -1231,7 +1239,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 05 Define Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Starting the redesign</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Starting the redesign</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">With research complete, we identified three specific things to prioritise for the redesign.</p>
 
       <!-- Idea breakdown -->
@@ -1260,7 +1268,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 06 Ideate -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Logo, design system, and animation brainstorming</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">Logo, design system, and animation brainstorming</h3>
 
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Logo redesign</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:19px;">We explored several logo directions, looking for something more modern that still carried the clean, professional character of the brand. The final choice was selected for its friendliness and openness while still capturing the founder's original vision.</p>
@@ -1285,7 +1293,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 07 Design -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">The redesign across every page</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">The redesign across every page</h3>
 
       <!-- Before/after rows -->
       <div style="display:flex;flex-direction:column;gap:0;margin-bottom:0;">
@@ -1401,7 +1409,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 08 Results -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">What the redesign achieved</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:38px;line-height:1.35;">What the redesign achieved</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
         <div>
           <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:8px;">Higher user retention</p>
@@ -1420,7 +1428,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 
     <!-- 09 Reflections -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:58px;margin-bottom:58px;">
-      <h3 style="font-family:'Lora',serif;font-size:var(--t4);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
+      <h3 style="font-family:'Nightingale',serif;letter-spacing:-1px;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:24px;line-height:1.35;">What this project taught me</h3>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Designing for an audience you are not</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:38px;">I have never used a bookkeeping service before so this project really stressed the empathy part in empathetic design. Learning how to put on not only the potential user's shoes, but also the founder's shoes, meant taking extra time to figure out how to align the business goals with what would best resonate with a potential customer.</p>
       <p style="font-family:'Pacaembu',sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:12px;">Branding</p>
