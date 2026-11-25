@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&text=%E4%B8%B9%E6%9E%AB&display=swap" rel="stylesheet">
 <style>
 @font-face{
   font-family:'Nightingale';
@@ -463,6 +464,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
   html,body,*{cursor:auto!important;cursor:revert!important;}
 }
 @media(max-width:768px){
+  html{overflow-x:hidden;}   /* phones: nothing can widen the layout viewport */
   body{overflow-x:clip;overflow-y:auto;height:auto;}
   .page{position:relative;inset:auto;overflow:visible;transform:none !important;opacity:1 !important;pointer-events:all !important;padding-bottom:var(--space-11);}
   .page:not(.active){display:none;}
@@ -531,13 +533,13 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
     flex-shrink:0;
   }
   .pg-float-card:nth-child(1){order:1;transform:rotate(-4deg) !important;margin-left:4%;margin-bottom:var(--space-4);}
-  .pg-float-card:nth-child(2){order:4;transform:rotate(3.5deg) !important;margin-left:20%;margin-bottom:var(--space-3);}
+  .pg-float-card:nth-child(2){order:2;transform:rotate(3.5deg) !important;margin-left:20%;margin-bottom:var(--space-3);}
   .pg-float-card:nth-child(3){order:3;transform:rotate(-2.5deg) !important;margin-left:10%;margin-bottom:var(--space-6);}
-  .pg-float-card:nth-child(4){order:8;transform:rotate(5deg) !important;margin-left:2%;margin-bottom:var(--space-4);}
+  .pg-float-card:nth-child(4){order:4;transform:rotate(5deg) !important;margin-left:2%;margin-bottom:var(--space-4);}
   .pg-float-card:nth-child(5){order:5;transform:rotate(-3.5deg) !important;margin-left:16%;margin-bottom:var(--space-5);}
   .pg-float-card:nth-child(6){order:6;transform:rotate(2.5deg) !important;margin-left:8%;margin-bottom:var(--space-4);}
   .pg-float-card:nth-child(7){order:7;transform:rotate(-4.5deg) !important;margin-left:22%;margin-bottom:var(--space-2);}
-  .pg-float-card:nth-child(8){order:2;transform:rotate(3deg) !important;margin-left:6%;margin-bottom:var(--space-4);}
+  .pg-float-card:nth-child(8){order:8;transform:rotate(3deg) !important;margin-left:6%;margin-bottom:var(--space-4);}
   .pg-float-card:nth-child(9){order:9;transform:rotate(-3deg) !important;margin-left:18%;margin-bottom:var(--space-4);}
   .pg-float-card:nth-child(10){order:10;transform:rotate(4deg) !important;margin-left:12%;margin-bottom:var(--space-4);}
   .pg-float-hint{display:none;}
@@ -587,6 +589,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
   .setdm-meta-row{flex-direction:column !important;gap:var(--space-4) !important;}
   .setdm-meta-row>div:nth-child(3){order:4;}
   .setdm-meta-row>div:nth-child(4){order:3;}
+  .setdm-meta-row>div:nth-child(5){order:5;}
 
   /* ─── inline grids: multi-col → single col ─── */
   [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important;display:flex !important;flex-direction:column !important;}
@@ -660,6 +663,69 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .cs-back:hover{color:var(--purple-text);}
 .cs-back-sm{left:52px;}
 
+
+.ft-ps{font-family:var(--ff-body);font-size:var(--fs-2xs);line-height:1.5;letter-spacing:var(--tracking);color:var(--c-ink-2);margin:var(--space-8) var(--gutter) 0;}
+.fl-footer--inset .ft-ps,.page-footer .ft-ps{margin-left:0;margin-right:0;}
+.ft-ps a{color:var(--c-accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;cursor:none;transition:text-shadow .35s var(--ease);}
+.ft-ps a:hover,.ft-ps a:focus-visible{text-shadow:0 0 12px var(--c-iris-petal),0 0 4px color-mix(in srgb,var(--c-iris-petal) 60%,transparent);}
+.ma-wrap .ft-ps,.pg-wrap .ft-ps,.cs-page .ft-ps{margin-left:0;margin-right:0;}
+/* pull-up footer: content above freezes once it reaches the bottom edge, footer slides up over it (JS sets --pu) */
+.pu-foot{position:relative;z-index:5;border-radius:var(--r-lg) var(--r-lg) 0 0;box-shadow:0 -14px 32px -18px rgba(36,39,42,.18);}
+.pu-freeze{transform:translateY(var(--pu,0px));}
+.fl-footer.pu-foot{overflow-x:clip;display:flex;flex-direction:column;padding-top:var(--block);padding-bottom:0 !important;margin-top:calc(var(--space-14) + var(--space-12)) !important;}
+.fl-footer.pu-foot>.fl-contact-line{margin-bottom:var(--block) !important;}
+.fl-footer.pu-foot>.ft-ps{margin:var(--stack) var(--gutter) var(--block);text-align:center;}
+.fl-footer--inset.pu-foot>.ft-ps{margin-left:0;margin-right:0;}
+/* inset footers (About, Playground) become full-width sheets like Home, content kept on the gutter */
+.fl-footer--inset.pu-foot{margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));padding-left:var(--gutter);padding-right:var(--gutter);}
+.page:has(.pu-foot){padding-bottom:0;}
+.fl-footer.pu-foot{padding-bottom:var(--block);}
+@media(max-width:768px){.fl-footer.pu-foot{margin-top:calc(var(--space-13) + var(--space-10)) !important;}}
+@media(max-width:768px){#page-home .fl-footer.pu-foot{margin-top:calc(var(--space-14) + var(--space-11)) !important;}}   /* home: extra room after the last case study card */
+/* footer: the iris grows from the bottom edge once the footer pulls up (JS adds .grow) */
+.gf-wrap{position:relative;z-index:0;align-self:center;margin:max(calc(var(--block) - var(--gfh) * .07),calc(var(--space-2) + var(--gfh) * .02)) 0 0;}   /* lifted, then 10% back down; petals never reach the links row */
+.fl-footer.pu-foot>.fl-contact-line,.fl-footer.pu-foot>.fl-bottom{position:relative;z-index:1;}
+.gf{position:relative;display:block;height:min(85vh,880px);width:auto;aspect-ratio:1/2;color:var(--c-ink);pointer-events:none;overflow:visible;}
+/* handwritten nudge above the flower head (all screens) */
+.gf-wrap{--gfh:min(85vh,880px);}
+@media(max-width:768px){.gf-wrap{--gfh:min(70vh,600px);}}
+.gf-tap{display:flex;align-items:center;gap:4px;position:absolute;z-index:2;top:calc(var(--gfh) * .19);right:84%;left:auto;
+  font-family:var(--ff-hand);font-size:var(--fs-xl);color:var(--c-ink-2);white-space:nowrap;text-align:right;transform:rotate(-6deg);opacity:0;transition:opacity .6s 2.2s;pointer-events:none;}
+.gf-tap{align-items:flex-start !important;}
+.gf-tap svg{order:2;width:24px;height:auto;flex-shrink:0;margin-top:.45em;transform:scaleX(-1);}
+/* phones: note sits above the flower head (fits the longer messages) */
+@media(max-width:768px){.gf-tap{top:calc(var(--gfh) * -.01);left:50%;right:auto;transform:translateX(-45%) rotate(-6deg);}.gf-tap svg{order:0;transform:none;}}
+.gf-tap.no-arrow svg{display:none;}
+.grow .gf-tap{opacity:1;}
+.gf-stem{stroke-dasharray:1 1;stroke-dashoffset:-1;}
+.gf-leaf,.gf-bloom{transform-box:view-box;transform:scale(0);opacity:0;}
+.gf-bloom{transform-origin:13.1px 12.8px;}
+.grow .gf-stem{transition:stroke-dashoffset 1.3s cubic-bezier(.45,.05,.3,1);stroke-dashoffset:0;}
+.grow .gf-leaf{opacity:1;transform:scale(1);transition:transform .7s var(--ease-bounce),opacity .3s;}
+.grow .gf-leaf.l1{transition-delay:.15s;}.grow .gf-leaf.l2{transition-delay:.3s;}
+.grow .gf-leaf.l3{transition-delay:.75s;}.grow .gf-leaf.l4{transition-delay:.95s;}
+.grow .gf-bloom{opacity:1;transform:scale(1);transition:transform .9s var(--ease-bounce) 1.2s,opacity .3s 1.2s;}
+.grow .gf{pointer-events:auto;}
+/* tap the flower: one petal at a time tumbles down with the wind and rests on the floor */
+.gf-petal{transform-box:view-box;}
+.gf-petal.fallen{animation:gf-fall 1.7s cubic-bezier(.4,.1,.5,1) forwards;}
+@keyframes gf-fall{0%{transform:translate(0,0) rotate(0) scale(1);opacity:1;}
+  35%{transform:translate(calc(var(--dx) * .5),calc(var(--dy) * .3)) rotate(calc(var(--r) * .55)) scale(1);}
+  65%{transform:translate(calc(var(--dx) * .7),calc(var(--dy) * .72)) rotate(calc(var(--r) * .4)) scale(1);}
+  100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(1);opacity:1;}}
+@media(max-width:768px){.gf-wrap{margin-top:calc(var(--section) - var(--gfh) * .07);}.gf{height:min(70vh,600px);}}
+@media(prefers-reduced-motion:reduce){.gf-stem{stroke-dashoffset:0;}.gf-leaf,.gf-bloom{opacity:1;transform:none;}.grow .gf{animation:none;}.gf-petal.fallen{animation-duration:.01s;}}
+/* "time travel here": minimal glitter on hover */
+.tt-spark{position:fixed;left:0;top:0;width:9px;height:9px;pointer-events:none;z-index:9998;color:var(--c-iris-petal);animation:tt-spark .9s var(--ease) forwards;}
+.tt-spark.alt{color:var(--c-accent);width:6px;height:6px;}
+@keyframes tt-spark{0%{opacity:0;transform:translate(var(--x0),var(--y0)) scale(.3) rotate(0deg);}25%{opacity:1;}100%{opacity:0;transform:translate(var(--x1),var(--y1)) scale(1) rotate(90deg);}}
+/* hand-drawn globe: places lived */
+.ma-places{margin-top:var(--block);}
+.ma-globe{display:block;width:100%;max-width:540px;height:auto;overflow:visible;}
+@media(min-width:769px){.ma-globe{max-width:760px;}}
+.ma-globe-lbl{font-family:var(--ff-hand);font-size:22px;text-transform:lowercase;}
+/* handwriting accent font is always lowercase */
+.about-scrapbook-note,.about-sticker,.pg-sticker,.pg-badge,.ma-cap,.ab-sticky-title,.ab-polaroid figcaption,#trinketsCaption,.ab-note,.ma-hello,.il-text{text-transform:lowercase !important;}
 /* ─── hero scroll arrow: tablet/desktop only ─── */
 .hero-scroll-arrow{pointer-events:none;}
 @media(min-width:769px){
@@ -919,7 +985,7 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .fl-cursor{position:fixed;left:0;top:0;width:18px;height:18px;border-radius:9px;background:var(--c-accent-bright);pointer-events:none;z-index:10000;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;opacity:0;transition:transform .45s var(--ease-bounce),width .35s var(--ease),height .35s var(--ease),background-color .25s,border-radius .35s,opacity .2s;}
 .fl-cursor span{font-size:var(--fs-xs);font-weight:400;letter-spacing:var(--tracking);line-height:1.2;color:var(--c-accent);text-align:center;white-space:nowrap;opacity:0;transform:scale(.6);transition:opacity .2s,transform .3s;}
 .fl-cursor.is-on{opacity:1;}
-.fl-cursor.is-hover{transform:translate(-50%,-50%) scale(1.45);}
+.fl-cursor.is-hover{background:var(--c-iris-petal);}
 @media(prefers-reduced-motion:reduce){.fl-cursor{transition:opacity .2s;}}
 .fl-cursor.is-link{width:46px;height:30px;background:transparent;opacity:1;}
 .fl-eyes{position:absolute;left:50%;top:50%;width:46px;height:30px;transform:translate(-50%,-50%) scale(.4);opacity:0;transition:opacity .15s,transform .3s cubic-bezier(.3,1.6,.5,1);overflow:visible;}
@@ -933,6 +999,7 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 /* about — mialaurent-style */
 .ma-wrap{padding:var(--page-top) var(--gutter) 0;min-height:100vh;display:flex;flex-direction:column;}
 .ma-sec{margin-bottom:var(--section);}
+.ma-sec:last-of-type{margin-bottom:0;}
 .ma-label{font-size:var(--fs-sm);font-weight:700;letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--c-ink);margin:0 0 var(--stack);}
 .ma-ring-stage{position:relative;height:440px;perspective:2400px;perspective-origin:50% 50%;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;margin-top:var(--space-8);}
 .ma-ring-stage.is-dragging{cursor:grabbing;}
@@ -943,16 +1010,26 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .ma-portrait{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
 /* desktop: photo matches the height of the text column beside it */
 /* about portrait as a polaroid: white frame, deeper bottom, slight tilt */
-.ma-polaroid{margin:0;background:var(--c-surface);padding:var(--space-3) var(--space-3) var(--space-11);box-shadow:var(--sh-2);transform:rotate(-2deg);}
+.ma-polaroid{margin:0;background:var(--c-surface);padding:var(--space-3) var(--space-3) var(--space-5);box-shadow:var(--sh-2);transform:rotate(-2deg);}
 @media(min-width:769px){.ma-polaroid{align-self:start;}}
-@media(max-width:768px){.ma-polaroid{max-width:320px;margin:0 auto var(--space-4);padding-bottom:var(--space-10);}}
+@media(max-width:768px){.ma-polaroid{max-width:320px;margin:0 auto;padding-bottom:var(--space-5);}.ma-who{row-gap:var(--block);}}
 .ma-polaroid .ma-portrait{aspect-ratio:4/5;height:auto;min-height:0;}
+/* polaroid caption, handwritten */
+.ma-cap{margin-top:var(--space-3);font-family:var(--ff-hand);font-size:var(--fs-lg);line-height:1.15;color:var(--c-ink);text-align:center;}
+.ma-cap>span{display:block;}
+.ma-cap small{font-size:.7em;color:var(--c-ink-2);}
+.ma-cap .zh{font-family:"Ma Shan Zheng",var(--ff-hand),cursive;font-size:1.3em;line-height:1;-webkit-font-smoothing:antialiased;}
+.ma-cap .ma-cap-note{margin-top:calc(var(--space-1) * -1);line-height:1.1;}
+.ma-cap .zh rt{font-family:var(--ff-hand);font-size:.6em;text-transform:uppercase !important;color:var(--c-ink-2);letter-spacing:.02em;}
+
 /* divider between the bio and Experience, centred in the gap */
-.ma-sec:has(.ma-who){margin-bottom:var(--space-10);}
-.ma-sec--rule{border-top:1px solid var(--c-line);padding-top:var(--space-10);}
-.ma-bio p{font-size:var(--fs-body);line-height:1.5;color:var(--c-ink);margin:0 0 var(--space-5);max-width:none;}
-.ma-facts{margin-top:var(--space-8);padding-top:var(--space-5);border-top:1px solid var(--c-line);}
-.ma-facts-h{font-size:var(--fs-sm) !important;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-caps);color:var(--c-ink) !important;margin:0 0 var(--space-3) !important;}
+.ma-sec:has(.ma-who){margin-bottom:calc(var(--section) / 2);}
+.ma-sec--rule{position:relative;padding-top:calc(var(--section) / 2);}
+.ma-sec--rule::before{content:"";position:absolute;top:-7px;left:0;right:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='14' viewBox='0 0 44 14' preserveAspectRatio='none'%3E%3Cpath d='M0 7.5 C5 2.2 10 2.8 11.5 7 S18 12.6 22 7.2 S29.5 1.6 33 6.8 S40 12.2 44 7.5' fill='none' stroke='%237558b0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center/84px 14px;}
+.ma-bio p{font-size:var(--fs-body);line-height:1.5;color:var(--c-ink);margin:0 0 var(--stack);max-width:none;}
+.ma-bio p:last-of-type{margin-bottom:0;}
+.ma-facts{margin-top:var(--block);padding-top:var(--block);border-top:1px solid var(--c-line);}
+.ma-facts-h{font-size:var(--fs-sm) !important;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-caps);color:var(--c-ink) !important;margin:0 0 var(--stack) !important;}
 .ma-facts ul{list-style:none;margin:0;padding:0;}
 .ma-facts li{font-size:var(--fs-body);line-height:1.5;color:var(--c-ink);padding:var(--space-1) 0 var(--space-1) var(--space-6);position:relative;}
 .ma-facts li::before{content:'';position:absolute;left:2px;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--c-accent);}
@@ -968,7 +1045,7 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
   .ma-ring-stage{height:230px;perspective:900px;margin-top:var(--space-5);}
   .ma-card{width:110px;height:154px;left:-55px;top:-77px;}
   .ma-who{grid-template-columns:1fr;}
-  .ma-row{grid-template-columns:1fr auto;gap:var(--space-1) var(--space-4);padding:var(--space-5) 0;}
+  .ma-row{grid-template-columns:minmax(0,1fr) auto;gap:var(--space-1) var(--space-4);padding:var(--space-5) 0;}
   .ma-t{grid-column:1;}.ma-y{grid-column:2;grid-row:1;}
   .ma-d{grid-column:1 / -1;}
 }
@@ -1034,6 +1111,7 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
   .cs-page .cs-meta-row{grid-template-columns:1fr 1fr;row-gap:var(--space-6) !important;}
   .cs-page .csx-hero{padding:var(--space-7) var(--space-4);}
 }
+@media(min-width:769px){.cs-page .setdm-meta-row{grid-template-columns:repeat(5,minmax(0,1fr));}}
 
 
 @media(min-width:769px){.fl-statement{max-width:none !important;white-space:nowrap;}}
@@ -1050,10 +1128,17 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .fl-cogs.open .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
 /* mouse / keyboard: expand on hover or focus */
 @media(hover:hover){
-  .fl-cogs:hover,.fl-cogs:focus-visible{color:var(--c-accent);background:var(--c-accent-tint);}
-  .fl-cogs:hover .fl-cogs-s,.fl-cogs:focus-visible .fl-cogs-s{max-width:0;opacity:0;}
-  .fl-cogs:hover .fl-cogs-l,.fl-cogs:focus-visible .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
+  html:not(.cogs-tap) .fl-cogs:hover,html:not(.cogs-tap) .fl-cogs:focus-visible{color:var(--c-accent);background:var(--c-accent-tint);}
+  html:not(.cogs-tap) .fl-cogs:hover .fl-cogs-s,html:not(.cogs-tap) .fl-cogs:focus-visible .fl-cogs-s{max-width:0;opacity:0;}
+  html:not(.cogs-tap) .fl-cogs:hover .fl-cogs-l,html:not(.cogs-tap) .fl-cogs:focus-visible .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
 }
+/* too narrow for the expanded name to fit on the line (set by JS): tap-to-expand, like touch, so hover can't loop */
+html.cogs-tap .fl-cogs>span{transition:opacity .25s;}
+html.cogs-tap .fl-cogs-l{display:none;}
+html.cogs-tap .fl-cogs.open .fl-cogs-s{display:none;}
+html.cogs-tap .fl-cogs.open .fl-cogs-l{display:inline;max-width:none;white-space:normal;}
+html.cogs-tap .fl-sub span:has(>.fl-cogs.open){white-space:normal !important;}
+html.cogs-tap .fl-cogs.open{max-width:100%;white-space:normal;vertical-align:top;line-height:1.25;}
 /* touch: tap toggles only. No width animation, so the text can't slide out from under a finger and loop */
 @media(hover:none){
   .fl-cogs>span{transition:opacity .25s;}
@@ -1083,7 +1168,11 @@ nav .nav-logo{font-size:var(--fs-body);font-weight:400;letter-spacing:var(--trac
 #page-home .sc-title,#page-home .sc-meta{font-size:var(--fs-sm);white-space:nowrap;}
 #page-home .sc-card:hover .sc-title{color:var(--c-ink);}
 #page-home .sc-meta::before{content:'\00B7';margin-right:var(--space-2);}
+#page-home .sc-caption.is-wrapped .sc-meta::before{content:none;}   /* subtitle dropped to its own line: no leading dot */
 @media(hover:none){#page-home .sc-caption{opacity:1;transform:none;}}
+/* caption pills never run past their card: wrap instead (narrow screens) */
+#page-home .sc-caption{max-width:calc(100% - var(--space-3) * 2);box-sizing:border-box;flex-wrap:wrap;row-gap:0 !important;}
+#page-home .sc-caption .sc-title,#page-home .sc-caption .sc-meta{white-space:normal;}
 .fl-footer{margin-top:var(--section);padding-bottom:var(--space-8);}
 .fl-footer .fl-contact-line{font-size:var(--fs-body);line-height:1.5;margin:0 var(--gutter) var(--space-6);max-width:none;overflow-wrap:anywhere;}
 .fl-bottom{font-size:var(--fs-body);}
@@ -1111,13 +1200,27 @@ nav .nav-logo{font-size:var(--fs-body);font-weight:400;letter-spacing:var(--trac
 .fl-bottom{grid-template-columns:1fr auto 1fr;align-items:end;}
 .fl-reach{display:flex;flex-direction:column;gap:var(--space-3);}
 .fl-footer .fl-reach .fl-contact-line{margin:0 !important;}
+/* footer: heading on top, everything else on the bottom */
+.fl-footer>.fl-contact-line{font-size:var(--fs-h1) !important;line-height:1.15 !important;color:var(--c-ink);max-width:16em;margin:0 var(--gutter) !important;}
+.fl-footer--inset>.fl-contact-line{margin:0 !important;}
+
+@media(max-width:768px){.fl-footer>.fl-contact-line{font-size:var(--fs-xl) !important;line-height:1.2 !important;}}
 .fl-reach .fl-social{justify-content:flex-start;}
 .fl-copy{justify-self:end;text-align:right;}
+.fl-end{justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2);}
+.fl-top{background:none;border:0;padding:0;font:inherit;color:var(--c-ink-2);cursor:none;display:inline-flex;align-items:center;gap:var(--space-2);transition:color .2s;}
+.fl-top .arr{display:block;flex-shrink:0;transition:transform .25s ease;}
+.fl-end .fl-copy{order:0 !important;}
+.fl-end .fl-top{order:1 !important;}
+.fl-top:hover{color:var(--c-accent);}
+.fl-top:hover .arr{transform:translateY(-3px);}
 .fl-footer--inset{margin-top:var(--section);}
 .fl-footer--inset .fl-bottom{margin:0 !important;}
 @media(max-width:768px){
   .fl-bottom{grid-template-columns:1fr;justify-items:start;}
   .fl-copy{justify-self:start;text-align:left;order:4;}
+  .fl-end{justify-self:start;order:4;align-items:flex-start;}
+  .fl-top{min-height:44px;}
 }
 
 /* playground on the system: same page top, gutter and heading scale as home */
@@ -1138,6 +1241,8 @@ a:not(.sc-card a):hover,a:not(.sc-card a):focus-visible,button:hover,button:focu
 @media(min-width:769px){.ma-hello{text-align:center;}}
 /* mobile: About + Playground headings sit lower, clear of the nav */
 @media(max-width:768px){#page-about .ma-wrap,#page-playground .pg-wrap{padding-top:calc(var(--page-top) + var(--space-6)) !important;}}
+/* About and Playground headings share the same left edge on every screen */
+#page-about .ma-wrap,#page-playground .pg-wrap{padding-left:var(--gutter) !important;padding-right:var(--gutter) !important;}
 
 
 /* mobile: hamburger opens a full-screen menu */
@@ -1242,7 +1347,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
   <section class="fl-hero">
     <h1 class="fl-statement">Iris designs products that prioritise<br class="fl-br"> craft, intention, and thoughtful<br class="fl-br"> experimentation.</h1>
     <p class="fl-sub">Studying <a class="fl-cogs" href="https://cogsys.ubc.ca/" target="_blank" rel="noopener noreferrer"><span class="fl-cogs-s">COGS</span><span class="fl-cogs-l">Cognitive Systems (HCI)</span></a> @ UBC, <span style="white-space:nowrap">designing @ <a class="fl-cogs" href="https://icics.ubc.ca/" target="_blank" rel="noopener noreferrer" style="--open:32em;--pl:.318em"><span class="fl-cogs-s">ICICS</span><span class="fl-cogs-l">Institute for Computing, Information, and Cognitive Systems</span></a></span></p>
-    <script>(function(){var cs=document.querySelectorAll('.fl-cogs');cs.forEach(function(c){c.addEventListener('click',function(e){e.stopPropagation();if(!matchMedia('(hover:hover)').matches&&!c.classList.contains('open')){e.preventDefault();cs.forEach(function(o){o.classList.remove('open');});c.classList.add('open');}});});document.addEventListener('click',function(){cs.forEach(function(c){c.classList.remove('open');});});})();</script>
+    <script>(function(){var cs=document.querySelectorAll('.fl-cogs');cs.forEach(function(c){c.addEventListener('click',function(e){e.stopPropagation();if((!matchMedia('(hover:hover)').matches||document.documentElement.classList.contains('cogs-tap'))&&!c.classList.contains('open')){e.preventDefault();cs.forEach(function(o){o.classList.remove('open');});c.classList.add('open');}});});document.addEventListener('click',function(){cs.forEach(function(c){c.classList.remove('open');});});})();</script>
   </section>
 
   <div class="fl-bar" aria-hidden="true"></div>
@@ -1282,7 +1387,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
         </div>
         <div class="sc-caption">
           <span class="sc-title">Luma Ventures (SetDM AI)</span>
-          <span class="sc-meta">Founding</span>
+          <span class="sc-meta">Founding · 7 figures in 8 months</span>
         </div>
       </div>
     </div>
@@ -1327,9 +1432,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
   </div>
 
   <footer class="fl-footer">
+    <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
+    
     <div class="fl-bottom">
       <div class="fl-reach">
-        <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
         <div class="fl-social">
         <a href="mailto:irisdanna05@gmail.com"><span class="arr">&#8594;</span> Email</a>
         <a href="https://linkedin.com/in/irisdan" target="_blank"><span class="arr">&#8594;</span> LinkedIn</a>
@@ -1337,8 +1443,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       </div>
       </div>
       <div class="webring webring-hub fl-webring"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-      <p class="fl-copy">&#169; 2026 Iris D. Liu</p>
+      <div class="fl-end"><p class="fl-copy">Made for you by Iris D. Liu</p><button type="button" class="fl-top"><svg class="arr" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V1.8M2.4 5.2 6 1.6l3.6 3.6"/></svg>Back to top</button></div>
     </div>
+    <div class="gf-wrap"><span class="gf-tap" aria-hidden="true"><svg viewBox="0 0 28 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 C14 6 9 14 11 32"/><path d="M6 26 L11 33 L16 26.5"/></svg><span class="gf-tap-t">tap me</span></span><svg class="gf" viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width=".17" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gf-stem" pathLength="1" d="M12.2 14.6 C12.5 24 12.1 34 11.7 45"/><g class="gf-leaf l1" style="transform-origin:11.5px 44.8px"><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6"/></g><g class="gf-leaf l2" style="transform-origin:12.2px 44.8px"><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8"/></g><g class="gf-leaf l3" style="transform-origin:12.4px 26px"><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3"/></g><g class="gf-leaf l4" style="transform-origin:12.2px 22.2px"><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7"/></g><g class="gf-bloom"><g class="gf-petal p0" style="transform-origin:12.8px 8px;--dx:9px;--dy:33px;--r:120deg"><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9"/></g><g class="gf-petal p1" style="transform-origin:8px 14px;--dx:3px;--dy:27.5px;--r:-80deg"><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7"/></g><g class="gf-petal p2" style="transform-origin:16.5px 15px;--dx:13px;--dy:26.5px;--r:200deg"><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9"/></g><g class="gf-petal p3" style="transform-origin:12.4px 16.2px;--dx:6px;--dy:25.5px;--r:90deg"><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1"/></g><path d="M12.1 12.4 L11.2 9.6 M12.3 12.5 L13.6 10 M11.5 13.3 L9.4 13.6 M12.8 13.5 L15 14.4"/></g></svg></div>
+    <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
   </footer>
 </div>
 
@@ -1372,10 +1480,11 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <section class="ma-sec">
       <div class="ma-who">
-        <figure class="ma-polaroid"><img class="ma-portrait" src="images/irisimg.jpeg" alt="Iris"></figure>
+        <figure class="ma-polaroid"><img class="ma-portrait" src="images/irisimg.jpeg" alt="Iris"><figcaption class="ma-cap"><span>iris <small>(the flower + the song)</small></span> <span><ruby class="zh" lang="zh-Hans">丹<rt>dān</rt>枫<rt>fēng</rt></ruby> <small>= autumn red maples</small></span><span class="ma-cap-note"><small>where &#8220;danna&#8221; comes from</small></span></figcaption></figure>
         <div class="ma-bio">
           <p>I grew up heavily immersed in competitive music; it taught me professionalism, artistry, and that not being good at something is just part of learning.</p>
           <p>I transitioned into film, where craft met storytelling, and each scene I studied expanded my sense of empathy. That mindset now shapes my design practice: human-first, constantly iterative, and of course, visually purposeful.</p>
+          <p>Lately, I&#8217;ve helped a startup scale to 7 figures in 8 months and designed content for creators with 1M+ followers.</p>
           <p>In my freetime, you can find me at pretty much any cafe in Vancouver.</p>
           <div class="ma-facts">
             <p class="ma-facts-h">Fun facts</p>
@@ -1386,6 +1495,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
               <li>Worked on design for the world&#8217;s <a href="https://x.com/socraticainfo/status/2036601353590517956?s=20" target="_blank">greatest celebration of making</a></li>
             </ul>
           </div>
+          <div class="ma-facts ma-places"><p class="ma-facts-h">Places I&#8217;ve called home</p><svg class="ma-globe" viewBox="0 0 540 300" role="img" aria-label="A hand-drawn globe marking the places Iris has called home: Washington State, the Vancouver metropolitan region, Singapore and Toronto"><defs><clipPath id="gl-clip"><path d="M347.7 150.9 Q347.0 165.4 345.9 172.5 Q344.7 179.7 342.1 187.5 Q339.4 195.4 335.7 202.5 Q331.9 209.7 327.6 215.7 Q323.4 221.8 318.4 227.9 Q313.5 233.9 307.4 238.7 Q301.3 243.5 295.1 247.9 Q288.9 252.3 282.3 255.5 Q275.7 258.6 268.4 261.2 Q261.1 263.8 253.3 265.2 Q245.4 266.6 237.7 267.7 Q230.0 268.9 222.4 268.2 Q214.9 267.5 207.0 265.6 Q199.2 263.7 191.8 261.4 Q184.5 259.2 177.9 255.9 Q171.2 252.7 164.3 248.4 Q157.3 244.0 152.3 238.8 Q147.3 233.5 141.4 227.5 Q135.6 221.5 131.2 215.0 Q126.9 208.4 124.3 201.9 Q121.7 195.4 119.0 188.2 Q116.3 181.1 115.0 173.3 Q113.7 165.6 113.0 157.9 Q112.2 150.2 112.8 142.5 Q113.4 134.8 114.9 126.9 Q116.3 118.9 118.8 111.9 Q121.3 104.8 124.8 97.5 Q128.3 90.3 132.0 83.8 Q135.8 77.3 141.4 72.3 Q147.1 67.3 152.8 61.7 Q158.4 56.1 165.0 52.2 Q171.6 48.3 178.3 44.4 Q185.0 40.5 192.0 38.2 Q199.1 35.9 206.7 34.4 Q214.3 32.9 222.3 32.8 Q230.3 32.8 237.4 33.0 Q244.6 33.1 252.2 34.2 Q259.7 35.3 267.7 38.2 Q275.7 41.1 282.7 44.4 Q289.8 47.7 295.4 51.9 Q301.0 56.2 307.3 61.8 Q313.6 67.3 319.0 72.7 Q324.5 78.1 328.3 84.2 Q332.0 90.3 335.7 97.3 Q339.3 104.3 341.3 111.5 Q343.4 118.6 344.7 126.8 Q346.1 134.9 346.9 142.9 L347.7 150.9 Z"/></clipPath></defs><g transform="translate(2.2 -1.6)" opacity=".92"><path d="M347.7 150.9 Q347.0 165.4 345.9 172.5 Q344.7 179.7 342.1 187.5 Q339.4 195.4 335.7 202.5 Q331.9 209.7 327.6 215.7 Q323.4 221.8 318.4 227.9 Q313.5 233.9 307.4 238.7 Q301.3 243.5 295.1 247.9 Q288.9 252.3 282.3 255.5 Q275.7 258.6 268.4 261.2 Q261.1 263.8 253.3 265.2 Q245.4 266.6 237.7 267.7 Q230.0 268.9 222.4 268.2 Q214.9 267.5 207.0 265.6 Q199.2 263.7 191.8 261.4 Q184.5 259.2 177.9 255.9 Q171.2 252.7 164.3 248.4 Q157.3 244.0 152.3 238.8 Q147.3 233.5 141.4 227.5 Q135.6 221.5 131.2 215.0 Q126.9 208.4 124.3 201.9 Q121.7 195.4 119.0 188.2 Q116.3 181.1 115.0 173.3 Q113.7 165.6 113.0 157.9 Q112.2 150.2 112.8 142.5 Q113.4 134.8 114.9 126.9 Q116.3 118.9 118.8 111.9 Q121.3 104.8 124.8 97.5 Q128.3 90.3 132.0 83.8 Q135.8 77.3 141.4 72.3 Q147.1 67.3 152.8 61.7 Q158.4 56.1 165.0 52.2 Q171.6 48.3 178.3 44.4 Q185.0 40.5 192.0 38.2 Q199.1 35.9 206.7 34.4 Q214.3 32.9 222.3 32.8 Q230.3 32.8 237.4 33.0 Q244.6 33.1 252.2 34.2 Q259.7 35.3 267.7 38.2 Q275.7 41.1 282.7 44.4 Q289.8 47.7 295.4 51.9 Q301.0 56.2 307.3 61.8 Q313.6 67.3 319.0 72.7 Q324.5 78.1 328.3 84.2 Q332.0 90.3 335.7 97.3 Q339.3 104.3 341.3 111.5 Q343.4 118.6 344.7 126.8 Q346.1 134.9 346.9 142.9 L347.7 150.9 Z" fill="#dde9f6"/></g><g clip-path="url(#gl-clip)"><g transform="translate(2.2 -1.6)" fill="var(--c-iris-leaf)" opacity=".5"><path d="M246.9 69.1 Q248.3 66.2 248.4 65.1 Q248.5 64.1 248.2 62.9 Q247.8 61.8 248.6 61.6 Q249.4 61.4 250.2 61.0 Q251.0 60.6 252.1 61.2 Q253.1 61.7 253.6 61.0 Q254.1 60.3 255.3 60.8 Q256.5 61.3 257.2 60.7 Q257.8 60.0 258.9 59.5 Q260.0 59.0 260.5 59.1 Q261.1 59.1 261.1 58.7 Q261.1 58.4 261.9 58.8 Q262.7 59.2 263.2 58.8 Q263.7 58.3 264.7 57.9 Q265.7 57.5 266.1 56.9 Q266.6 56.4 266.7 56.3 Q266.8 56.1 267.8 56.0 Q268.9 56.0 269.0 55.8 Q269.1 55.7 269.3 54.9 Q269.5 54.2 269.8 54.1 Q270.1 53.9 269.5 53.3 Q269.0 52.8 269.1 52.6 Q269.3 52.4 269.3 51.4 Q269.4 50.4 269.4 49.8 Q269.5 49.2 268.7 49.3 Q268.0 49.4 267.5 48.8 Q267.0 48.1 266.6 47.8 Q266.2 47.6 266.5 47.1 Q266.9 46.6 267.5 46.2 Q268.2 45.8 268.6 45.9 Q268.9 46.0 269.3 45.7 Q269.7 45.4 270.4 45.6 Q271.0 45.8 271.1 45.4 Q271.1 44.9 271.1 44.7 Q271.0 44.6 272.2 44.7 Q273.4 44.8 274.1 44.1 Q274.9 43.3 275.0 43.5 Q275.1 43.7 275.1 43.4 Q275.2 43.0 275.6 42.6 Q276.0 42.1 276.1 42.5 Q276.2 43.0 276.3 42.4 Q276.5 41.7 277.9 42.7 Q279.2 43.6 280.0 43.7 Q280.7 43.7 282.0 44.6 Q283.3 45.4 284.4 45.8 Q285.4 46.2 286.6 46.7 Q287.8 47.2 289.6 48.6 Q291.3 50.0 293.5 50.4 Q295.7 50.8 296.7 52.0 Q297.6 53.2 299.3 54.6 Q300.9 56.0 303.0 57.2 Q305.2 58.5 306.4 60.1 Q307.6 61.8 309.7 63.5 Q311.7 65.2 313.9 67.0 Q316.1 68.8 317.3 70.5 Q318.6 72.2 320.5 73.9 Q322.5 75.6 324.5 78.5 Q326.4 81.5 328.1 83.9 Q329.7 86.3 330.8 88.5 Q331.9 90.6 332.1 91.7 Q332.4 92.9 332.8 93.2 Q333.3 93.6 333.8 94.5 Q334.4 95.5 334.8 96.2 Q335.2 97.0 335.1 97.9 Q335.0 98.9 335.1 99.9 Q335.3 101.0 336.5 104.0 Q337.7 107.0 339.4 109.0 Q341.0 110.9 340.9 111.0 Q340.8 111.1 341.0 110.8 Q341.1 110.4 341.6 111.1 Q342.0 111.8 341.6 111.2 Q341.2 110.6 341.2 111.2 Q341.2 111.9 341.7 113.0 Q342.3 114.2 343.0 115.1 Q343.8 116.0 343.3 117.7 Q342.9 119.4 343.3 118.5 Q343.7 117.6 343.6 117.2 Q343.6 116.9 343.5 117.5 Q343.4 118.1 343.6 117.5 Q343.8 117.0 343.3 116.8 Q342.8 116.6 342.7 117.1 Q342.6 117.6 342.7 117.7 Q342.9 117.8 342.4 117.4 Q341.9 117.0 341.9 117.8 Q341.9 118.5 341.4 118.5 Q340.9 118.4 340.0 118.0 Q339.2 117.5 337.6 116.9 Q336.1 116.3 335.0 114.5 Q333.8 112.7 332.2 111.6 Q330.5 110.5 329.2 109.5 Q327.9 108.5 327.0 106.9 Q326.0 105.4 324.4 104.7 Q322.9 104.0 321.2 102.3 Q319.6 100.6 317.3 99.3 Q314.9 98.1 313.2 96.9 Q311.4 95.7 310.1 94.1 Q308.9 92.6 307.3 90.1 Q305.8 87.6 303.8 85.8 Q301.8 84.0 299.1 82.6 Q296.4 81.2 294.8 80.1 Q293.3 78.9 290.9 77.4 Q288.5 75.8 286.3 75.7 Q284.1 75.6 282.5 75.2 Q281.0 74.8 279.9 74.0 Q278.8 73.2 276.6 73.2 Q274.4 73.2 273.9 73.3 Q273.5 73.4 272.1 74.2 Q270.8 75.0 270.6 76.4 Q270.4 77.8 268.7 78.7 Q267.0 79.5 266.9 80.1 Q266.8 80.8 265.3 81.5 Q263.8 82.2 262.6 82.5 Q261.4 82.9 261.0 84.2 Q260.7 85.6 259.1 86.6 Q257.6 87.6 257.9 85.2 Q258.2 82.8 258.7 80.0 Q259.2 77.1 257.2 76.2 Q255.1 75.3 253.6 74.6 Q252.2 73.9 250.8 72.7 Q249.4 71.6 248.1 70.3 L246.9 69.1 Z"/><path d="M203.9 36.7 Q203.5 36.3 203.4 36.9 Q203.2 37.6 202.8 37.8 Q202.3 38.1 202.2 37.9 Q202.0 37.8 201.8 37.6 Q201.6 37.4 201.4 37.8 Q201.2 38.1 200.7 38.9 Q200.2 39.7 200.3 39.7 Q200.4 39.6 200.9 39.9 Q201.4 40.2 201.1 40.4 Q200.7 40.6 201.0 41.0 Q201.3 41.5 201.1 41.5 Q200.8 41.5 200.9 41.5 Q200.9 41.5 201.4 41.9 Q201.9 42.4 201.7 42.8 Q201.5 43.3 201.9 43.2 Q202.2 43.2 202.0 43.4 Q201.8 43.7 201.9 44.1 Q201.9 44.5 202.0 44.6 Q202.0 44.6 202.2 45.2 Q202.4 45.8 202.8 45.9 Q203.2 46.1 203.6 45.7 Q204.1 45.3 204.0 46.1 Q203.9 47.0 204.4 46.4 Q204.9 45.9 204.5 46.3 Q204.2 46.8 204.4 46.7 Q204.7 46.7 205.0 47.3 Q205.3 47.8 206.3 48.2 Q207.3 48.5 206.6 48.7 Q205.8 48.9 206.2 48.7 Q206.5 48.5 206.6 49.6 Q206.7 50.7 206.1 51.1 Q205.4 51.4 205.5 51.4 Q205.7 51.3 206.2 52.0 Q206.8 52.7 206.1 52.8 Q205.4 52.8 205.9 53.1 Q206.3 53.4 206.2 53.8 Q206.0 54.2 206.7 54.3 Q207.4 54.4 207.4 55.2 Q207.5 56.0 207.3 56.3 Q207.1 56.6 208.0 57.2 Q208.9 57.8 208.8 58.6 Q208.6 59.4 209.7 59.8 Q210.8 60.2 210.7 60.0 Q210.5 59.8 211.1 60.5 Q211.6 61.2 212.5 60.9 Q213.3 60.6 214.1 61.5 Q214.9 62.5 216.0 62.1 Q217.0 61.8 217.2 62.6 Q217.3 63.4 218.4 63.4 Q219.5 63.5 219.9 63.1 Q220.2 62.7 221.6 63.2 Q222.9 63.7 223.1 64.4 Q223.4 65.0 224.7 65.1 Q226.1 65.1 226.4 65.3 Q226.8 65.5 227.7 65.6 Q228.5 65.8 229.8 66.0 Q231.0 66.3 232.1 67.5 Q233.2 68.8 234.0 68.7 Q234.8 68.7 236.2 69.5 Q237.6 70.3 236.3 71.5 Q235.0 72.6 234.0 73.9 Q232.9 75.2 232.0 76.5 Q231.1 77.8 230.3 79.0 Q229.4 80.3 227.8 81.3 Q226.1 82.3 224.4 83.2 Q222.7 84.1 221.0 85.2 Q219.2 86.3 218.3 88.1 Q217.3 90.0 215.3 91.3 Q213.3 92.6 212.5 93.6 Q211.6 94.7 209.5 95.5 Q207.5 96.3 205.2 97.2 Q203.0 98.0 200.9 98.1 Q198.8 98.3 197.1 99.1 Q195.3 99.9 193.0 100.2 Q190.7 100.4 189.1 101.1 Q187.5 101.8 185.3 102.4 Q183.0 103.0 180.8 103.6 Q178.5 104.2 176.5 105.6 Q174.6 106.9 172.7 107.1 Q170.9 107.4 168.8 108.7 Q166.7 110.1 165.7 111.4 Q164.6 112.8 162.3 113.9 Q160.1 115.0 158.4 116.7 Q156.7 118.4 154.9 119.9 Q153.0 121.4 151.7 124.6 Q150.3 127.7 149.6 130.1 Q148.9 132.5 146.2 133.3 Q143.6 134.0 141.7 133.8 Q139.8 133.6 137.7 133.9 Q135.6 134.3 134.3 134.6 Q133.0 135.0 131.5 137.0 Q130.1 139.1 128.8 140.9 Q127.6 142.7 126.6 144.9 Q125.7 147.0 124.8 148.7 Q123.9 150.4 123.3 153.0 Q122.8 155.6 122.5 158.2 Q122.1 160.9 121.8 163.3 Q121.5 165.8 120.9 162.3 Q120.4 158.7 119.9 154.4 Q119.3 150.2 120.1 147.2 Q120.8 144.3 120.9 141.9 Q121.0 139.6 120.9 137.0 Q120.7 134.4 121.5 131.6 Q122.3 128.7 122.3 126.3 Q122.4 123.8 122.2 121.0 Q122.0 118.2 121.4 118.8 Q120.8 119.4 120.3 119.7 Q119.8 120.0 118.9 120.4 Q118.0 120.8 117.6 120.9 Q117.2 121.0 116.4 120.7 Q115.6 120.4 114.9 122.5 Q114.3 124.5 113.8 126.6 Q113.4 128.8 113.4 130.4 Q113.5 131.9 114.1 129.1 Q114.7 126.4 115.2 123.0 Q115.7 119.6 116.8 117.5 Q117.8 115.5 118.5 112.6 Q119.1 109.7 120.3 106.6 Q121.5 103.6 122.2 102.1 Q123.0 100.7 123.2 99.1 Q123.3 97.5 124.7 95.9 Q126.1 94.2 127.0 93.3 Q127.9 92.4 128.6 90.3 Q129.4 88.2 130.6 86.5 Q131.8 84.8 133.5 82.8 Q135.1 80.8 136.4 78.4 Q137.7 76.0 138.8 74.3 Q139.9 72.6 141.8 71.1 Q143.7 69.6 145.0 67.8 Q146.3 66.0 147.4 64.7 Q148.5 63.5 150.7 62.4 Q152.9 61.3 154.6 59.5 Q156.3 57.7 157.9 56.5 Q159.5 55.3 161.6 53.5 Q163.7 51.7 166.1 50.4 Q168.6 49.1 170.8 48.5 Q173.0 48.0 174.2 46.4 Q175.4 44.9 177.5 44.7 Q179.6 44.4 180.6 43.2 Q181.7 41.9 182.8 41.9 Q184.0 41.9 185.4 41.0 Q186.8 40.1 188.1 39.6 Q189.4 39.0 191.6 38.2 Q193.7 37.3 195.0 37.3 Q196.3 37.2 197.8 37.0 Q199.3 36.9 200.2 36.9 Q201.1 36.8 202.5 36.8 L203.9 36.7 Z"/><path d="M163.6 124.7 Q167.2 123.7 169.8 122.6 Q172.4 121.6 174.1 121.4 Q175.8 121.2 178.0 121.3 Q180.2 121.5 182.7 117.4 Q185.3 113.3 186.7 110.3 Q188.1 107.4 188.9 105.5 Q189.7 103.7 190.9 104.6 Q192.2 105.5 189.6 108.2 Q186.9 110.8 185.3 113.6 Q183.7 116.4 180.8 118.0 Q177.9 119.6 175.5 121.1 Q173.2 122.5 170.5 123.8 Q167.8 125.1 165.7 124.9 L163.6 124.7 Z"/><path d="M137.9 215.4 Q140.1 219.0 141.6 221.2 Q143.1 223.4 144.4 226.3 Q145.7 229.2 147.6 231.1 Q149.6 233.1 150.4 233.7 Q151.3 234.3 152.7 234.4 Q154.2 234.6 155.2 234.6 Q156.3 234.6 157.6 235.4 Q159.0 236.2 160.4 236.7 Q161.8 237.3 162.9 237.2 Q164.0 237.0 166.7 238.6 Q169.5 240.1 171.3 241.8 Q173.1 243.4 175.2 245.0 Q177.3 246.7 180.1 247.5 Q183.0 248.4 184.4 248.7 Q185.8 249.1 187.5 249.5 Q189.2 249.9 190.7 250.0 Q192.1 250.1 194.0 251.0 Q195.9 251.9 196.3 249.7 Q196.7 247.5 197.3 246.5 Q197.9 245.5 197.8 242.9 Q197.7 240.3 195.6 238.5 Q193.5 236.8 191.8 235.0 Q190.1 233.2 188.1 231.5 Q186.1 229.7 184.5 228.3 Q183.0 226.9 181.6 224.2 Q180.2 221.4 178.4 219.1 Q176.6 216.8 175.1 214.2 Q173.6 211.5 170.8 211.2 Q167.9 211.0 166.3 210.6 Q164.6 210.2 162.0 211.2 Q159.4 212.2 157.6 212.3 Q155.9 212.4 153.5 212.2 Q151.1 212.1 149.5 212.1 Q147.9 212.0 146.8 212.1 Q145.7 212.3 144.3 212.1 Q143.0 211.8 141.1 213.0 Q139.3 214.1 138.6 214.7 L137.9 215.4 Z"/><path d="M116.7 151.2 Q117.2 156.6 117.7 160.6 Q118.3 164.5 119.4 167.4 Q120.5 170.3 121.5 172.7 Q122.5 175.2 122.7 178.0 Q122.9 180.8 121.6 178.4 Q120.2 175.9 120.0 173.4 Q119.8 170.9 119.0 168.4 Q118.3 165.9 117.7 163.1 Q117.1 160.4 116.9 155.8 L116.7 151.2 Z"/><path d="M125.0 171.2 Q127.5 180.4 129.2 181.2 Q130.9 182.0 131.9 183.3 Q132.9 184.5 134.2 183.1 Q135.4 181.7 135.9 179.3 Q136.3 176.9 136.2 174.2 Q136.0 171.4 135.5 167.9 Q135.0 164.4 133.9 164.9 Q132.8 165.5 131.3 166.6 Q129.8 167.8 129.3 168.7 Q128.7 169.5 126.9 170.3 L125.0 171.2 Z"/><path d="M154.9 188.6 Q157.7 190.2 160.4 191.6 Q163.2 193.1 164.7 193.4 Q166.3 193.7 168.7 195.2 Q171.1 196.7 173.1 198.5 Q175.1 200.3 177.4 203.0 Q179.8 205.7 181.6 206.9 Q183.4 208.1 185.7 210.4 Q188.1 212.7 185.5 211.7 Q183.0 210.8 180.3 210.4 Q177.7 210.1 174.7 208.7 Q171.7 207.4 170.3 205.6 Q168.8 203.8 166.9 201.8 Q164.9 199.8 162.6 198.2 Q160.3 196.7 158.7 195.0 Q157.1 193.3 156.0 190.9 L154.9 188.6 Z"/><path d="M231.7 250.0 Q236.1 252.2 238.9 253.5 Q241.6 254.7 239.5 255.1 Q237.3 255.5 235.7 256.8 Q234.1 258.2 232.2 258.0 Q230.4 257.8 228.6 258.7 Q226.8 259.6 225.9 260.5 Q225.0 261.5 226.2 261.1 Q227.5 260.7 229.1 259.5 Q230.8 258.3 230.4 257.7 Q230.0 257.0 230.7 254.8 Q231.5 252.7 231.6 251.4 L231.7 250.0 Z"/></g><g fill="none" stroke="var(--c-ink-3)" stroke-width=".7" opacity=".55"><path d="M133.6 217.3 Q135.8 219.9 137.2 221.1 Q138.6 222.2 140.3 223.7 Q142.1 225.1 144.5 226.2 Q146.8 227.3 149.0 228.5 Q151.1 229.7 153.1 231.2 Q155.1 232.6 157.9 233.4 Q160.7 234.2 162.9 235.2 Q165.1 236.2 168.2 237.3 Q171.2 238.5 174.1 238.9 Q177.0 239.4 180.5 239.9 Q184.1 240.4 187.0 241.5 Q190.0 242.5 193.5 242.6 Q197.0 242.6 200.0 243.1 Q203.0 243.5 207.0 244.0 Q211.0 244.4 214.4 245.0 Q217.8 245.6 221.2 245.4 Q224.5 245.1 228.4 245.4 Q232.3 245.6 235.5 245.6 Q238.6 245.6 242.2 245.1 Q245.8 244.7 249.1 244.7 Q252.4 244.7 256.4 244.3 Q260.4 243.8 263.8 243.0 Q267.2 242.1 270.0 241.8 Q272.9 241.5 276.5 241.2 Q280.1 240.8 282.8 239.6 Q285.5 238.5 288.5 237.8 Q291.4 237.1 294.5 236.0 Q297.6 234.9 300.1 234.2 Q302.6 233.6 305.1 232.5 Q307.5 231.5 309.6 230.1 Q311.7 228.7 313.6 227.5 Q315.5 226.4 317.6 225.0 Q319.7 223.5 321.0 222.7 Q322.3 221.8 323.7 220.0 Q325.1 218.3 326.1 217.2 L327.2 216.1"/><path d="M112.0 153.1 Q113.3 156.4 113.6 157.5 Q113.9 158.7 114.7 160.5 Q115.5 162.4 117.1 164.0 Q118.7 165.6 119.9 167.1 Q121.1 168.7 123.0 170.3 Q125.0 172.0 127.1 173.6 Q129.2 175.1 131.3 176.1 Q133.5 177.1 136.1 178.5 Q138.7 180.0 141.2 181.3 Q143.8 182.6 146.8 183.7 Q149.8 184.7 152.6 185.9 Q155.4 187.0 158.7 188.4 Q161.9 189.8 165.6 190.4 Q169.3 190.9 172.8 192.1 Q176.3 193.4 180.1 193.6 Q183.9 193.9 187.9 194.7 Q192.0 195.6 196.0 195.7 Q200.0 195.9 203.8 196.7 Q207.5 197.5 211.7 197.8 Q216.0 198.1 219.7 197.9 Q223.3 197.7 227.4 197.6 Q231.6 197.6 236.2 197.8 Q240.9 197.9 244.9 197.6 Q249.0 197.3 253.0 197.0 Q257.0 196.7 260.6 196.5 Q264.2 196.2 268.5 195.3 Q272.8 194.3 276.4 194.0 Q280.0 193.6 283.4 192.7 Q286.9 191.8 290.4 190.9 Q293.8 189.9 297.3 189.2 Q300.7 188.4 304.2 187.2 Q307.6 185.9 310.2 184.8 Q312.9 183.7 316.1 182.4 Q319.3 181.1 321.6 179.8 Q324.0 178.5 326.7 177.4 Q329.3 176.2 331.0 174.5 Q332.7 172.8 334.7 171.6 Q336.8 170.3 338.6 168.5 Q340.3 166.7 341.4 165.5 Q342.4 164.3 343.7 162.4 Q344.9 160.5 345.6 159.3 Q346.3 158.1 346.8 156.2 L347.3 154.3"/><path d="M130.3 86.7 Q129.5 90.2 128.8 91.2 Q128.0 92.1 128.1 93.6 Q128.1 95.0 127.7 96.9 Q127.4 98.8 127.9 100.2 Q128.5 101.6 129.0 103.0 Q129.6 104.5 130.4 105.5 Q131.2 106.5 132.0 108.1 Q132.8 109.7 134.4 111.3 Q136.1 112.8 137.3 114.0 Q138.5 115.1 140.4 116.3 Q142.3 117.5 144.1 118.6 Q145.9 119.7 148.2 121.2 Q150.6 122.8 152.7 123.6 Q154.8 124.4 157.7 125.7 Q160.7 127.1 163.0 127.5 Q165.3 128.0 168.6 129.3 Q171.9 130.7 174.6 131.0 Q177.3 131.2 180.7 132.1 Q184.1 133.0 187.3 133.8 Q190.6 134.5 193.8 134.7 Q197.1 135.0 200.5 135.5 Q203.9 135.9 207.1 136.6 Q210.4 137.3 214.2 137.1 Q217.9 137.0 221.1 137.2 Q224.3 137.5 228.1 137.5 Q231.8 137.5 235.1 137.4 Q238.5 137.2 242.4 137.4 Q246.3 137.6 249.3 137.2 Q252.4 136.7 256.3 136.0 Q260.2 135.3 263.6 134.9 Q267.0 134.4 270.2 134.1 Q273.3 133.8 276.5 133.0 Q279.7 132.2 282.6 131.6 Q285.6 131.1 288.5 130.3 Q291.4 129.5 294.2 128.4 Q297.0 127.4 299.3 126.5 Q301.7 125.6 304.4 124.3 Q307.1 123.1 309.5 122.3 Q311.9 121.5 313.8 119.9 Q315.7 118.4 317.5 117.1 Q319.3 115.8 320.8 114.7 Q322.2 113.6 323.5 112.3 Q324.9 110.9 326.3 109.3 Q327.7 107.7 328.7 106.3 Q329.7 104.9 330.5 103.9 Q331.2 102.9 331.5 101.1 Q331.8 99.2 332.0 97.9 Q332.2 96.7 332.4 95.1 Q332.6 93.5 332.2 92.6 Q331.9 91.6 331.2 90.1 L330.6 88.5"/><path d="M187.9 40.3 Q185.5 41.4 184.4 41.6 Q183.4 41.8 182.1 42.9 Q180.9 44.1 179.4 44.5 Q177.9 44.8 177.4 45.5 Q176.8 46.1 176.1 46.9 Q175.4 47.8 174.7 48.5 Q174.0 49.2 173.2 50.5 Q172.5 51.7 171.9 52.2 Q171.4 52.6 171.3 53.5 Q171.2 54.3 170.8 55.1 Q170.5 55.8 170.6 57.1 Q170.7 58.4 171.2 59.2 Q171.7 60.0 171.7 60.8 Q171.7 61.6 172.1 62.2 Q172.5 62.9 173.5 63.6 Q174.4 64.3 175.3 65.2 Q176.1 66.1 176.8 67.0 Q177.5 68.0 178.2 68.8 Q179.0 69.6 180.4 69.9 Q181.8 70.3 183.2 70.9 Q184.5 71.5 186.0 72.3 Q187.4 73.1 188.5 73.8 Q189.6 74.5 191.2 74.7 Q192.8 74.9 194.6 75.3 Q196.5 75.8 198.2 76.3 Q200.0 76.9 201.7 77.8 Q203.4 78.6 205.2 78.8 Q207.0 78.9 208.8 78.8 Q210.6 78.7 212.4 79.1 Q214.2 79.4 216.5 79.8 Q218.9 80.1 220.9 80.5 Q222.8 80.9 224.6 80.6 Q226.5 80.3 228.8 80.2 Q231.2 80.1 232.9 80.2 Q234.5 80.4 236.7 80.3 Q238.8 80.2 240.8 80.2 Q242.9 80.1 245.1 79.7 Q247.4 79.2 249.3 79.1 Q251.3 79.0 252.9 79.0 Q254.5 78.9 256.4 78.1 Q258.3 77.2 260.0 77.1 Q261.6 76.9 263.8 76.5 Q266.0 76.1 267.3 75.3 Q268.6 74.5 269.9 74.1 Q271.1 73.8 272.9 73.0 Q274.6 72.2 275.9 71.6 Q277.3 71.0 278.7 70.5 Q280.0 70.0 280.7 69.4 Q281.3 68.8 282.1 67.8 Q282.9 66.8 283.9 65.9 Q285.0 64.9 285.4 64.5 Q285.9 64.0 286.4 63.0 Q286.9 62.1 287.9 61.0 Q288.8 60.0 288.6 59.4 Q288.4 58.9 288.7 58.0 Q289.0 57.2 289.1 56.1 Q289.3 55.0 288.8 54.2 Q288.3 53.5 287.9 53.0 Q287.4 52.5 287.4 51.6 Q287.3 50.7 286.3 50.0 Q285.2 49.2 284.9 48.2 Q284.6 47.2 283.7 46.5 Q282.9 45.7 281.6 44.8 Q280.2 43.8 279.1 43.1 Q278.0 42.3 276.8 42.1 Q275.7 41.8 274.5 41.3 L273.4 40.7"/><path d="M156.7 241.9 Q151.8 237.6 149.7 235.2 Q147.7 232.8 145.4 230.2 Q143.1 227.6 141.7 224.6 Q140.3 221.5 138.7 218.3 Q137.1 215.2 135.4 212.1 Q133.7 209.1 132.9 206.2 Q132.1 203.3 131.2 199.5 Q130.3 195.7 129.8 192.1 Q129.3 188.6 128.5 185.3 Q127.7 181.9 127.9 178.1 Q128.0 174.2 128.1 170.6 Q128.3 167.0 128.5 163.1 Q128.8 159.2 129.5 155.3 Q130.3 151.5 131.0 147.6 Q131.7 143.6 132.9 139.5 Q134.1 135.5 135.2 131.8 Q136.3 128.2 137.8 124.6 Q139.3 121.1 141.1 116.9 Q142.9 112.7 144.9 109.6 Q146.9 106.6 149.2 102.6 Q151.5 98.7 153.7 95.2 Q155.9 91.8 158.9 89.0 Q161.9 86.1 164.6 83.1 Q167.3 80.1 169.8 77.1 Q172.3 74.2 175.5 71.6 Q178.7 69.0 182.2 66.6 Q185.6 64.1 188.4 61.8 Q191.2 59.5 195.1 57.5 Q198.9 55.4 201.9 53.1 Q204.8 50.9 208.3 49.2 Q211.8 47.4 215.8 46.6 Q219.7 45.7 223.2 44.6 L226.6 43.5"/><path d="M200.7 263.9 Q196.5 262.1 195.3 261.2 Q194.0 260.2 192.1 259.0 Q190.3 257.8 188.6 256.2 Q187.0 254.5 185.8 252.9 Q184.5 251.4 183.3 249.1 Q182.1 246.8 181.3 244.6 Q180.5 242.4 179.4 239.9 Q178.3 237.4 176.9 234.6 Q175.5 231.7 175.0 229.0 Q174.5 226.3 173.8 223.1 Q173.1 219.9 172.7 216.3 Q172.3 212.7 172.2 209.2 Q172.0 205.7 171.8 202.1 Q171.5 198.6 171.0 194.9 Q170.4 191.2 170.9 187.9 Q171.5 184.5 171.2 180.3 Q171.0 176.1 171.6 172.4 Q172.3 168.6 172.6 164.4 Q172.9 160.2 173.6 156.4 Q174.4 152.6 175.1 148.6 Q175.8 144.7 176.7 140.2 Q177.6 135.7 178.9 131.9 Q180.2 128.1 181.0 124.3 Q181.8 120.4 183.1 116.7 Q184.3 112.9 186.0 109.1 Q187.8 105.4 189.2 101.4 Q190.7 97.5 192.1 94.0 Q193.6 90.5 195.5 86.9 Q197.5 83.4 199.2 80.1 Q201.0 76.9 202.4 74.0 Q203.8 71.0 206.1 68.3 Q208.4 65.6 210.0 63.2 Q211.6 60.8 213.5 58.1 Q215.4 55.4 217.6 53.4 Q219.8 51.4 222.0 49.3 Q224.1 47.3 225.9 45.4 L227.8 43.5"/><path d="M229.6 268.3 Q230.2 267.6 229.9 266.9 Q229.6 266.1 230.0 265.4 Q230.3 264.6 229.9 263.4 Q229.6 262.2 230.0 260.6 Q230.5 259.1 230.0 257.5 Q229.6 255.8 229.9 254.2 Q230.2 252.6 229.9 250.0 Q229.6 247.4 229.6 245.1 Q229.7 242.8 229.9 240.0 Q230.0 237.3 229.9 234.4 Q229.8 231.6 230.2 228.9 Q230.6 226.1 230.0 223.0 Q229.5 219.9 229.5 216.2 Q229.5 212.4 230.1 209.1 Q230.6 205.8 230.4 201.8 Q230.3 197.9 230.0 194.2 Q229.6 190.5 229.6 186.3 Q229.5 182.2 229.7 178.1 Q229.9 174.0 229.9 170.4 Q229.9 166.8 230.1 162.5 Q230.2 158.2 230.2 154.1 Q230.2 150.0 229.9 145.9 Q229.6 141.9 229.7 137.9 Q229.9 133.9 230.2 129.6 Q230.5 125.4 230.3 121.6 Q230.1 117.8 230.0 113.5 Q229.9 109.3 230.1 105.9 Q230.3 102.5 230.3 98.7 Q230.3 94.8 230.4 91.3 Q230.4 87.7 230.3 84.1 Q230.2 80.6 230.0 77.4 Q229.8 74.3 229.6 71.1 Q229.5 67.9 229.9 65.2 Q230.3 62.6 230.2 59.6 Q230.2 56.7 230.0 54.4 Q229.9 52.1 230.0 49.9 Q230.1 47.7 230.2 46.1 L230.2 44.5"/><path d="M259.1 264.3 Q263.3 262.5 264.8 261.8 Q266.3 261.1 267.6 259.5 Q268.9 258.0 270.5 256.5 Q272.0 255.1 273.9 253.1 Q275.7 251.2 276.5 249.1 Q277.3 247.1 278.7 244.9 Q280.1 242.6 281.1 240.1 Q282.1 237.5 283.2 234.7 Q284.3 231.8 284.8 229.2 Q285.3 226.5 285.9 223.2 Q286.4 219.9 287.0 216.6 Q287.6 213.4 287.8 210.1 Q288.0 206.7 288.3 202.6 Q288.7 198.5 288.7 194.9 Q288.7 191.4 288.5 187.6 Q288.3 183.8 288.3 180.1 Q288.3 176.4 287.9 172.2 Q287.5 168.0 287.0 164.2 Q286.4 160.5 286.2 156.4 Q286.0 152.2 284.8 148.4 Q283.6 144.5 282.8 140.1 Q282.0 135.7 280.8 132.1 Q279.6 128.5 278.8 124.4 Q278.1 120.4 276.6 116.5 Q275.2 112.6 273.6 109.1 Q272.1 105.6 270.7 101.7 Q269.3 97.9 268.0 94.4 Q266.7 91.0 264.8 87.3 Q263.0 83.6 261.3 80.3 Q259.6 77.0 257.9 74.1 Q256.3 71.2 254.4 68.3 Q252.5 65.3 250.3 62.7 Q248.1 60.0 246.1 57.6 Q244.2 55.1 241.9 53.2 Q239.6 51.3 237.8 49.1 Q235.9 46.8 233.9 45.3 L231.8 43.7"/><path d="M303.4 242.3 Q308.5 237.5 310.8 235.4 Q313.2 233.2 314.7 230.5 Q316.1 227.9 318.4 225.0 Q320.7 222.1 321.8 219.2 Q322.9 216.2 324.6 212.5 Q326.2 208.8 326.9 206.1 Q327.6 203.3 328.9 199.5 Q330.1 195.6 330.4 192.0 Q330.7 188.3 331.2 185.1 Q331.6 181.8 331.8 177.7 Q332.0 173.6 332.2 170.2 Q332.4 166.8 331.6 163.0 Q330.8 159.2 330.4 155.3 Q330.1 151.4 329.3 147.6 Q328.4 143.8 327.4 140.0 Q326.4 136.1 324.7 132.2 Q323.0 128.3 321.6 124.6 Q320.3 120.9 318.4 117.3 Q316.6 113.7 314.7 109.7 Q312.7 105.8 310.4 102.2 Q308.0 98.7 305.7 95.3 Q303.5 91.8 300.9 88.7 Q298.3 85.5 295.6 82.7 Q292.9 79.8 290.0 77.2 Q287.2 74.5 283.8 71.8 Q280.5 69.1 277.6 66.4 Q274.8 63.7 271.6 61.6 Q268.5 59.4 265.0 57.1 Q261.4 54.8 258.4 52.7 Q255.3 50.7 251.6 49.4 Q247.9 48.2 244.0 46.8 Q240.1 45.4 237.0 44.5 L233.8 43.6"/></g><g fill="none" stroke="var(--c-ink)" stroke-width="1.1" stroke-linejoin="round"><path d="M246.9 69.1 Q248.3 66.2 248.4 65.1 Q248.5 64.1 248.2 62.9 Q247.8 61.8 248.6 61.6 Q249.4 61.4 250.2 61.0 Q251.0 60.6 252.1 61.2 Q253.1 61.7 253.6 61.0 Q254.1 60.3 255.3 60.8 Q256.5 61.3 257.2 60.7 Q257.8 60.0 258.9 59.5 Q260.0 59.0 260.5 59.1 Q261.1 59.1 261.1 58.7 Q261.1 58.4 261.9 58.8 Q262.7 59.2 263.2 58.8 Q263.7 58.3 264.7 57.9 Q265.7 57.5 266.1 56.9 Q266.6 56.4 266.7 56.3 Q266.8 56.1 267.8 56.0 Q268.9 56.0 269.0 55.8 Q269.1 55.7 269.3 54.9 Q269.5 54.2 269.8 54.1 Q270.1 53.9 269.5 53.3 Q269.0 52.8 269.1 52.6 Q269.3 52.4 269.3 51.4 Q269.4 50.4 269.4 49.8 Q269.5 49.2 268.7 49.3 Q268.0 49.4 267.5 48.8 Q267.0 48.1 266.6 47.8 Q266.2 47.6 266.5 47.1 Q266.9 46.6 267.5 46.2 Q268.2 45.8 268.6 45.9 Q268.9 46.0 269.3 45.7 Q269.7 45.4 270.4 45.6 Q271.0 45.8 271.1 45.4 Q271.1 44.9 271.1 44.7 Q271.0 44.6 272.2 44.7 Q273.4 44.8 274.1 44.1 Q274.9 43.3 275.0 43.5 Q275.1 43.7 275.1 43.4 Q275.2 43.0 275.6 42.6 Q276.0 42.1 276.1 42.5 Q276.2 43.0 276.3 42.4 Q276.5 41.7 277.9 42.7 Q279.2 43.6 280.0 43.7 Q280.7 43.7 282.0 44.6 Q283.3 45.4 284.4 45.8 Q285.4 46.2 286.6 46.7 Q287.8 47.2 289.6 48.6 Q291.3 50.0 293.5 50.4 Q295.7 50.8 296.7 52.0 Q297.6 53.2 299.3 54.6 Q300.9 56.0 303.0 57.2 Q305.2 58.5 306.4 60.1 Q307.6 61.8 309.7 63.5 Q311.7 65.2 313.9 67.0 Q316.1 68.8 317.3 70.5 Q318.6 72.2 320.5 73.9 Q322.5 75.6 324.5 78.5 Q326.4 81.5 328.1 83.9 Q329.7 86.3 330.8 88.5 Q331.9 90.6 332.1 91.7 Q332.4 92.9 332.8 93.2 Q333.3 93.6 333.8 94.5 Q334.4 95.5 334.8 96.2 Q335.2 97.0 335.1 97.9 Q335.0 98.9 335.1 99.9 Q335.3 101.0 336.5 104.0 Q337.7 107.0 339.4 109.0 Q341.0 110.9 340.9 111.0 Q340.8 111.1 341.0 110.8 Q341.1 110.4 341.6 111.1 Q342.0 111.8 341.6 111.2 Q341.2 110.6 341.2 111.2 Q341.2 111.9 341.7 113.0 Q342.3 114.2 343.0 115.1 Q343.8 116.0 343.3 117.7 Q342.9 119.4 343.3 118.5 Q343.7 117.6 343.6 117.2 Q343.6 116.9 343.5 117.5 Q343.4 118.1 343.6 117.5 Q343.8 117.0 343.3 116.8 Q342.8 116.6 342.7 117.1 Q342.6 117.6 342.7 117.7 Q342.9 117.8 342.4 117.4 Q341.9 117.0 341.9 117.8 Q341.9 118.5 341.4 118.5 Q340.9 118.4 340.0 118.0 Q339.2 117.5 337.6 116.9 Q336.1 116.3 335.0 114.5 Q333.8 112.7 332.2 111.6 Q330.5 110.5 329.2 109.5 Q327.9 108.5 327.0 106.9 Q326.0 105.4 324.4 104.7 Q322.9 104.0 321.2 102.3 Q319.6 100.6 317.3 99.3 Q314.9 98.1 313.2 96.9 Q311.4 95.7 310.1 94.1 Q308.9 92.6 307.3 90.1 Q305.8 87.6 303.8 85.8 Q301.8 84.0 299.1 82.6 Q296.4 81.2 294.8 80.1 Q293.3 78.9 290.9 77.4 Q288.5 75.8 286.3 75.7 Q284.1 75.6 282.5 75.2 Q281.0 74.8 279.9 74.0 Q278.8 73.2 276.6 73.2 Q274.4 73.2 273.9 73.3 Q273.5 73.4 272.1 74.2 Q270.8 75.0 270.6 76.4 Q270.4 77.8 268.7 78.7 Q267.0 79.5 266.9 80.1 Q266.8 80.8 265.3 81.5 Q263.8 82.2 262.6 82.5 Q261.4 82.9 261.0 84.2 Q260.7 85.6 259.1 86.6 Q257.6 87.6 257.9 85.2 Q258.2 82.8 258.7 80.0 Q259.2 77.1 257.2 76.2 Q255.1 75.3 253.6 74.6 Q252.2 73.9 250.8 72.7 Q249.4 71.6 248.1 70.3 L246.9 69.1 Z"/><path d="M203.9 36.7 Q203.5 36.3 203.4 36.9 Q203.2 37.6 202.8 37.8 Q202.3 38.1 202.2 37.9 Q202.0 37.8 201.8 37.6 Q201.6 37.4 201.4 37.8 Q201.2 38.1 200.7 38.9 Q200.2 39.7 200.3 39.7 Q200.4 39.6 200.9 39.9 Q201.4 40.2 201.1 40.4 Q200.7 40.6 201.0 41.0 Q201.3 41.5 201.1 41.5 Q200.8 41.5 200.9 41.5 Q200.9 41.5 201.4 41.9 Q201.9 42.4 201.7 42.8 Q201.5 43.3 201.9 43.2 Q202.2 43.2 202.0 43.4 Q201.8 43.7 201.9 44.1 Q201.9 44.5 202.0 44.6 Q202.0 44.6 202.2 45.2 Q202.4 45.8 202.8 45.9 Q203.2 46.1 203.6 45.7 Q204.1 45.3 204.0 46.1 Q203.9 47.0 204.4 46.4 Q204.9 45.9 204.5 46.3 Q204.2 46.8 204.4 46.7 Q204.7 46.7 205.0 47.3 Q205.3 47.8 206.3 48.2 Q207.3 48.5 206.6 48.7 Q205.8 48.9 206.2 48.7 Q206.5 48.5 206.6 49.6 Q206.7 50.7 206.1 51.1 Q205.4 51.4 205.5 51.4 Q205.7 51.3 206.2 52.0 Q206.8 52.7 206.1 52.8 Q205.4 52.8 205.9 53.1 Q206.3 53.4 206.2 53.8 Q206.0 54.2 206.7 54.3 Q207.4 54.4 207.4 55.2 Q207.5 56.0 207.3 56.3 Q207.1 56.6 208.0 57.2 Q208.9 57.8 208.8 58.6 Q208.6 59.4 209.7 59.8 Q210.8 60.2 210.7 60.0 Q210.5 59.8 211.1 60.5 Q211.6 61.2 212.5 60.9 Q213.3 60.6 214.1 61.5 Q214.9 62.5 216.0 62.1 Q217.0 61.8 217.2 62.6 Q217.3 63.4 218.4 63.4 Q219.5 63.5 219.9 63.1 Q220.2 62.7 221.6 63.2 Q222.9 63.7 223.1 64.4 Q223.4 65.0 224.7 65.1 Q226.1 65.1 226.4 65.3 Q226.8 65.5 227.7 65.6 Q228.5 65.8 229.8 66.0 Q231.0 66.3 232.1 67.5 Q233.2 68.8 234.0 68.7 Q234.8 68.7 236.2 69.5 Q237.6 70.3 236.3 71.5 Q235.0 72.6 234.0 73.9 Q232.9 75.2 232.0 76.5 Q231.1 77.8 230.3 79.0 Q229.4 80.3 227.8 81.3 Q226.1 82.3 224.4 83.2 Q222.7 84.1 221.0 85.2 Q219.2 86.3 218.3 88.1 Q217.3 90.0 215.3 91.3 Q213.3 92.6 212.5 93.6 Q211.6 94.7 209.5 95.5 Q207.5 96.3 205.2 97.2 Q203.0 98.0 200.9 98.1 Q198.8 98.3 197.1 99.1 Q195.3 99.9 193.0 100.2 Q190.7 100.4 189.1 101.1 Q187.5 101.8 185.3 102.4 Q183.0 103.0 180.8 103.6 Q178.5 104.2 176.5 105.6 Q174.6 106.9 172.7 107.1 Q170.9 107.4 168.8 108.7 Q166.7 110.1 165.7 111.4 Q164.6 112.8 162.3 113.9 Q160.1 115.0 158.4 116.7 Q156.7 118.4 154.9 119.9 Q153.0 121.4 151.7 124.6 Q150.3 127.7 149.6 130.1 Q148.9 132.5 146.2 133.3 Q143.6 134.0 141.7 133.8 Q139.8 133.6 137.7 133.9 Q135.6 134.3 134.3 134.6 Q133.0 135.0 131.5 137.0 Q130.1 139.1 128.8 140.9 Q127.6 142.7 126.6 144.9 Q125.7 147.0 124.8 148.7 Q123.9 150.4 123.3 153.0 Q122.8 155.6 122.5 158.2 Q122.1 160.9 121.8 163.3 Q121.5 165.8 120.9 162.3 Q120.4 158.7 119.9 154.4 Q119.3 150.2 120.1 147.2 Q120.8 144.3 120.9 141.9 Q121.0 139.6 120.9 137.0 Q120.7 134.4 121.5 131.6 Q122.3 128.7 122.3 126.3 Q122.4 123.8 122.2 121.0 Q122.0 118.2 121.4 118.8 Q120.8 119.4 120.3 119.7 Q119.8 120.0 118.9 120.4 Q118.0 120.8 117.6 120.9 Q117.2 121.0 116.4 120.7 Q115.6 120.4 114.9 122.5 Q114.3 124.5 113.8 126.6 Q113.4 128.8 113.4 130.4 Q113.5 131.9 114.1 129.1 Q114.7 126.4 115.2 123.0 Q115.7 119.6 116.8 117.5 Q117.8 115.5 118.5 112.6 Q119.1 109.7 120.3 106.6 Q121.5 103.6 122.2 102.1 Q123.0 100.7 123.2 99.1 Q123.3 97.5 124.7 95.9 Q126.1 94.2 127.0 93.3 Q127.9 92.4 128.6 90.3 Q129.4 88.2 130.6 86.5 Q131.8 84.8 133.5 82.8 Q135.1 80.8 136.4 78.4 Q137.7 76.0 138.8 74.3 Q139.9 72.6 141.8 71.1 Q143.7 69.6 145.0 67.8 Q146.3 66.0 147.4 64.7 Q148.5 63.5 150.7 62.4 Q152.9 61.3 154.6 59.5 Q156.3 57.7 157.9 56.5 Q159.5 55.3 161.6 53.5 Q163.7 51.7 166.1 50.4 Q168.6 49.1 170.8 48.5 Q173.0 48.0 174.2 46.4 Q175.4 44.9 177.5 44.7 Q179.6 44.4 180.6 43.2 Q181.7 41.9 182.8 41.9 Q184.0 41.9 185.4 41.0 Q186.8 40.1 188.1 39.6 Q189.4 39.0 191.6 38.2 Q193.7 37.3 195.0 37.3 Q196.3 37.2 197.8 37.0 Q199.3 36.9 200.2 36.9 Q201.1 36.8 202.5 36.8 L203.9 36.7 Z"/><path d="M163.6 124.7 Q167.2 123.7 169.8 122.6 Q172.4 121.6 174.1 121.4 Q175.8 121.2 178.0 121.3 Q180.2 121.5 182.7 117.4 Q185.3 113.3 186.7 110.3 Q188.1 107.4 188.9 105.5 Q189.7 103.7 190.9 104.6 Q192.2 105.5 189.6 108.2 Q186.9 110.8 185.3 113.6 Q183.7 116.4 180.8 118.0 Q177.9 119.6 175.5 121.1 Q173.2 122.5 170.5 123.8 Q167.8 125.1 165.7 124.9 L163.6 124.7 Z"/><path d="M137.9 215.4 Q140.1 219.0 141.6 221.2 Q143.1 223.4 144.4 226.3 Q145.7 229.2 147.6 231.1 Q149.6 233.1 150.4 233.7 Q151.3 234.3 152.7 234.4 Q154.2 234.6 155.2 234.6 Q156.3 234.6 157.6 235.4 Q159.0 236.2 160.4 236.7 Q161.8 237.3 162.9 237.2 Q164.0 237.0 166.7 238.6 Q169.5 240.1 171.3 241.8 Q173.1 243.4 175.2 245.0 Q177.3 246.7 180.1 247.5 Q183.0 248.4 184.4 248.7 Q185.8 249.1 187.5 249.5 Q189.2 249.9 190.7 250.0 Q192.1 250.1 194.0 251.0 Q195.9 251.9 196.3 249.7 Q196.7 247.5 197.3 246.5 Q197.9 245.5 197.8 242.9 Q197.7 240.3 195.6 238.5 Q193.5 236.8 191.8 235.0 Q190.1 233.2 188.1 231.5 Q186.1 229.7 184.5 228.3 Q183.0 226.9 181.6 224.2 Q180.2 221.4 178.4 219.1 Q176.6 216.8 175.1 214.2 Q173.6 211.5 170.8 211.2 Q167.9 211.0 166.3 210.6 Q164.6 210.2 162.0 211.2 Q159.4 212.2 157.6 212.3 Q155.9 212.4 153.5 212.2 Q151.1 212.1 149.5 212.1 Q147.9 212.0 146.8 212.1 Q145.7 212.3 144.3 212.1 Q143.0 211.8 141.1 213.0 Q139.3 214.1 138.6 214.7 L137.9 215.4 Z"/><path d="M116.7 151.2 Q117.2 156.6 117.7 160.6 Q118.3 164.5 119.4 167.4 Q120.5 170.3 121.5 172.7 Q122.5 175.2 122.7 178.0 Q122.9 180.8 121.6 178.4 Q120.2 175.9 120.0 173.4 Q119.8 170.9 119.0 168.4 Q118.3 165.9 117.7 163.1 Q117.1 160.4 116.9 155.8 L116.7 151.2 Z"/><path d="M125.0 171.2 Q127.5 180.4 129.2 181.2 Q130.9 182.0 131.9 183.3 Q132.9 184.5 134.2 183.1 Q135.4 181.7 135.9 179.3 Q136.3 176.9 136.2 174.2 Q136.0 171.4 135.5 167.9 Q135.0 164.4 133.9 164.9 Q132.8 165.5 131.3 166.6 Q129.8 167.8 129.3 168.7 Q128.7 169.5 126.9 170.3 L125.0 171.2 Z"/><path d="M154.9 188.6 Q157.7 190.2 160.4 191.6 Q163.2 193.1 164.7 193.4 Q166.3 193.7 168.7 195.2 Q171.1 196.7 173.1 198.5 Q175.1 200.3 177.4 203.0 Q179.8 205.7 181.6 206.9 Q183.4 208.1 185.7 210.4 Q188.1 212.7 185.5 211.7 Q183.0 210.8 180.3 210.4 Q177.7 210.1 174.7 208.7 Q171.7 207.4 170.3 205.6 Q168.8 203.8 166.9 201.8 Q164.9 199.8 162.6 198.2 Q160.3 196.7 158.7 195.0 Q157.1 193.3 156.0 190.9 L154.9 188.6 Z"/><path d="M231.7 250.0 Q236.1 252.2 238.9 253.5 Q241.6 254.7 239.5 255.1 Q237.3 255.5 235.7 256.8 Q234.1 258.2 232.2 258.0 Q230.4 257.8 228.6 258.7 Q226.8 259.6 225.9 260.5 Q225.0 261.5 226.2 261.1 Q227.5 260.7 229.1 259.5 Q230.8 258.3 230.4 257.7 Q230.0 257.0 230.7 254.8 Q231.5 252.7 231.6 251.4 L231.7 250.0 Z"/></g></g><path d="M347.7 150.9 Q347.0 165.4 345.9 172.5 Q344.7 179.7 342.1 187.5 Q339.4 195.4 335.7 202.5 Q331.9 209.7 327.6 215.7 Q323.4 221.8 318.4 227.9 Q313.5 233.9 307.4 238.7 Q301.3 243.5 295.1 247.9 Q288.9 252.3 282.3 255.5 Q275.7 258.6 268.4 261.2 Q261.1 263.8 253.3 265.2 Q245.4 266.6 237.7 267.7 Q230.0 268.9 222.4 268.2 Q214.9 267.5 207.0 265.6 Q199.2 263.7 191.8 261.4 Q184.5 259.2 177.9 255.9 Q171.2 252.7 164.3 248.4 Q157.3 244.0 152.3 238.8 Q147.3 233.5 141.4 227.5 Q135.6 221.5 131.2 215.0 Q126.9 208.4 124.3 201.9 Q121.7 195.4 119.0 188.2 Q116.3 181.1 115.0 173.3 Q113.7 165.6 113.0 157.9 Q112.2 150.2 112.8 142.5 Q113.4 134.8 114.9 126.9 Q116.3 118.9 118.8 111.9 Q121.3 104.8 124.8 97.5 Q128.3 90.3 132.0 83.8 Q135.8 77.3 141.4 72.3 Q147.1 67.3 152.8 61.7 Q158.4 56.1 165.0 52.2 Q171.6 48.3 178.3 44.4 Q185.0 40.5 192.0 38.2 Q199.1 35.9 206.7 34.4 Q214.3 32.9 222.3 32.8 Q230.3 32.8 237.4 33.0 Q244.6 33.1 252.2 34.2 Q259.7 35.3 267.7 38.2 Q275.7 41.1 282.7 44.4 Q289.8 47.7 295.4 51.9 Q301.0 56.2 307.3 61.8 Q313.6 67.3 319.0 72.7 Q324.5 78.1 328.3 84.2 Q332.0 90.3 335.7 97.3 Q339.3 104.3 341.3 111.5 Q343.4 118.6 344.7 126.8 Q346.1 134.9 346.9 142.9 L347.7 150.9 Z" fill="none" stroke="var(--c-ink)" stroke-width="1.5"/><circle cx="300.2" cy="81.1" r="6" fill="var(--c-iris-petal)" opacity=".55"/><circle cx="300.2" cy="81.1" r="3.1" fill="var(--c-accent)"/><circle cx="121.3" cy="166.1" r="6" fill="var(--c-iris-petal)" opacity=".55"/><circle cx="121.3" cy="166.1" r="3.1" fill="var(--c-accent)"/><circle cx="310.4" cy="63.9" r="6" fill="var(--c-iris-petal)" opacity=".55"/><circle cx="310.4" cy="63.9" r="3.1" fill="var(--c-accent)"/><g fill="none" stroke="var(--c-ink)" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 3"><path d="M313 59 Q326 26 344 18"/><path d="M306 76 Q322 52 344 50"/><path d="M303 85 Q324 116 344 122"/><path d="M116 172 Q86 214 70 238"/></g><g class="ma-globe-flags"><g transform="translate(348 4) rotate(2 15 10) scale(.9)"><defs><clipPath id="g-ca2"><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></clipPath></defs><g clip-path="url(#g-ca2)"><g transform="translate(.5 -.4)" opacity=".92"><rect width="30" height="20" fill="#fff"/><rect width="7.6" height="20" fill="#d52b1e"/><rect x="22.4" width="7.6" height="20" fill="#d52b1e"/><path d="M15 4.6 L15.9 6.7 L17.5 6.1 L16.9 8.9 L18.9 8.3 L18.3 10.1 L19.5 10.9 L16.6 12.5 L16.9 13.7 L15.3 13.2 L15.3 15.6 L14.7 15.6 L14.7 13.2 L13.1 13.7 L13.4 12.5 L10.5 10.9 L11.7 10.1 L11.1 8.3 L13.1 8.9 L12.5 6.1 L14.1 6.7 Z" fill="#d52b1e"/></g></g><g fill="none" stroke="var(--c-ink)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 1.3 C7.8 7 7.4 13 7.7 18.8 M22.4 1.2 C22.2 7 22.6 13 22.3 18.9"/><path d="M15 4.6 L15.9 6.7 L17.5 6.1 L16.9 8.9 L18.9 8.3 L18.3 10.1 L19.5 10.9 L16.6 12.5 L16.9 13.7 L15.3 13.2 L15.3 15.6 L14.7 15.6 L14.7 13.2 L13.1 13.7 L13.4 12.5 L10.5 10.9 L11.7 10.1 L11.1 8.3 L13.1 8.9 L12.5 6.1 L14.1 6.7 Z" stroke-width=".55"/><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></g></g><g transform="translate(348 40) rotate(-3 15 10) scale(.9)"><defs><clipPath id="g-ca"><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></clipPath></defs><g clip-path="url(#g-ca)"><g transform="translate(.5 -.4)" opacity=".92"><rect width="30" height="20" fill="#fff"/><rect width="7.6" height="20" fill="#d52b1e"/><rect x="22.4" width="7.6" height="20" fill="#d52b1e"/><path d="M15 4.6 L15.9 6.7 L17.5 6.1 L16.9 8.9 L18.9 8.3 L18.3 10.1 L19.5 10.9 L16.6 12.5 L16.9 13.7 L15.3 13.2 L15.3 15.6 L14.7 15.6 L14.7 13.2 L13.1 13.7 L13.4 12.5 L10.5 10.9 L11.7 10.1 L11.1 8.3 L13.1 8.9 L12.5 6.1 L14.1 6.7 Z" fill="#d52b1e"/></g></g><g fill="none" stroke="var(--c-ink)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 1.3 C7.8 7 7.4 13 7.7 18.8 M22.4 1.2 C22.2 7 22.6 13 22.3 18.9"/><path d="M15 4.6 L15.9 6.7 L17.5 6.1 L16.9 8.9 L18.9 8.3 L18.3 10.1 L19.5 10.9 L16.6 12.5 L16.9 13.7 L15.3 13.2 L15.3 15.6 L14.7 15.6 L14.7 13.2 L13.1 13.7 L13.4 12.5 L10.5 10.9 L11.7 10.1 L11.1 8.3 L13.1 8.9 L12.5 6.1 L14.1 6.7 Z" stroke-width=".55"/><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></g></g><g transform="translate(348 112) rotate(2.5 15 10) scale(.9)"><defs><clipPath id="g-us"><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></clipPath></defs><g clip-path="url(#g-us)"><g transform="translate(.5 -.4)" opacity=".92"><rect width="30" height="20" fill="#fff"/><rect y="0.00" width="30" height="1.55" fill="#b22234"/><rect y="3.08" width="30" height="1.55" fill="#b22234"/><rect y="6.16" width="30" height="1.55" fill="#b22234"/><rect y="9.24" width="30" height="1.55" fill="#b22234"/><rect y="12.32" width="30" height="1.55" fill="#b22234"/><rect y="15.40" width="30" height="1.55" fill="#b22234"/><rect y="18.48" width="30" height="1.55" fill="#b22234"/><rect width="13" height="10.8" fill="#3c3b6e"/><circle cx="2.0" cy="1.9" r=".45" fill="#fff"/><circle cx="4.3" cy="1.9" r=".45" fill="#fff"/><circle cx="6.6" cy="1.9" r=".45" fill="#fff"/><circle cx="8.9" cy="1.9" r=".45" fill="#fff"/><circle cx="11.2" cy="1.9" r=".45" fill="#fff"/><circle cx="2.0" cy="4.1" r=".45" fill="#fff"/><circle cx="4.3" cy="4.1" r=".45" fill="#fff"/><circle cx="6.6" cy="4.1" r=".45" fill="#fff"/><circle cx="8.9" cy="4.1" r=".45" fill="#fff"/><circle cx="11.2" cy="4.1" r=".45" fill="#fff"/><circle cx="2.0" cy="6.3" r=".45" fill="#fff"/><circle cx="4.3" cy="6.3" r=".45" fill="#fff"/><circle cx="6.6" cy="6.3" r=".45" fill="#fff"/><circle cx="8.9" cy="6.3" r=".45" fill="#fff"/><circle cx="11.2" cy="6.3" r=".45" fill="#fff"/><circle cx="2.0" cy="8.5" r=".45" fill="#fff"/><circle cx="4.3" cy="8.5" r=".45" fill="#fff"/><circle cx="6.6" cy="8.5" r=".45" fill="#fff"/><circle cx="8.9" cy="8.5" r=".45" fill="#fff"/><circle cx="11.2" cy="8.5" r=".45" fill="#fff"/></g></g><g fill="none" stroke="var(--c-ink)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"><path d="M1.2 10.8 C5 10.6 9 11 13 10.8 C13.2 7 12.8 4 13.1 1.3"/><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></g></g><g transform="translate(20 242) rotate(-2 15 10) scale(.9)"><defs><clipPath id="g-sg"><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></clipPath></defs><g clip-path="url(#g-sg)"><g transform="translate(.5 -.4)" opacity=".92"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" fill="#ef3340"/><circle cx="6.3" cy="5" r="3.2" fill="#fff"/><circle cx="7.6" cy="5" r="3" fill="#ef3340"/><circle cx="9.60" cy="2.80" r=".55" fill="#fff"/><circle cx="11.60" cy="4.25" r=".55" fill="#fff"/><circle cx="10.83" cy="6.60" r=".55" fill="#fff"/><circle cx="8.37" cy="6.60" r=".55" fill="#fff"/><circle cx="7.60" cy="4.25" r=".55" fill="#fff"/></g></g><g fill="none" stroke="var(--c-ink)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"><path d="M1.2 10.1 C9 9.7 21 10.4 28.9 9.9"/><path d="M1.3 1.5 C8 0.9 22 1.7 28.7 1.1 C29.2 7 28.6 13 29 18.7 C22 19.3 8 18.5 1.1 19 C1.5 13 0.9 7 1.3 1.5 Z"/></g></g></g><g class="ma-globe-lbl" fill="var(--c-ink)"><text x="382" y="20">toronto</text><text x="382" y="56">metro vancouver</text><text x="382" y="128">washington state</text><text x="56" y="258">singapore</text></g></svg></div>
         </div>
       </div>
     </section>
@@ -1430,9 +1540,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
     </section>
 
     <footer class="fl-footer fl-footer--inset">
+    <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
+    
     <div class="fl-bottom">
       <div class="fl-reach">
-        <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
         <div class="fl-social">
         <a href="mailto:irisdanna05@gmail.com"><span class="arr">&#8594;</span> Email</a>
         <a href="https://linkedin.com/in/irisdan" target="_blank"><span class="arr">&#8594;</span> LinkedIn</a>
@@ -1440,8 +1551,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       </div>
       </div>
       <div class="webring webring-hub fl-webring"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-      <p class="fl-copy">&#169; 2026 Iris D. Liu</p>
+      <div class="fl-end"><p class="fl-copy">Made for you by Iris D. Liu</p><button type="button" class="fl-top"><svg class="arr" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V1.8M2.4 5.2 6 1.6l3.6 3.6"/></svg>Back to top</button></div>
     </div>
+    <div class="gf-wrap"><span class="gf-tap" aria-hidden="true"><svg viewBox="0 0 28 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 C14 6 9 14 11 32"/><path d="M6 26 L11 33 L16 26.5"/></svg><span class="gf-tap-t">tap me</span></span><svg class="gf" viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width=".17" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gf-stem" pathLength="1" d="M12.2 14.6 C12.5 24 12.1 34 11.7 45"/><g class="gf-leaf l1" style="transform-origin:11.5px 44.8px"><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6"/></g><g class="gf-leaf l2" style="transform-origin:12.2px 44.8px"><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8"/></g><g class="gf-leaf l3" style="transform-origin:12.4px 26px"><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3"/></g><g class="gf-leaf l4" style="transform-origin:12.2px 22.2px"><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7"/></g><g class="gf-bloom"><g class="gf-petal p0" style="transform-origin:12.8px 8px;--dx:9px;--dy:33px;--r:120deg"><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9"/></g><g class="gf-petal p1" style="transform-origin:8px 14px;--dx:3px;--dy:27.5px;--r:-80deg"><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7"/></g><g class="gf-petal p2" style="transform-origin:16.5px 15px;--dx:13px;--dy:26.5px;--r:200deg"><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9"/></g><g class="gf-petal p3" style="transform-origin:12.4px 16.2px;--dx:6px;--dy:25.5px;--r:90deg"><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1"/></g><path d="M12.1 12.4 L11.2 9.6 M12.3 12.5 L13.6 10 M11.5 13.3 L9.4 13.6 M12.8 13.5 L15 14.4"/></g></svg></div>
+    <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
   </footer>
   </div>
 </div>
@@ -1470,52 +1583,53 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
         <div class="pg-float-img"><img loading="lazy" src="images/symposium.jpeg" alt="Symposium"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Socratica Symposium⁂</span><span class="pg-float-tag">Design and Hosting</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/launchpad.png" data-pg-title="UBC Launch Pad" data-pg-tag="Marketing Lead" data-pg-blurb="I was the Marketing Lead @ UBC's software engineering team for 1.7 years; I spearheaded marketing campaigns for a tech mixer that sold out in 3 hours, a hackathon event collaboration with the Google Dev Student Club, and managed all social medias." style="top:15px;left:750px;--rot:3.5deg;">
-        <div class="pg-float-img"><img loading="lazy" src="images/launchpad.png" alt="UBC Launch Pad"><div class="pg-float-hint">click to open</div></div>
-        <div class="pg-float-info"><span class="pg-float-title">UBC Launch Pad</span><span class="pg-float-tag">Marketing Lead</span></div>
+      <div class="pg-float-card" data-pg-url="https://instagram.com/vanscav" data-pg-title="Vancouver Scavenger Hunt" data-pg-tag="200+ signups" data-pg-blurb="I helped run Vancouver&#8217;s largest full-weekend scavenger hunt, an homage to Expo 86. 200+ signups." style="top:20px;left:260px;--rot:3.5deg;">
+        <div class="pg-float-img"><img loading="lazy" src="images/vanscav.jpg" alt="Poster for the Vancouver city-wide scavenger hunt, Sept 19–20" style="object-position:50% 40%;"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-info"><span class="pg-float-title">Vancouver Scavenger Hunt</span><span class="pg-float-tag">200+ signups</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/pixi.png" data-pg-title="Pixi Pomodoro: Y2K Study Timer" data-pg-tag="Personal Project" data-pg-blurb="I wanted a study timer, but couldn't find one online that I liked visually, so I designed and built this timer instead. Check it out at <a href='https://irisdan05.github.io/pixipomodoro/' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>https://irisdan05.github.io/pixipomodoro/</a>" style="top:30px;left:505px;--rot:-2deg;">
+      <div class="pg-float-card" data-pg-img="images/awd.png" data-pg-title="A Working Definition (On Happiness)" data-pg-tag="Personal Project" data-pg-blurb="A card game that pushes you to consider what your own definition of happiness is. Inspired by my friend who runs <a href='https://instagram.com/@thehappinessproject' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>@thehappinessproject</a>. Try it out: <a href='https://aworkingdefinition.netlify.app' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>aworkingdefinition.netlify.app</a>" style="top:30px;left:505px;--rot:-2deg;">
+        <div class="pg-float-img"><img loading="lazy" src="images/awd.png" alt="A Working Definition (On Happiness)"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-info"><span class="pg-float-title">A Working Definition (On Happiness)</span><span class="pg-float-tag">Personal Project</span></div>
+      </div>
+      <div class="pg-float-card" data-pg-img="images/pixi.png" data-pg-title="Pixi Pomodoro: Y2K Study Timer" data-pg-tag="Personal Project" data-pg-blurb="I wanted a study timer, but couldn't find one online that I liked visually, so I designed and built this timer instead. Check it out at <a href='https://irisdan05.github.io/pixipomodoro/' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>https://irisdan05.github.io/pixipomodoro/</a>" style="top:15px;left:750px;--rot:3.5deg;">
         <div class="pg-float-img"><img loading="lazy" src="images/pixi.png" alt="Pixi Pomodoro: Y2K Study Timer"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Pixi Pomodoro: Y2K Study Timer</span><span class="pg-float-tag">Personal Project</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/bkk.jpeg" data-pg-title="Bangkok" data-pg-tag="Asia Travels" data-pg-blurb="When I was on an exchange term at Singapore's engineering and design university, I visited so many different countries that my friends liked to say I was teleporting. Anyway, this photo is of Bangkok, one of my favourite places I've traveled to." style="top:295px;left:505px;--rot:-3deg;">
-        <div class="pg-float-img"><img loading="lazy" src="images/bkk.jpeg" alt="Bangkok"><div class="pg-float-hint">click to open</div></div>
-        <div class="pg-float-info"><span class="pg-float-title">Bangkok</span><span class="pg-float-tag">Asia Travels</span></div>
-      </div>
       <!-- Row 1 col 5 + Row 2 -->
-      <div class="pg-float-card" data-pg-img="images/uxhub.png" data-pg-title="UBC UX Hub" data-pg-tag="Media Director" data-pg-blurb="I serve on the media team for UBC's first ever UX design club, where I make videos, newsletters, and manage social media." style="top:20px;left:995px;--rot:2deg;">
+      <div class="pg-float-card" data-pg-img="images/launchpad.png" data-pg-title="UBC Launch Pad" data-pg-tag="Marketing Lead" data-pg-blurb="I was the Marketing Lead @ UBC's software engineering team for 1.7 years; I spearheaded marketing campaigns for a tech mixer that sold out in 3 hours, a hackathon event collaboration with the Google Dev Student Club, and managed all social medias." style="top:20px;left:995px;--rot:2deg;">
+        <div class="pg-float-img"><img loading="lazy" src="images/launchpad.png" alt="UBC Launch Pad"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-info"><span class="pg-float-title">UBC Launch Pad</span><span class="pg-float-tag">Marketing Lead</span></div>
+      </div>
+      <div class="pg-float-card" data-pg-img="images/uxhub.png" data-pg-title="UBC UX Hub" data-pg-tag="Media Director" data-pg-blurb="I serve on the media team for UBC's first ever UX design club, where I make videos, newsletters, and manage social media." style="top:300px;left:15px;--rot:-3deg;">
         <div class="pg-float-img"><img loading="lazy" src="images/uxhub.png" alt="UBC UX Hub"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">UBC UX Hub</span><span class="pg-float-tag">Media Director</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/longboating.png" data-pg-title="Longboating" data-pg-tag="Sidequest" data-pg-blurb="I tried longboating with my friends! (We came in dead last)" style="top:300px;left:15px;--rot:-3deg;">
+      <div class="pg-float-card" data-pg-img="images/longboating.png" data-pg-title="Longboating" data-pg-tag="Sidequest" data-pg-blurb="I tried longboating with my friends! (We came in dead last)" style="top:305px;left:260px;--rot:2.5deg;">
         <div class="pg-float-img"><img loading="lazy" src="images/longboating.png" alt="Longboating"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Longboating</span><span class="pg-float-tag">Sidequest</span></div>
       </div>
-      <div class="pg-float-card" data-pg-url="https://devpost.com/software/re-fridge" style="top:305px;left:260px;--rot:2.5deg;">
+      <div class="pg-float-card" data-pg-url="https://devpost.com/software/re-fridge" style="top:295px;left:505px;--rot:-3deg;">
         <div class="pg-float-img" style="background:#bfe1c8;display:flex;align-items:center;justify-content:center;">
           <div style="font-size:var(--t2);line-height:1;">🍊</div>
           <div class="pg-float-hint">click to open</div>
         </div>
         <div class="pg-float-info"><span class="pg-float-title">Re-Fridge</span><span class="pg-float-tag">Hackathon · 3rd Place @ UBC UXathon</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/awd.png" data-pg-title="A Working Definition (On Happiness)" data-pg-tag="Personal Project" data-pg-blurb="A card game that pushes you to consider what your own definition of happiness is. Inspired by my friend who runs <a href='https://instagram.com/@thehappinessproject' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>@thehappinessproject</a>. Try it out: <a href='https://aworkingdefinition.netlify.app' target='_blank' style='color:var(--purple-text);text-decoration:underline;text-underline-offset:3px;'>aworkingdefinition.netlify.app</a>" style="top:20px;left:260px;--rot:3.5deg;">
-        <div class="pg-float-img"><img loading="lazy" src="images/awd.png" alt="A Working Definition (On Happiness)"><div class="pg-float-hint">click to open</div></div>
-        <div class="pg-float-info"><span class="pg-float-title">A Working Definition (On Happiness)</span><span class="pg-float-tag">Personal Project</span></div>
+      <div class="pg-float-card" data-pg-img="images/bkk.jpeg" data-pg-title="Bangkok" data-pg-tag="Asia Travels" data-pg-blurb="When I was on an exchange term at Singapore's engineering and design university, I visited so many different countries that my friends liked to say I was teleporting. Anyway, this photo is of Bangkok, one of my favourite places I've traveled to." style="top:308px;left:750px;--rot:-3deg;">
+        <div class="pg-float-img"><img loading="lazy" src="images/bkk.jpeg" alt="Bangkok"><div class="pg-float-hint">click to open</div></div>
+        <div class="pg-float-info"><span class="pg-float-title">Bangkok</span><span class="pg-float-tag">Asia Travels</span></div>
       </div>
-      <div class="pg-float-card" data-pg-img="images/atelier.jpeg" data-pg-title="Atelier" data-pg-tag="Hosting and Leading Media" data-pg-blurb="I co-host and lead media at Atelier, a non-profit in Vancouver that gives spaces for people to cowork on their passion projects. Ranging from robotics, painting, to baking, we're a proud node of Socratica." style="top:308px;left:750px;--rot:-3deg;">
+
+      <div class="pg-float-card" data-pg-img="images/atelier.jpeg" data-pg-title="Atelier" data-pg-tag="Hosting and Leading Media" data-pg-blurb="I co-host and lead media at Atelier, a non-profit in Vancouver that gives spaces for people to cowork on their passion projects. Ranging from robotics, painting, to baking, we're a proud node of Socratica." style="top:300px;left:995px;--rot:2.5deg;">
         <div class="pg-float-img"><img loading="lazy" src="images/atelier.jpeg" alt="Atelier"><div class="pg-float-hint">click to open</div></div>
         <div class="pg-float-info"><span class="pg-float-title">Atelier</span><span class="pg-float-tag">Hosting and Leading Media</span></div>
       </div>
-
-      <div class="pg-float-card" data-pg-no-open="1" data-pg-img="" data-pg-title="Feature Film" data-pg-tag="Coming Soon" data-pg-blurb="A feature film project that brought together storytelling, cinematography, and post-production." style="top:300px;left:995px;--rot:2.5deg;">
-        <div class="pg-float-img" style="background:#e8c0c0;display:flex;align-items:center;justify-content:center;"><div style="font-size:var(--t2);line-height:1;">🎬</div><div class="pg-float-hint">coming soon</div></div>
-        <div class="pg-float-info"><span class="pg-float-title">Feature Film</span><span class="pg-float-tag">Coming Soon</span></div>
-      </div>
     </div>
     <footer class="fl-footer fl-footer--inset">
+    <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
+    
     <div class="fl-bottom">
       <div class="fl-reach">
-        <p class="fl-contact-line">Don&#8217;t be a stranger! Get in touch.</p>
         <div class="fl-social">
         <a href="mailto:irisdanna05@gmail.com"><span class="arr">&#8594;</span> Email</a>
         <a href="https://linkedin.com/in/irisdan" target="_blank"><span class="arr">&#8594;</span> LinkedIn</a>
@@ -1523,8 +1637,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       </div>
       </div>
       <div class="webring webring-hub fl-webring"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-      <p class="fl-copy">&#169; 2026 Iris D. Liu</p>
+      <div class="fl-end"><p class="fl-copy">Made for you by Iris D. Liu</p><button type="button" class="fl-top"><svg class="arr" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V1.8M2.4 5.2 6 1.6l3.6 3.6"/></svg>Back to top</button></div>
     </div>
+    <div class="gf-wrap"><span class="gf-tap" aria-hidden="true"><svg viewBox="0 0 28 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 C14 6 9 14 11 32"/><path d="M6 26 L11 33 L16 26.5"/></svg><span class="gf-tap-t">tap me</span></span><svg class="gf" viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width=".17" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gf-stem" pathLength="1" d="M12.2 14.6 C12.5 24 12.1 34 11.7 45"/><g class="gf-leaf l1" style="transform-origin:11.5px 44.8px"><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6"/></g><g class="gf-leaf l2" style="transform-origin:12.2px 44.8px"><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8"/></g><g class="gf-leaf l3" style="transform-origin:12.4px 26px"><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3"/></g><g class="gf-leaf l4" style="transform-origin:12.2px 22.2px"><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7"/></g><g class="gf-bloom"><g class="gf-petal p0" style="transform-origin:12.8px 8px;--dx:9px;--dy:33px;--r:120deg"><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9"/></g><g class="gf-petal p1" style="transform-origin:8px 14px;--dx:3px;--dy:27.5px;--r:-80deg"><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7"/></g><g class="gf-petal p2" style="transform-origin:16.5px 15px;--dx:13px;--dy:26.5px;--r:200deg"><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9"/></g><g class="gf-petal p3" style="transform-origin:12.4px 16.2px;--dx:6px;--dy:25.5px;--r:90deg"><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1"/></g><path d="M12.1 12.4 L11.2 9.6 M12.3 12.5 L13.6 10 M11.5 13.3 L9.4 13.6 M12.8 13.5 L15 14.4"/></g></svg></div>
+    <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
   </footer>
   </div>
 </div>
@@ -1667,9 +1783,11 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
             <a href="https://twitter.com/irisdanna_" target="_blank"><span class="arr">→</span> Twitter</a>
           </div>
           <div class="webring webring-hub" style="color:var(--text-faint);display:flex;justify-content:center;align-items:center;gap:0.5em;margin-top:0;"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-          <div class="footer-left">© 2026 Iris D. Liu</div>
+          <div class="footer-left">Made for you by Iris D. Liu</div>
         </div>
+        <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
       </div>
+    
     </div>
   </div>
 </div>
@@ -1692,6 +1810,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Platform</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Web app &amp; Meta Integrations</div></div>
       <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">1 Month</div></div>
       <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">CEO, CTO, and 1 Designer (Me)</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Impact</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Scaled to 7 figures in 8 months</div></div>
     </div>
 
     <!-- 01 Overview -->
@@ -1737,9 +1856,11 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
             <a href="https://twitter.com/irisdanna_" target="_blank"><span class="arr">→</span> Twitter</a>
           </div>
           <div class="webring webring-hub" style="color:var(--text-faint);display:flex;justify-content:center;align-items:center;gap:0.5em;margin-top:0;"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-          <div class="footer-left">© 2026 Iris D. Liu</div>
+          <div class="footer-left">Made for you by Iris D. Liu</div>
         </div>
+        <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
       </div>
+    
     </div>
   </div>
 </div>
@@ -2082,9 +2203,11 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
             <a href="https://twitter.com/irisdanna_" target="_blank"><span class="arr">→</span> Twitter</a>
           </div>
           <div class="webring webring-hub" style="color:var(--text-faint);display:flex;justify-content:center;align-items:center;gap:0.5em;margin-top:0;"><a href="https://socratica.info/webring/irisdan.xyz/prev" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg></a><a href="https://socrati.ca/webring/" style="color:inherit"><svg style="display:block" viewBox="0 0 215 212" width="1em" height="1em" fill="currentColor"><path d="M107.64 105.928c-6.011 0-9.646-3.913-9.366-10l1.398-28.546-25.303 17.389c-1.537 1.16-3.495 1.739-5.731 1.739-4.474 0-8.807-3.623-8.807-9.709 0-3.767 1.677-6.23 5.312-8.405l26.7-14.635-26.7-14.636c-3.635-2.029-5.312-4.637-5.312-8.405 0-5.94 4.334-9.563 8.807-9.563 2.236 0 4.194.58 5.731 1.593l25.303 16.955-1.398-29.706C97.994 3.913 101.629 0 107.64 0c5.731 0 9.086 3.623 8.946 9.999l-1.537 29.706 25.023-16.954c1.537-1.015 3.494-1.594 5.731-1.594 4.473 0 8.807 3.622 8.807 9.563 0 3.768-1.678 6.376-5.312 8.405l-26.7 14.636 26.7 14.635c3.634 2.174 5.312 4.638 5.312 8.405 0 6.086-4.334 9.709-8.807 9.709-2.237 0-4.194-.58-5.731-1.739l-25.023-17.389 1.537 28.547c.28 6.376-3.215 9.999-8.946 9.999M47.809 212c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635C1.678 143.169 0 140.56 0 136.793c0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.537 28.546c.28 6.376-3.215 9.999-8.946 9.999m120.221 0c-6.011 0-9.646-3.913-9.366-9.999l1.398-28.546-25.303 17.388c-1.537 1.16-3.494 1.739-5.731 1.739-4.473 0-8.807-3.622-8.807-9.708 0-3.768 1.678-6.231 5.312-8.405l26.7-14.636-26.7-14.635c-3.634-2.029-5.312-4.638-5.312-8.405 0-5.941 4.334-9.564 8.807-9.564 2.237 0 4.194.58 5.731 1.594l25.303 16.954-1.398-29.706c-.28-6.086 3.355-9.999 9.366-9.999 5.731 0 9.086 3.623 8.947 9.999l-1.538 29.706 25.023-16.954c1.537-1.014 3.494-1.594 5.731-1.594 4.473 0 8.807 3.623 8.807 9.564 0 3.767-1.678 6.376-5.312 8.405l-26.7 14.635 26.7 14.636c3.634 2.174 5.312 4.637 5.312 8.405 0 6.086-4.334 9.708-8.807 9.708-2.237 0-4.194-.579-5.731-1.739l-25.023-17.388 1.538 28.546c.279 6.376-3.216 9.999-8.947 9.999"/></svg></a><a href="https://socratica.info/webring/irisdan.xyz/next" target="_blank" rel="noopener noreferrer" style="color:inherit"><svg style="display:block" viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></a><span class="webring-tip" role="tooltip"><strong>what's this?</strong> this is a webring that leads to the other portfolios in the <a href="https://socratica.info" target="_blank" rel="noopener noreferrer">Socratica</a> network! click the arrows to browse my friends' websites</span></div>
-          <div class="footer-left">© 2026 Iris D. Liu</div>
+          <div class="footer-left">Made for you by Iris D. Liu</div>
         </div>
+        <p class="ft-ps">ps: looking for my old portfolio? <a href="https://its.irisdan.xyz" target="_blank" rel="noopener">time travel here</a></p>
       </div>
+    
     </div>
   </div>
 </div>
@@ -2264,8 +2387,7 @@ window.addEventListener('hashchange',function(){const id=routeId();if(USE_PATH&&
 (function(){const id=routeId();document.body.dataset.view=id;if(USE_PATH&&id!=='notfound')history.replaceState(null,'',id==='home'?'/':'/'+id);if(id!=='home')navigateTo(id);})();
 function _navScroll(st){
   if(st<=60){nav.classList.remove('nav-hidden');_lastST=st;return;}
-  if(st>_lastST){nav.classList.add('nav-hidden');}
-  else if(st<_lastST){nav.classList.remove('nav-hidden');}
+  nav.classList.add('nav-hidden'); /* nav lives at the top only: no pop-back-in on scroll up */
   _lastST=st;
 }
 document.querySelectorAll('.page').forEach(function(pg){
@@ -2611,14 +2733,29 @@ function baPick(btn,page,panel){
     c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';c.classList.add('is-on');
     var dx=e.clientX-lx,dy=e.clientY-ly,d=Math.hypot(dx,dy)||1,k=Math.min(3.5,d)/d;lx=e.clientX;ly=e.clientY;
     pp.style.transform='translate('+(dx*k).toFixed(1)+'px,'+(dy*k).toFixed(1)+'px)';
-    var t=e.target.closest?e.target:null;
+    state(e.target);
+  });
+  /* passive scrolling moves things under a still cursor: re-check what it's over */
+  var sq=false,moved=false;
+  document.addEventListener('mousemove',function(){moved=true;},{once:true});
+  document.addEventListener('scroll',function(){
+    if(!moved||sq)return;sq=true;
+    requestAnimationFrame(function(){sq=false;var el=document.elementFromPoint(lx,ly);if(el)state(el);});
+  },{capture:true,passive:true});
+  /* clicking can change the label (e.g. the last petal falls): re-check right away */
+  function refresh(){setTimeout(function(){var el=document.elementFromPoint(lx,ly);if(el)state(el);},0);}
+  document.addEventListener('click',refresh);
+  document.addEventListener('fl-cursor-refresh',refresh);
+  function state(target){
+    var t=target&&target.closest?target:null;
     var cs=t&&t.closest('.sc-card,.case-card'),sw=!cs&&t&&(t.closest('.ma-card')||t.closest('.ma-ring-stage.is-dragging'));
-    var lbl=cs?(cs.classList.contains('sc-locked')?'Locked (for now)':'View case study'):sw?'<i class="sw-a">←</i> Swipe <i class="sw-a">→</i>':'';
+    var fl=t&&t.closest('.grow .gf');   /* footer iris: labelled cursor */
+    var lbl=cs?(cs.classList.contains('sc-locked')?'Locked (for now)':'View case study'):sw?'<i class="sw-a">←</i> Swipe <i class="sw-a">→</i>':fl?[(fl.dataset.oops==='done'?'Oops... I won&#8217;t tell.':'...'),'Again??','And again...','Again','Click'][fl.querySelectorAll('.gf-petal:not(.fallen)').length]:'';
     if(lbl&&lbl!==cur){cur=lbl;sp.innerHTML=lbl;c.style.setProperty('--cw',(sp.scrollWidth+32)+'px');}
     c.classList.toggle('is-case',!!lbl);
     var hov=!lbl&&!!(t&&t.closest('a,button,[data-page],.pg-float-card,.webring-hub,.fl-cogs'));
     if(EYES)c.classList.toggle('is-link',hov);else c.classList.toggle('is-hover',hov);
-  });
+  }
   document.documentElement.addEventListener('mouseleave',function(){c.classList.remove('is-on');});
 })();
 </script>
@@ -2721,6 +2858,142 @@ function baPick(btn,page,panel){
   var ms=matchMedia('(prefers-reduced-motion:reduce)').matches?600:2000;
   document.documentElement.style.overflow='hidden';
   setTimeout(function(){l.classList.add('done');document.documentElement.style.overflow='';setTimeout(function(){l.remove();},500);},ms);
+})();
+</script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function bgOf(el){while(el&&el!==document.documentElement){var c=getComputedStyle(el).backgroundColor;if(c&&c!=='transparent'&&!/rgba\([^)]*,\s*0\)/.test(c)&&!(el.classList&&el.classList.contains('page')&&el.classList.contains('cs-page')))return c;el=el.parentElement;}return getComputedStyle(document.body).backgroundColor;}
+  var items=[];
+  document.querySelectorAll('.fl-footer,.page-footer').forEach(function(f){
+    var pg=f.closest('.page');if(!pg)return;
+    f.classList.add('pu-foot');
+    var frozen=[],node=f;
+    while(node&&node!==pg){var sib=node.previousElementSibling;while(sib){if(!/^(SCRIPT|STYLE)$/.test(sib.tagName)&&!/fixed|sticky/.test(getComputedStyle(sib).position))frozen.push(sib);sib=sib.previousElementSibling;}node=node.parentElement;}
+    frozen.forEach(function(el){el.classList.add('pu-freeze');});
+    items.push({f:f,pg:pg,frozen:frozen});
+  });
+  function update(){
+    items.forEach(function(it){
+      var on=it.pg.classList.contains('active');
+      if(on&&!it.f.style.backgroundColor)it.f.style.backgroundColor=bgOf(it.f.parentElement);
+      var cur=parseFloat(it.f.dataset.pu||0);
+      var top=it.f.getBoundingClientRect().top;                       /* footer itself is never translated */
+      var vb=Math.min(window.innerHeight,it.pg.getBoundingClientRect().bottom);
+      var H=it.f.offsetHeight,D0=Math.min(window.innerHeight*0.3,H*0.45);   /* scroll normally this far past the last row before the footer takes over */
+      var D=Math.max(0,H-1.27*(H-D0));   /* footer pulls up 27% further over the content */
+      var p=(on&&it.f.offsetHeight>0)?Math.max(0,vb-top-D):0;   /* hidden footers never pull */
+      var gw=it.f.querySelector('.gf-wrap');
+      if(on&&it.f.offsetHeight>0&&gw&&gw.getBoundingClientRect().top<window.innerHeight*0.8)it.f.classList.add('grow');
+      if(Math.abs(p-cur)<.5)return;
+      it.f.dataset.pu=p;
+      it.frozen.forEach(function(el){el.style.setProperty('--pu',p.toFixed(1)+'px');});
+    });
+  }
+  var q=false;function tick(){if(!q){q=true;requestAnimationFrame(function(){q=false;update();});}}
+  document.querySelectorAll('.page').forEach(function(pg){pg.addEventListener('scroll',update,{passive:true});});
+  window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',tick);
+  new MutationObserver(tick).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+  update();
+})();
+</script>
+<script>
+/* decide hover vs tap for COGS/ICICS: if expanding a pill would wrap its line, use tap mode */
+(function(){
+  var root=document.documentElement,cs=[].slice.call(document.querySelectorAll('.fl-cogs'));if(!cs.length)return;
+  function check(){
+    if(!matchMedia('(hover:hover)').matches){root.classList.remove('cogs-tap');return;}
+    root.classList.remove('cogs-tap');
+    var wraps=false;
+    cs.forEach(function(c){
+      var sub=c.closest('p')||c.parentNode;
+      if(!sub.offsetParent&&!sub.getClientRects().length)return;
+      var spans=c.querySelectorAll('span');spans.forEach(function(x){x.style.transition='none';});
+      var h0=sub.getBoundingClientRect().height;
+      var was=c.classList.contains('open');c.classList.add('open');
+      var h1=sub.getBoundingClientRect().height;
+      var cr=c.getBoundingClientRect(),limit=Math.min(sub.getBoundingClientRect().right,document.documentElement.clientWidth);
+      if(cr.right>limit+1)wraps=true;   /* would run past the line / screen edge */
+      if(!was)c.classList.remove('open');
+      spans.forEach(function(x){x.style.transition='';});
+      if(h1>h0+2)wraps=true;
+    });
+    root.classList.toggle('cogs-tap',wraps);
+  }
+  var t,lastW=window.innerWidth;
+  function later(){if(window.innerWidth===lastW)return;lastW=window.innerWidth;clearTimeout(t);t=setTimeout(check,120);}   /* height-only resizes (phone address bar) never re-measure */
+  window.addEventListener('resize',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(check);
+  window.addEventListener('load',check);check();
+})();
+</script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var SHAPES=[
+    '<svg viewBox="0 0 10 10" width="100%" height="100%"><path d="M5 0C5.4 3.2 6.8 4.6 10 5 6.8 5.4 5.4 6.8 5 10 4.6 6.8 3.2 5.4 0 5 3.2 4.6 4.6 3.2 5 0Z" fill="currentColor"/></svg>',
+    '<svg viewBox="0 0 10 10" width="100%" height="100%"><path d="M5 .4 6.2 3.6 9.6 3.7 6.9 5.8 7.9 9.1 5 7.2 2.1 9.1 3.1 5.8.4 3.7 3.8 3.6Z" fill="currentColor"/></svg>',
+    '<svg viewBox="0 0 10 10" width="100%" height="100%"><path d="M5 0 5.7 3.3 8.5 1.5 6.7 4.3 10 5 6.7 5.7 8.5 8.5 5.7 6.7 5 10 4.3 6.7 1.5 8.5 3.3 5.7 0 5 3.3 4.3 1.5 1.5 4.3 3.3Z" fill="currentColor"/></svg>',
+    '<svg viewBox="0 0 10 10" width="100%" height="100%"><path d="M5 1.5V8.5M1.5 5H8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 10 10" width="100%" height="100%"><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>'];
+  var STAR=SHAPES[0];
+  function spark(a){
+    var r=a.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+    var ang=Math.random()*Math.PI*2;
+    var ex=Math.cos(ang),ey=Math.sin(ang);
+    var x0=cx+ex*r.width*.45,y0=cy+ey*r.height*.7;          /* start on the edge of the link */
+    var d=10+Math.random()*14;                               /* drift outward a little */
+    var el=document.createElement('span');el.className='tt-spark'+(Math.random()<.35?' alt':'');el.innerHTML=SHAPES[Math.floor(Math.random()*SHAPES.length)];var sz=5+Math.random()*7;el.style.width=el.style.height=sz.toFixed(1)+'px';
+    el.style.setProperty('--x0',x0+'px');el.style.setProperty('--y0',y0+'px');
+    el.style.setProperty('--x1',(x0+ex*d)+'px');el.style.setProperty('--y1',(y0+ey*d-4)+'px');
+    document.body.appendChild(el);setTimeout(function(){el.remove();},950);
+  }
+  document.querySelectorAll('.ft-ps a').forEach(function(a){
+    var t=null;
+    a.addEventListener('mouseenter',function(){spark(a);spark(a);t=setInterval(function(){spark(a);},170);});
+    a.addEventListener('mouseleave',function(){clearInterval(t);t=null;});
+  });
+})();
+</script>
+<script>
+/* footer iris: each tap drops the next petal until the flower has none left */
+document.addEventListener('click',function(e){
+  var g=e.target.closest('.gf');if(!g||!g.closest('.grow'))return;
+  var order=['p0','p2','p1','p3'];
+  for(var i=0;i<order.length;i++){var pt=g.querySelector('.gf-petal.'+order[i]+':not(.fallen)');if(pt){pt.classList.add('fallen');break;}}
+  /* touch screens: the note follows the same sequence as the desktop cursor label */
+  var tt=g.parentNode.querySelector('.gf-tap-t');
+  var left=g.querySelectorAll('.gf-petal:not(.fallen)').length;
+  if(!matchMedia('(hover:none)').matches)tt=null;   /* desktop: note stays 'tap me', the cursor carries the sequence */
+  if(tt){tt.textContent=left>0?['','Again??','And again...','Again','tap me'][left]:(g.dataset.oops==='done'?'Oops... I won\u2019t tell.':'...');tt.parentNode.classList.toggle('no-arrow',left===0);}
+  if(left===0&&!g.dataset.oops){
+    g.dataset.oops='pending';
+    setTimeout(function(){
+      g.dataset.oops='done';
+      if(tt){tt.textContent='Oops... I won\u2019t tell.';tt.parentNode.classList.add('no-arrow');}
+      document.dispatchEvent(new Event('fl-cursor-refresh'));
+    },1000);
+  }
+});
+</script>
+<script>
+/* footer: back to top of whichever page is scrolling (desktop pages scroll inside .page, phones scroll the window) */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.fl-top');if(!b)return;
+  var pg=b.closest('.page');
+  if(pg&&pg.scrollHeight>pg.clientHeight&&getComputedStyle(pg).overflowY!=='visible')pg.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+<script>
+/* home card captions: flag the ones whose subtitle wraps onto a second line */
+(function(){
+  var caps=document.querySelectorAll('#page-home .sc-caption');
+  function mark(){caps.forEach(function(c){var t=c.querySelector('.sc-title'),m=c.querySelector('.sc-meta');if(!t||!m)return;c.classList.remove('is-wrapped');if(m.getBoundingClientRect().top>t.getBoundingClientRect().top+4)c.classList.add('is-wrapped');});}
+  var lw=0,tm;function later(){if(window.innerWidth===lw)return;lw=window.innerWidth;clearTimeout(tm);tm=setTimeout(mark,100);}
+  window.addEventListener('resize',later);window.addEventListener('load',mark);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(mark);
+  mark();
 })();
 </script>
 </body>
